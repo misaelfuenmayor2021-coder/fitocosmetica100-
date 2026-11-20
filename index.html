@@ -1549,30 +1549,30 @@ Atendido por: ${COBRADOR_ACTIVO ? COBRADOR_ACTIVO.nombre : "Fitocosmética y Per
       const valActual = sel.value;
       const lista = DB.clientes.filter(c => c.cobradorId === COBRADOR_ACTIVO.id || COBRADOR_ACTIVO.esAdmin);
       sel.innerHTML = '<option value="">-- Elige un cliente registrado --</option>' +
-        lista.map(c => `<option value="${c.id}">${c.nombre} (Debe: $${c.saldo.toFixed(2)})</option>`).join("");
-      sel.value = valActual;
-      if (selEnt) selEnt.innerHTML = lista.map(c => `<option value="${c.id}">${c.nombre}</option>`).join("");
+          // TASA BCV EN VIVO
+  window.actualizarTasaBCVEnVivo = async function(conAviso = false) {
+    if (!navigator.onLine) {
+      if (conAviso) showToast("Sin internet. Usando último BCV guardado.", "info");
+      return;
     }
-
-    window.renderClientesLocal = function() {
-      const q = (document.getElementById("buscarClienteInput")?.value || "").toLowerCase();
-      const cont = document.getElementById("listaClientesLocal");
-      const lista = DB.clientes.filter(c => (c.cobradorId === COBRADOR_ACTIVO.id || COBRADOR_ACTIVO.esAdmin) &&
-        (c.nombre.toLowerCase().includes(q) || (c.zona || "").toLowerCase().includes(q)));
-
-      if (!lista.length) {
-        cont.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center; padding:12px;">No hay clientes registrados.</p>';
-        return;
+    try {
+      const res = await fetch("https://api.dolarvzla.com/public/exchange-rate");
+      if (res.ok) {
+        const data = await res.json();
+        const tasa = parseFloat(data.current?.usd || data.promedio);
+        if (!isNaN(tasa) && tasa > 0) {
+          DB.config.tasaBCV = tasa;
+          guardarLocalYCloud();
+          refrescarTodaLaUI();
+          if (conAviso) showToast(`Tasa BCV actualizada: ${fmtBs(tasa)}`, "success");
+          return;
+        }
       }
-      cont.innerHTML = lista.map(c => `
-        <div class="item-row">
-          <div>
-            <div class="item-title">${c.nombre}</div>
-            <div class="item-sub">${c.telefono || "Sin tlf"} • ${c.zona || "Sin zona"}</div>
-            <div class="item-sub">Saldo: <strong style="color:${c.saldo > 0 ? "var(--warn)" : "var(--accent)"}">$${c.saldo.toFixed(2)}</strong> (${fmtBs(c.saldo * DB.config.tasaBCV)})</div>
-          </div>
-          <div class="item-actions">
-            <button class="btn btn-wa btn-sm" onclick="enviarEstadoCuentaClienteWA('${c.id}')">Cobrar / Estado WA</button>
+    } catch (e) {
+      if (conAviso) showToast("No se pudo consultar el BCV ahora.", "error");
+    }
+  };
+
             <button class="btn-danger-sm" onclick="eliminarClienteLocal('${c.id}')">Eliminar</button>
           </div>
         </div>
