@@ -1355,19 +1355,21 @@
         if (conAviso) showToast("Sin internet. Usando última tasa BCV guardada.", "info");
         return;
       }
-      try {
-        const res = await fetch("https://ve.dolarapi.com/v1/dolares/bcv");
-        if (res.ok) {
-          const data = await res.json();
-          const tasa = parseFloat(data.promedio);
-          if (!isNaN(tasa) && tasa > 0) {
-            DB.config.tasaBCV = tasa;
-            guardarLocalYCloud();
-            refrescarTodaLaUI();
-            if (conAviso) showToast(`Tasa BCV actualizada: ${fmtBs(tasa)}`, "success");
-            return;
-          }
-        }
+        try {
+    const res = await fetch("https://api.dolarvzla.com/public/exchange-rate");
+    if (res.ok) {
+      const data = await res.json();
+      const tasa = parseFloat(data.current?.usd || data.promedio);
+      if (!isNaN(tasa) && tasa > 0) {
+        DB.config.tasaBCV = tasa;
+        guardarLocalYCloud();
+        refrescarTodaLaUI();
+        if (conAviso) showToast(`Tasa BCV actualizada: ${fmtBs(tasa)}`, "success");
+        return;
+      }
+    }
+  }
+
       } catch (e) {}
       if (conAviso) showToast("No se pudo consultar la API BCV ahora.", "error");
     };
