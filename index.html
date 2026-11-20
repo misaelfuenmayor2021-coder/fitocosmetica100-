@@ -589,11 +589,15 @@
             </span>
           </div>
         </div>
-        <div class="top-right">
-          <div class="rate-pill" onclick="actualizarTasaBCVEnVivo(true)" title="Toca para actualizar Tasa BCV">
-            <span class="rate-label">Tasa BCV</span>
-            <span class="rate-value" id="topBcvDisplay">Bs. 0,00</span>
-          </div>
+        <a href="https://www.bcv.org.ve/" target="_blank" style="text-decoration: none;">
+  <div class="top-right">
+    <div class="rate-pill" onclick="actualizarTasaBCV()">
+      <span class="rate-label">Tasa BCV</span>
+      <span class="rate-value" id="topBcvDisplay">Bs. 0,00</span>
+    </div>
+  </div>
+</a>
+
           <button class="btn-admin-top" id="btnAbrirAdminTop" onclick="abrirAccesoAdmin()" style="display:none;">
             Admin
           </button>
