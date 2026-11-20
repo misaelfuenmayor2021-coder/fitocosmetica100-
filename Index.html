@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Fitocosmética y Perfumes 100% — Portal Operativo</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f3f6f4;
+      --bg-sidebar: #0c2b1a;
+      --card-bg: #ffffff;
+      --primary: #144d2d;
+      --primary-hover: #0e3820;
+      --primary-soft: #e6f2eb;
+      --gold: #c89b3c;
+      --gold-soft: #fdf8eb;
+      --accent: #1f7a46;
+      --warn: #d97706;
+      --warn-soft: #fef3c7;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --info: #0284c7;
+      --info-soft: #e0f2fe;
+      --wa: #22c55e;
+      --wa-hover: #16a34a;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border: #e2e8e4;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 1px 3px rgba(16, 42, 26, 0.06);
+      --shadow-md: 0 8px 24px rgba(16, 42, 26, 0.09);
+      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.45;
+      padding-bottom: 84px;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background: linear-gradient(135deg, #0c2b1a 0%, #144d2d 65%, #1d643c 100%);
+      color: #fff;
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+      border-bottom: 2px solid var(--gold);
+    }
+    .top-bar-inner {
+      max-width: 1220px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .logo-wrap {
+      width: 68px;
+      height: 44px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid var(--gold);
+      background: #0b1610;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .logo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand-meta { display: flex; flex-direction: column; }
+    .brand-name { font-size: 14px; font-weight: 800; letter-spacing: -0.2px; color: #fff; }
+    .brand-route { font-size: 11px; color: #bbf7d0; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+    .status-dot.offline { background: #fb923c; box-shadow: 0 0 6px #fb923c; }
+
+    .top-right { display: flex; align-items: center; gap: 8px; }
+    .rate-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(200,155,60,0.55);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      text-align: right;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .rate-pill:hover { background: rgba(255,255,255,0.2); }
+    .rate-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; color: #fde68a; display: block; font-weight: 700; }
+    .rate-value { font-size: 13px; font-weight: 800; color: #fff; }
+
+    .btn-admin-top {
+      background: rgba(200,155,60,0.2);
+      border: 1px solid var(--gold);
+      color: #fef3c7;
+      padding: 8px 11px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+    }
+    .btn-admin-top:hover { background: var(--gold); color: #0c2b1a; }
+
+    /* LAYOUT SHELL (MOBILE & DESKTOP) */
+    .app-shell {
+      max-width: 1220px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 14px 14px 24px;
+    }
+    .sidebar { display: none; }
+
+    @media (min-width: 900px) {
+      body { padding-bottom: 24px; }
+      .app-shell {
+        grid-template-columns: 240px 1fr;
+        align-items: start;
+        padding: 20px;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 14px;
+        position: sticky;
+        top: 86px;
+        box-shadow: var(--shadow-sm);
+      }
+      .sidebar-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--text-muted);
+        font-weight: 700;
+        padding: 6px 10px 8px;
+      }
+      .side-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 11px 12px;
+        border: none;
+        background: transparent;
+        border-radius: var(--radius-sm);
+        color: var(--text-main);
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.15s;
+      }
+      .side-btn:hover { background: var(--primary-soft); color: var(--primary); }
+      .side-btn.active { background: var(--primary); color: #fff; font-weight: 700; }
+      .side-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+      .bottom-nav { display: none !important; }
+      .metrics-grid { grid-template-columns: repeat(4, 1fr) !important; }
+      .form-row-3 { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+
+    /* BANNERS & ALERTS */
+    .promo-banner {
+      background: linear-gradient(135deg, #fdf8eb 0%, #f5ebd1 100%);
+      border: 1px solid #e7d29d;
+      border-left: 4px solid var(--gold);
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b4e16;
+    }
+    .offline-banner {
+      display: none;
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      border-left: 4px solid #ea580c;
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #9a3412;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    /* CARDS & GRIDS */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      background: #e9efeb;
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+    }
+    .filter-pill-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-radius: 7px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .filter-pill-btn.active { background: #fff; color: var(--primary); box-shadow: var(--shadow-sm); }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .metric-card {
+      background: #fafcfb;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+    }
+    .metric-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+    .metric-usd { font-size: 19px; font-weight: 800; color: var(--primary); }
+    .metric-bs { font-size: 11px; font-weight: 600; color: var(--accent); margin-top: 2px; }
+
+    /* FORMS & BUTTONS */
+    .form-group { margin-bottom: 12px; }
+    .form-label { display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px; }
+    .form-control {
+      width: 100%;
+      padding: 11px 13px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: #fafcfb;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.15s;
+    }
+    .form-control:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 3px rgba(20,77,45,0.12); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr; gap: 10px; }
+
+    .btn {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.15s;
+    }
+    .btn:active { transform: scale(0.985); }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-gold { background: var(--gold); color: #0c2b1a; }
+    .btn-wa { background: var(--wa); color: #fff; }
+    .btn-wa:hover { background: var(--wa-hover); }
+    .btn-outline { background: #fff; border: 1px solid var(--border); color: var(--text-main); }
+    .btn-outline:hover { background: #f9fafb; border-color: #cbd5e1; }
+    .btn-sm { width: auto; padding: 6px 10px; font-size: 11px; border-radius: 8px; }
+    .btn-danger-sm {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+      padding: 6px 9px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* LISTS & BADGES */
+    .item-list { display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto; }
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 13px;
+      border-radius: var(--radius-sm);
+      background: #fafcfb;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .item-title { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .item-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .item-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .badge {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    .badge-warn { background: var(--warn-soft); color: #92400e; }
+    .badge-ok { background: #dcfce7; color: #166534; }
+
+    /* BOTTOM NAV (MOBILE) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 7px 6px;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+      z-index: 95;
+    }
+    .nav-btn {
+      background: transparent;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 4px 6px;
+    }
+    .nav-btn svg { width: 20px; height: 20px; }
+    .nav-btn.active { color: var(--primary); font-weight: 800; }
+
+    /* TABS */
+    .tab-bar { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 14px; }
+    .tab-btn {
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-family: inherit;
+    }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* MODALS & TOASTS */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 25, 16, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 1000;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff;
+      width: 100%;
+      max-width: 520px;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-box.wide { max-width: 960px; }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-title { font-size: 16px; font-weight: 800; color: var(--primary); }
+
+    .toast-container {
+      position: fixed;
+      top: 76px;
+      right: 16px;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 340px;
+    }
+    .toast {
+      background: #0c2b1a;
+      color: #fff;
+      padding: 12px 15px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--gold);
+      animation: slideIn 0.2s ease;
+    }
+    .toast.error { border-left-color: var(--danger); }
+    .toast.success { border-left-color: #4ade80; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* CLIENT PORTAL */
+    #portalClienteView {
+      display: none;
+      max-width: 560px;
+      margin: 20px auto;
+      padding: 0 14px;
+    }
+    .portal-hero {
+      background: linear-gradient(135deg, #0c2b1a 0%, #144d2d 100%);
+      color: #fff;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 22px 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--gold);
+    }
+    .portal-hero img {
+      width: 130px;
+      height: 82px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+      margin-bottom: 10px;
+    }
+    .portal-body {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+    }
+    .bcv-clause {
+      background: var(--warn-soft);
+      border: 1px solid #fcd34d;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 11px;
+      color: #92400e;
+      margin-top: 10px;
+      text-align: left;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ================= PORTAL DEL CLIENTE (?ver_cuenta=ID) ================= -->
+  <div id="portalClienteView">
+    <div class="portal-hero">
+      <img src="assets/logo.png" alt="Fitocosmética y Perfumes 100%">
+      <h1 style="font-size:18px; font-weight:800;">Fitocosmética y Perfumes 100%</h1>
+      <p style="font-size:12px; color:#bbf7d0; margin-top:2px;">Estado de Cuenta Oficial e Historial de Pagos</p>
+    </div>
+    <div class="portal-body">
+      <div class="filter-pills" style="margin-bottom:16px;">
+        <button class="filter-pill-btn active" id="pcTabEstadoBtn" onclick="cambiarTabPortalCliente('estado')">Estado e Historial</button>
+        <button class="filter-pill-btn" id="pcTabCuentasBtn" onclick="cambiarTabPortalCliente('cuentas')">Números de Cuenta</button>
+      </div>
+
+      <div id="pcTabEstado">
+        <div style="background:#fafcfb; border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-muted);">Cliente</div>
+          <div id="pcNombre" style="font-size:16px; font-weight:800; margin-bottom:8px;">—</div>
+          <div style="font-size:10px; text-transform:uppercase; font-weight:700; color:var(--text-muted);">Asesor asignado</div>
+          <div id="pcCobrador" style="font-size:13px; font-weight:700; color:var(--primary);">—</div>
+        </div>
+
+        <div id="pcSaldoBox" style="background:var(--warn-soft); border:1px solid #fcd34d; border-radius:14px; padding:18px; text-align:center; margin-bottom:16px;">
+          <span id="pcSaldoLabel" style="font-size:11px; text-transform:uppercase; font-weight:800; color:#92400e;">Saldo Pendiente Actual</span>
+          <div id="pcSaldoUSD" style="font-size:32px; font-weight:800; color:#b45309; margin:4px 0;">$0.00</div>
+          <div id="pcSaldoBs" style="font-size:14px; font-weight:700; color:var(--text-main);">Bs. 0,00</div>
+          <div class="bcv-clause" id="pcClauseBCV"></div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div style="font-size:13px; font-weight:800; color:var(--primary); margin-bottom:8px;">Historial Completo de Pagos</div>
+          <div class="item-list" id="pcHistorialLista" style="max-height:260px;"></div>
+        </div>
+
+        <button class="btn btn-primary" style="margin-bottom:10px;" onclick="cambiarTabPortalCliente('cuentas')">Ver Números de Cuenta y QR</button>
+        <button class="btn btn-wa" onclick="enviarComprobantePagoWA()">Notificar Pago por WhatsApp</button>
+      </div>
+
+      <div id="pcTabCuentas" style="display:none;">
+        <div style="text-align:center; margin-bottom:14px; background:#fafcfb; border:1px solid var(--border); border-radius:12px; padding:14px;">
+          <div style="font-size:13px; font-weight:800; color:var(--primary); margin-bottom:4px;">Pago Móvil Banesco — Código QR Oficial</div>
+          <img src="assets/qr_banesco.png" alt="QR Pago Móvil Banesco" style="width:100%; max-width:230px; border-radius:10px; border:1px solid var(--border); margin:8px auto; display:block;">
+          <a href="assets/qr_banesco.png" download="QR_Banesco_Fitocosmetica.png" class="btn btn-outline btn-sm" style="text-decoration:none;">Descargar Imagen QR</a>
+        </div>
+        <div class="item-list" id="pcCuentasLista" style="max-height:none; margin-bottom:14px;"></div>
+        <button class="btn btn-wa" onclick="enviarComprobantePagoWA()">Enviar Comprobante por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= APLICACIÓN INTERNA (COBRADORES / VENTAS / ADMIN) ================= -->
+  <div id="appInternaView">
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <div class="brand-group" id="brandSecretTrigger" title="Fitocosmética y Perfumes 100%">
+          <div class="logo-wrap">
+            <img src="assets/logo.png" alt="Logo Fitocosmética">
+          </div>
+          <div class="brand-meta">
+            <span class="brand-name">Fitocosmética y Perfumes 100%</span>
+            <span class="brand-route">
+              <span class="status-dot" id="netStatusDot"></span>
+              <span id="activeRouteDisplay">Cargando ruta...</span>
+            </span>
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="rate-pill" onclick="actualizarTasaBCVEnVivo(true)" title="Toca para actualizar Tasa BCV">
+            <span class="rate-label">Tasa BCV</span>
+            <span class="rate-value" id="topBcvDisplay">Bs. 0,00</span>
+          </div>
+          <button class="btn-admin-top" id="btnAbrirAdminTop" onclick="abrirAccesoAdmin()" style="display:none;">
+            Admin
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <!-- SIDEBAR DESKTOP -->
+      <aside class="sidebar">
+        <div class="sidebar-title">Operaciones en Ruta</div>
+        <button class="side-btn active" data-view="viewCobro" onclick="navegarA('viewCobro')">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          <span class="lbl-cobrar">Registrar Cobro</span>
+        </button>
+        <button class="side-btn" data-view="viewStock" onclick="navegarA('viewStock')">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span class="lbl-stock">Mi Stock</span>
+        </button>
+        <button class="side-btn" data-view="viewClientes" onclick="navegarA('viewClientes')">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Clientes</span>
+        </button>
+        <button class="side-btn" data-view="viewRendicion" id="sideRendirBtn" onclick="navegarA('viewRendicion')">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Rendición</span>
+        </button>
+        <button class="side-btn" data-view="viewAsentamientoManual" onclick="navegarA('viewAsentamientoManual')">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Respaldo Manual</span>
+        </button>
+        <button class="side-btn" data-view="viewInstrucciones" onclick="navegarA('viewInstrucciones')">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Guía Operativa</span>
+        </button>
+        <div style="border-top:1px solid var(--border); margin:8px 0;"></div>
+        <button class="side-btn" onclick="abrirModalCuentas()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Datos de Pago y QR</span>
+        </button>
+        <button class="side-btn" onclick="abrirAccesoAdmin()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Panel Central</span>
+        </button>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main>
+        <div class="promo-banner" id="promoContainer">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span id="promoTextDisplay">Cargando promoción...</span>
+        </div>
+
+        <!-- CINTILLO MODO SIN INTERNET / COLA DE PENDIENTES -->
+        <div class="offline-banner" id="cintilloColaPendientes" onclick="abrirModalColaPendientes()">
+          <span id="cintilloColaTexto">Modo sin internet activo — Registros resguardados en el teléfono</span>
+          <span class="badge badge-warn">Ver Buzón</span>
+        </div>
+
+        <div class="quick-bar">
+          <button class="btn btn-wa" onclick="enviarResumenJornadaWA()">Reporte WhatsApp</button>
+          <button class="btn btn-outline" onclick="abrirModalCuentas()">Datos de Pago y QR</button>
+          <button class="btn btn-outline" onclick="abrirModalColaPendientes()">Buzón Offline (<span id="countColaBtn">0</span>)</button>
+        </div>
+
+        <!-- RESUMEN FINANCIERO -->
+        <section class="card" id="secBalance">
+          <div class="card-header">
+            <span class="card-title" id="lblTituloBalance">Balance de Mi Ruta</span>
+            <span class="badge" id="badgeCobradorComision">Comisión: 20%</span>
+          </div>
+          <div class="filter-pills">
+            <button class="filter-pill-btn active" id="btnFilterHoy" onclick="cambiarFiltroBalance('hoy')">Hoy</button>
+            <button class="filter-pill-btn" id="btnFilterSemana" onclick="cambiarFiltroBalance('semana')">Semanal</button>
+            <button class="filter-pill-btn" id="btnFilterMes" onclick="cambiarFiltroBalance('mes')">Mensual</button>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-title" id="lblMetricTotal">Cobrado (Hoy)</div>
+              <div class="metric-usd" id="metricTotalUSD">$0.00</div>
+              <div class="metric-bs" id="metricTotalBs">Bs. 0,00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title" id="lblMetricComision">Mi Comisión</div>
+              <div class="metric-usd" id="metricComisionUSD" style="color:var(--accent);">$0.00</div>
+              <div class="metric-bs" id="metricComisionBs">Bs. 0,00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Neto a Planta</div>
+              <div class="metric-usd" id="metricNetoUSD">$0.00</div>
+              <div class="metric-bs" id="metricNetoBs">Bs. 0,00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Pendiente por Rendir</div>
+              <div class="metric-usd" id="metricPendienteUSD" style="color:var(--warn);">$0.00</div>
+              <div class="metric-bs" id="metricPendienteBs">Bs. 0,00</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA: COBRAR -->
+        <section class="card app-view" id="viewCobro">
+          <div class="card-header">
+            <span class="card-title">Registrar Cobro de Cliente</span>
+            <span class="badge" id="badgeCobradorActivo">—</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Seleccionar Cliente</label>
+            <select class="form-control" id="cobroSelectCliente" onchange="verificarSaldoClienteSeleccionado()">
+              <option value="">-- Elige un cliente registrado --</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Monto ($ USD)</label>
+              <input type="number" step="0.01" class="form-control" id="cobroMontoUSD" placeholder="0.00" oninput="calcularEquivalenteBs()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Equivalente BCV (Bs.)</label>
+              <input type="text" class="form-control" id="cobroMontoBs" placeholder="Bs. 0,00" readonly>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Método de Pago (5 Canales Oficiales)</label>
+              <select class="form-control" id="cobroMetodoPago" onchange="toggleCampoReferenciaCobro()">
+                <option value="Pago Móvil Banesco">1. Pago Móvil Banesco</option>
+                <option value="Depósito en Cuenta de Ahorro Banesco">2. Depósito / Transferencia Banesco</option>
+                <option value="Binance Pay (USDT)">3. Binance Pay (USDT)</option>
+                <option value="Efectivo USD ($)">4. Efectivo Divisa ($)</option>
+                <option value="Efectivo Bolívares (Bs.)">5. Efectivo Bolívares (Bs.)</option>
+              </select>
+            </div>
+            <div class="form-group" id="grpCobroReferencia">
+              <label class="form-label">N° de Referencia / Comprobante</label>
+              <input type="text" class="form-control" id="cobroReferencia" placeholder="Últimos 4 dígitos o ref.">
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="registrarCobro()">Registrar Cobro y Generar Recibo</button>
+        </section>
+
+        <!-- VISTA: STOCK -->
+        <section class="card app-view" id="viewStock" style="display:none;">
+          <div class="card-header">
+            <span class="card-title" id="lblTituloStock">Mi Stock Asignado</span>
+            <button class="btn btn-outline btn-sm" onclick="renderStockLocal()">Actualizar</button>
+          </div>
+          <div style="background:var(--primary-soft); border:1px solid #c6e2d1; border-radius:12px; padding:14px; margin-bottom:14px;">
+            <div style="font-size:13px; font-weight:800; color:var(--primary); margin-bottom:8px;">Asentamiento Manual de Stock (Recibo Físico)</div>
+            <div class="form-row-3">
+              <input type="text" class="form-control" id="inputNombreProductoManual" placeholder="Nombre del producto o artículo">
+              <input type="number" class="form-control" id="inputCantidadStockManual" placeholder="Cantidad recibida">
+              <input type="text" class="form-control" id="inputNotaReciboManual" placeholder="Código de seguimiento (Ej. FITO-842)">
+            </div>
+            <button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="ejecutarAsentamientoStockManual()">+ Sumar a Mi Stock</button>
+          </div>
+          <div class="item-list" id="listaStockLocal"></div>
+        </section>
+
+        <!-- VISTA: CLIENTES -->
+        <section class="card app-view" id="viewClientes" style="display:none;">
+          <div class="card-header">
+            <span class="card-title">Directorio de Clientes</span>
+            <button class="btn btn-primary btn-sm" onclick="abrirModal('modalNuevoCliente')">+ Nuevo Cliente</button>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="buscarClienteInput" placeholder="Buscar cliente por nombre o zona..." oninput="renderClientesLocal()">
+          </div>
+          <div class="item-list" id="listaClientesLocal"></div>
+        </section>
+
+        <!-- VISTA: RENDICIÓN -->
+        <section class="card app-view" id="viewRendicion" style="display:none;">
+          <div class="card-header">
+            <span class="card-title">Rendición de Cuentas Oficial</span>
+            <button class="btn btn-gold btn-sm" onclick="autoCompletarRendicionHoy()">Auto-llenar Neto Hoy</button>
+          </div>
+          <div style="background:var(--primary-soft); border-radius:10px; padding:10px 12px; margin-bottom:12px; font-size:12px; color:var(--primary);">
+            El sistema descuenta automáticamente tu comisión (<strong><span id="txtPctRend">20</span>%</strong>) para declarar el neto exacto a Planta.
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">1. Pago Móvil (Bs. Neto)</label><input type="number" step="0.01" class="form-control" id="rendPagoMovil" placeholder="0.00"></div>
+            <div class="form-group"><label class="form-label">Refs. Pago Móvil</label><input type="text" class="form-control" id="rendRefPagoMovil" placeholder="Ej. 4521, 9812"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">2. Cta Ahorro Banesco (Bs. Neto)</label><input type="number" step="0.01" class="form-control" id="rendCtaAhorro" placeholder="0.00"></div>
+            <div class="form-group"><label class="form-label">Refs. Depósitos</label><input type="text" class="form-control" id="rendRefCtaAhorro" placeholder="Ej. 10293847"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">3. Binance Pay (USDT Neto)</label><input type="number" step="0.01" class="form-control" id="rendBinance" placeholder="0.00"></div>
+            <div class="form-group"><label class="form-label">TxID / Refs. Binance</label><input type="text" class="form-control" id="rendRefBinance" placeholder="OrderID"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">4. Efectivo Divisa ($ Neto)</label><input type="number" step="0.01" class="form-control" id="rendEfectivoUSD" placeholder="0.00"></div>
+            <div class="form-group"><label class="form-label">5. Efectivo Bolívares (Bs. Neto)</label><input type="number" step="0.01" class="form-control" id="rendEfectivoBs" placeholder="0.00"></div>
+          </div>
+          <button class="btn btn-primary" onclick="enviarRendicion()">Registrar y Enviar Rendición a Central</button>
+        </section>
+
+        <!-- VISTA: ASENTAMIENTO MANUAL -->
+        <section class="card app-view" id="viewAsentamientoManual" style="display:none;">
+          <div class="card-header">
+            <span class="card-title">Respaldo Manual de WhatsApp</span>
+          </div>
+          <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+            Plan B en caso de contingencia: pega aquí cualquier mensaje de WhatsApp con enlace de sincronización para procesarlo manualmente.
+          </p>
+          <div class="form-group">
+            <textarea class="form-control" id="textoResguardoExpuesto" rows="4" placeholder="Pega el mensaje completo de WhatsApp..."></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="procesarTextoResguardo('textoResguardoExpuesto')">Procesar Mensaje</button>
+        </section>
+
+        <!-- VISTA: GUÍA -->
+        <section class="card app-view" id="viewInstrucciones" style="display:none;">
+          <div class="card-header"><span class="card-title">Guía Operativa y Modo Sin Internet</span></div>
+          <div style="font-size:13px; color:var(--text-main); line-height:1.65;">
+            <p style="margin-bottom:10px;"><strong>1. Sincronización Automática en la Nube (Firebase):</strong> Todos los cobros, clientes y entregas se sincronizan en tiempo real con la administración central.</p>
+            <p style="margin-bottom:10px;"><strong>2. Trabajo de Campo Sin Internet:</strong> Si pierdes la señal en la calle, sigue registrando con normalidad. El sistema guarda cada operación en tu teléfono y la sube automáticamente apenas recuperes conexión. También puedes revisar tu <strong>Buzón Offline</strong> en cualquier momento.</p>
+            <p style="margin-bottom:10px;"><strong>3. Recibos y Tasa BCV:</strong> Al cobrar, toca <em>Enviar Recibo al Cliente</em> para compartir por WhatsApp su historial de los últimos 5 pagos, su saldo actualizado y el enlace a nuestros números de cuenta.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- BOTTOM NAV MOBILE -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-view="viewCobro" onclick="navegarA('viewCobro')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        <span class="lbl-cobrar">Cobrar</span>
+      </button>
+      <button class="nav-btn" data-view="viewStock" onclick="navegarA('viewStock')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <span class="lbl-stock">Stock</span>
+      </button>
+      <button class="nav-btn" data-view="viewClientes" onclick="navegarA('viewClientes')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <span>Clientes</span>
+      </button>
+      <button class="nav-btn" data-view="viewRendicion" id="navRendirBtn" onclick="navegarA('viewRendicion')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>Rendir</span>
+      </button>
+      <button class="nav-btn" data-view="viewInstrucciones" onclick="navegarA('viewInstrucciones')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Guía</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ================= MODALES ================= -->
+
+  <!-- MODAL RECIBO POST-COBRO -->
+  <div class="modal-overlay" id="modalReciboCobro">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">Cobro Registrado con Éxito</span>
+        <button class="btn btn-outline btn-sm" onclick="cerrarModales()">Cerrar</button>
+      </div>
+      <div id="reciboResumenBox" style="background:#fafcfb; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px; margin-bottom:14px; white-space:pre-line;"></div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button class="btn btn-wa" id="btnEnviarReciboClienteWA">Enviar Recibo al Cliente por WhatsApp</button>
+        <button class="btn btn-outline" id="btnEnviarRespaldoCentralWA">Enviar Copia de Respaldo a Central (WA)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CUENTAS BANCARIAS -->
+  <div class="modal-overlay" id="modalCuentas">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">Métodos de Pago Oficiales</span>
+        <button class="btn btn-outline btn-sm" onclick="cerrarModales()">Cerrar</button>
+      </div>
+      <div style="text-align:center; margin-bottom:14px; background:#fafcfb; border:1px solid var(--border); border-radius:12px; padding:12px;">
+        <div style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:6px;">Banesco Pago Móvil — Código QR</div>
+        <img src="assets/qr_banesco.png" alt="QR Banesco" style="width:100%; max-width:210px; border-radius:8px; border:1px solid var(--border); display:block; margin:0 auto 8px;">
+        <a href="assets/qr_banesco.png" download="QR_Banesco_Fitocosmetica.png" class="btn btn-outline btn-sm" style="text-decoration:none;">Descargar QR</a>
+      </div>
+      <div class="item-list" id="listaCuentasModal" style="margin-bottom:14px;"></div>
+      <button class="btn btn-wa" onclick="compartirDatosPagoWA()">Compartir Datos de Pago por WhatsApp</button>
+    </div>
+  </div>
+
+  <!-- MODAL NUEVO CLIENTE -->
+  <div class="modal-overlay" id="modalNuevoCliente">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">Registrar Nuevo Cliente</span>
+        <button class="btn btn-outline btn-sm" onclick="cerrarModales()">Cerrar</button>
+      </div>
+      <div class="form-group"><label class="form-label">Nombre y Apellido / Comercio</label><input type="text" class="form-control" id="newClienteNombre" placeholder="Ej. Farmacia Central"></div>
+      <div class="form-group"><label class="form-label">Teléfono WhatsApp</label><input type="tel" class="form-control" id="newClienteTelefono" placeholder="Ej. 04141234567"></div>
+      <div class="form-group"><label class="form-label">Zona o Dirección</label><input type="text" class="form-control" id="newClienteZona" placeholder="Ej. Ocumare / Cúa"></div>
+      <div class="form-group"><label class="form-label">Saldo Inicial ($ USD)</label><input type="number" step="0.01" class="form-control" id="newClienteSaldo" placeholder="0.00"></div>
+      <button class="btn btn-primary" onclick="guardarNuevoCliente()">Guardar Cliente</button>
+    </div>
+  </div>
+
+  <!-- MODAL ENTREGAR MERCANCÍA -->
+  <div class="modal-overlay" id="modalEntregarProductoCliente">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">Entregar Mercancía a Cliente</span>
+        <button class="btn btn-outline btn-sm" onclick="cerrarModales()">Cerrar</button>
+      </div>
+      <div class="form-group"><label class="form-label">Cliente Receptor</label><select class="form-control" id="entregaSelectCliente"></select></div>
+      <div class="form-group"><label class="form-label">Producto (De mi stock)</label><select class="form-control" id="entregaSelectProducto" onchange="actualizarPrecioSugeridoEntrega()"></select></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Cantidad</label><input type="number" class="form-control" id="entregaCantidad" value="1" oninput="calcularTotalEntrega()"></div>
+        <div class="form-group"><label class="form-label">Precio Unitario ($)</label><input type="number" step="0.01" class="form-control" id="entregaPrecioUnit" oninput="calcularTotalEntrega()"></div>
+      </div>
+      <div style="background:var(--primary-soft); padding:10px 12px; border-radius:10px; margin-bottom:14px; display:flex; justify-content:space-between; font-size:13px; font-weight:700; color:var(--primary);">
+        <span>Total a Cargar a Deuda:</span>
+        <span id="entregaTotalCalculado">$0.00</span>
+      </div>
+      <button class="btn btn-primary" onclick="procesarEntregaProducto()">Confirmar Entrega</button>
+    </div>
+  </div>
+
+  <!-- MODAL BUZÓN OFFLINE -->
+  <div class="modal-overlay" id="modalColaPendientes">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">Buzón Offline (Resguardo Local)</span>
+        <button class="btn btn-outline btn-sm" onclick="cerrarModales()">Cerrar</button>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+        Las operaciones registradas sin conexión se sincronizan solas con Firebase al volver la señal. También puedes reenviarlas por WhatsApp como respaldo.
+      </p>
+      <div class="item-list" id="listaColaPendientesModal"></div>
+    </div>
+  </div>
+
+  <!-- MODAL ACCESO ADMIN (FIREBASE AUTH) -->
+  <div class="modal-overlay" id="modalAuthAdmin">
+    <div class="modal-box" style="max-width:400px; text-align:center;">
+      <img src="assets/logo.png" alt="Logo" style="width:110px; height:68px; object-fit:cover; border-radius:10px; border:1.5px solid var(--gold); margin-bottom:10px;">
+      <div class="modal-title" style="margin-bottom:6px;">Acceso Panel Central Maestro</div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">Inicia sesión con tu cuenta de administrador de Firebase</p>
+      <div class="form-group" style="text-align:left;"><label class="form-label">Correo Electrónico</label><input type="email" class="form-control" id="adminEmailInput" placeholder="admin@fitocosmetica.com"></div>
+      <div class="form-group" style="text-align:left;"><label class="form-label">Contraseña</label><input type="password" class="form-control" id="adminPassInput" placeholder="••••••••"></div>
+      <button class="btn btn-primary" style="margin-bottom:8px;" onclick="iniciarSesionAdminFirebase()">Ingresar al Panel</button>
+      <button class="btn btn-outline" onclick="cerrarModales()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- MODAL PANEL CENTRAL MAESTRO -->
+  <div class="modal-overlay" id="modalMaster">
+    <div class="modal-box wide">
+      <div class="modal-header">
+        <span class="modal-title">Panel Central Maestro — Fitocosmética y Perfumes 100%</span>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-outline btn-sm" onclick="cerrarSesionAdminFirebase()">Cerrar Sesión</button>
+          <button class="btn btn-primary btn-sm" onclick="cerrarModales()">Volver</button>
+        </div>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="cambiarTabMaster('tabBalanceGeneral', this)">Balance General</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabAuditoriaCobros', this)">Cobros y Corrección</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabDespacho', this)">Despacho</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabClientesMaster', this)">Todos Clientes</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabCobradores', this)">Personal (Rutas)</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabLaboratorio', this)">Fórmulas</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabMateriaPrima', this)">Materia Prima</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabMultirubro', this)">Multirrubro</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabAjustes', this)">Cuentas y Ajustes</button>
+      </div>
+
+      <!-- TAB: BALANCE GENERAL -->
+      <div id="tabBalanceGeneral" class="master-tab-content">
+        <div class="metrics-grid">
+          <div class="metric-card"><div class="metric-title">Recaudado Global</div><div class="metric-usd" id="masterTotalGlobalUSD">$0.00</div><div class="metric-bs" id="masterTotalGlobalBs">Bs. 0,00</div></div>
+          <div class="metric-card"><div class="metric-title">Comisiones</div><div class="metric-usd" id="masterTotalComisionesUSD" style="color:var(--accent);">$0.00</div><div class="metric-bs" id="masterTotalComisionesBs">Bs. 0,00</div></div>
+          <div class="metric-card"><div class="metric-title">Neto Planta</div><div class="metric-usd" id="masterNetoPlantaUSD">$0.00</div><div class="metric-bs" id="masterNetoPlantaBs">Bs. 0,00</div></div>
+          <div class="metric-card"><div class="metric-title">Deuda en Calle</div><div class="metric-usd" id="masterDeudaCarteraUSD" style="color:var(--warn);">$0.00</div><div class="metric-bs" id="masterDeudaCarteraBs">Bs. 0,00</div></div>
+        </div>
+        <div style="font-size:13px; font-weight:800; color:var(--primary); margin:12px 0 8px;">Desempeño por Personal</div>
+        <div class="item-list" id="listaDesempenoCobradoresMaster"></div>
+      </div>
+
+      <!-- TAB: AUDITORÍA COBROS -->
+      <div id="tabAuditoriaCobros" class="master-tab-content" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <span style="font-size:12px; font-weight:700; color:var(--text-muted);">Historial de Cobros en Tiempo Real</span>
+          <select class="form-control" id="filtroAuditoriaCobrador" style="width:auto; padding:6px 10px; font-size:12px;" onchange="renderAuditoriaCobrosMaster()"></select>
+        </div>
+        <div class="item-list" id="listaCobrosAuditoriaMaster"></div>
+      </div>
+
+      <!-- TAB: DESPACHO -->
+      <div id="tabDespacho" class="master-tab-content" style="display:none;">
+        <div class="form-row-3">
+          <div class="form-group"><label class="form-label">Personal Destinatario</label><select class="form-control" id="despachoCobradorSelect"></select></div>
+          <div class="form-group"><label class="form-label">Producto</label><select class="form-control" id="despachoProductoSelect"></select></div>
+          <div class="form-group"><label class="form-label">Cantidad</label><input type="number" class="form-control" id="despachoCantidad" placeholder="10"></div>
+        </div>
+        <button class="btn btn-primary" onclick="ejecutarDespachoCentral()">Despachar Stock a Ruta (Sincroniza en Nube)</button>
+        <div style="font-size:13px; font-weight:800; color:var(--primary); margin:14px 0 8px;">Historial de Despachos</div>
+        <div class="item-list" id="listaHistorialDespachos"></div>
+      </div>
+
+      <!-- TAB: CLIENTES MASTER -->
+      <div id="tabClientesMaster" class="master-tab-content" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <span style="font-size:12px; font-weight:700; color:var(--text-muted);">Cartera Completa de Clientes</span>
+          <select class="form-control" id="filtroClienteCobrador" style="width:auto; padding:6px 10px; font-size:12px;" onchange="renderClientesMaster()"></select>
+        </div>
+        <div class="item-list" id="listaClientesMasterPrivado"></div>
+      </div>
+
+      <!-- TAB: PERSONAL -->
+      <div id="tabCobradores" class="master-tab-content" style="display:none;">
+        <div class="item-list" id="listaCobradoresMaster" style="margin-bottom:14px;"></div>
+        <div style="border-top:1px dashed var(--border); padding-top:12px;">
+          <div style="font-size:13px; font-weight:800; color:var(--primary); margin-bottom:8px;">Crear Nuevo Personal / Ruta</div>
+          <div class="form-row">
+            <div class="form-group"><input type="text" class="form-control" id="newCobradorNombre" placeholder="Nombre completo"></div>
+            <div class="form-group"><input type="tel" class="form-control" id="newCobradorTelefono" placeholder="584XXXXXXXXX"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><input type="number" class="form-control" id="newCobradorComision" placeholder="Comisión % (ej. 20)"></div>
+            <div class="form-group">
+              <select class="form-control" id="newCobradorRol">
+                <option value="cobrador">Cobrador</option>
+                <option value="ventas">Ejecutivo de Ventas</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="crearCobradorMaster()">+ Crear Personal y Copiar Enlace</button>
+        </div>
+      </div>
+
+      <!-- TAB: LABORATORIO -->
+      <div id="tabLaboratorio" class="master-tab-content" style="display:none;">
+        <div class="item-list" id="listaFormulasMaster" style="margin-bottom:12px;"></div>
+        <div style="background:var(--primary-soft); border-radius:12px; padding:12px;">
+          <div style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:8px;">Fabricar Lote</div>
+          <div class="form-row">
+            <select class="form-control" id="selectFormulaFabricar"></select>
+            <input type="number" class="form-control" id="loteCantidadProducir" placeholder="Unidades">
+          </div>
+          <button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="ejecutarFabricacionLote()">Fabricar y Sumar a Multirrubro</button>
+        </div>
+      </div>
+
+      <!-- TAB: MATERIA PRIMA -->
+      <div id="tabMateriaPrima" class="master-tab-content" style="display:none;">
+        <div class="item-list" id="listaMateriaPrimaMaster" style="margin-bottom:12px;"></div>
+        <div class="form-row">
+          <input type="text" class="form-control" id="newMPNombre" placeholder="Insumo">
+          <input type="text" class="form-control" id="newMPUnidad" placeholder="ml / gr / unid">
+        </div>
+        <div class="form-row" style="margin-top:8px;">
+          <input type="number" class="form-control" id="newMPStock" placeholder="Stock">
+          <input type="number" step="0.01" class="form-control" id="newMPCosto" placeholder="Costo Unit $">
+        </div>
+        <button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="agregarMateriaPrimaMaster()">+ Guardar Insumo</button>
+      </div>
+
+      <!-- TAB: MULTIRRUBRO -->
+      <div id="tabMultirubro" class="master-tab-content" style="display:none;">
+        <div class="item-list" id="listaProductosMaster" style="margin-bottom:12px;"></div>
+        <div class="form-row">
+          <input type="text" class="form-control" id="newProdNombre" placeholder="Producto">
+          <input type="text" class="form-control" id="newProdCategoria" placeholder="Categoría">
+        </div>
+        <div class="form-row" style="margin-top:8px;">
+          <input type="number" class="form-control" id="newProdStock" placeholder="Stock">
+          <input type="number" step="0.01" class="form-control" id="newProdPrecio" placeholder="Precio $">
+        </div>
+        <button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="agregarProductoMaster()">+ Guardar Producto</button>
+      </div>
+
+      <!-- TAB: AJUSTES -->
+      <div id="tabAjustes" class="master-tab-content" style="display:none;">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Tasa Oficial BCV (Bs.)</label><input type="number" step="0.01" class="form-control" id="cfgTasaBCV"></div>
+          <div class="form-group"><label class="form-label">Teléfono Pago Móvil</label><input type="text" class="form-control" id="cfgPMTelefono"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Cédula / RIF</label><input type="text" class="form-control" id="cfgPMCedula"></div>
+          <div class="form-group"><label class="form-label">Binance Pay ID</label><input type="text" class="form-control" id="cfgBinanceID"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Cuenta de Ahorro Banesco (20 dígitos)</label><input type="text" class="form-control" id="cfgCtaAhorro"></div>
+        <div class="form-group"><label class="form-label">Titular de las Cuentas</label><input type="text" class="form-control" id="cfgTitular"></div>
+        <div class="form-group"><label class="form-label">Texto de Promoción Superior</label><textarea class="form-control" id="cfgPromoTexto" rows="2"></textarea></div>
+        <div class="form-row">
+          <button class="btn btn-primary" onclick="guardarAjustesMaster()">Guardar en Firebase (Todos los Equipos)</button>
+          <button class="btn btn-outline" onclick="actualizarTasaBCVEnVivo(true)">Sincronizar BCV en Vivo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FIREBASE & LÓGICA PRINCIPAL ================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      initializeFirestore, persistentLocalCache, persistentMultipleTabManager,
+      doc, setDoc, getDoc, onSnapshot
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import {
+      getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCzVRSNnUAHKkGzKKX-KOCmLxNd0ioar1s",
+      authDomain: "fitoadmincobrador.firebaseapp.com",
+      projectId: "fitoadmincobrador",
+      storageBucket: "fitoadmincobrador.firebasestorage.app",
+      messagingSenderId: "625185973803",
+      appId: "1:625185973803:web:18834d1e3040cb1f69ac6e",
+      measurementId: "G-1E8BJTEDV4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const dbCloud = initializeFirestore(app, {
+      localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
+    });
+    const auth = getAuth(app);
+
+    const STATE_DOC_REF = doc(dbCloud, "fitocosmetica", "estado_global");
+    const NUMERO_CENTRAL_ADMIN = "584123184756";
+
+    const DEFAULT_DATA = {
+      config: {
+        tasaBCV: 896.12,
+        promo: "¡Por cada 10 unidades cobradas al contado, gana 1 mini spray de 3ml de comisión especial!",
+        bancoCuentaAhorro: "0134-0947-11-0002237032",
+        binanceID: "584123184756",
+        bancoTelefono: "0412-3184756",
+        bancoCedula: "V-16.246.468",
+        titular: "Misael David Fuenmayor Aguirre"
+      },
+      cobradores: [
+        { id: "misaelfuenmayor", nombre: "Misael Fuenmayor", telefono: "584123184756", comision: 100, esAdmin: true, rol: "cobrador" },
+        { id: "eglismarp", nombre: "Eglismar Piamo", telefono: "584264106893", comision: 20, esAdmin: false, rol: "cobrador" },
+        { id: "egleidy", nombre: "Egleidy", telefono: "584120000000", comision: 20, esAdmin: false, rol: "ventas" }
+      ],
+      materiaPrima: [
+        { id: "mp1", nombre: "Esencia Concentrada Pura", unidad: "ml", stock: 1500, costo: 0.12 },
+        { id: "mp2", nombre: "Alcohol Perfumol Fino", unidad: "ml", stock: 8000, costo: 0.02 },
+        { id: "mp3", nombre: "Fijador / Dimeticona", unidad: "ml", stock: 850, costo: 0.08 },
+        { id: "mp5", nombre: "Frasco Alfil / Single 30ml", unidad: "unid", stock: 120, costo: 0.85 },
+        { id: "mp6", nombre: "Frasco Roll-On 8.55ml", unidad: "unid", stock: 180, costo: 0.45 }
+      ],
+      productos: [
+        { id: "pr1", nombre: "Perfume Alfil 30ml Concentrado", categoria: "Perfumería", stock: 25, precio: 10.00 },
+        { id: "pr2", nombre: "Perfume Roll-On 8.55ml", categoria: "Perfumería", stock: 40, precio: 3.50 },
+        { id: "pr3", nombre: "Mini Spray Muestra 3ml (70%)", categoria: "Muestras", stock: 60, precio: 1.50 },
+        { id: "pr4", nombre: "Crema Bio-Regeneradora 30ml", categoria: "Fitocosmética", stock: 15, precio: 6.00 }
+      ],
+      formulas: [
+        { id: "f1", nombre: "Perfume Alfil 30ml (33%)", productoId: "pr1", insumos: [{ mpId: "mp1", cant: 10 }, { mpId: "mp2", cant: 18 }, { mpId: "mp3", cant: 1 }, { mpId: "mp5", cant: 1 }] },
+        { id: "f2", nombre: "Roll-On 8.55ml (50%)", productoId: "pr2", insumos: [{ mpId: "mp1", cant: 4.5 }, { mpId: "mp2", cant: 3.5 }, { mpId: "mp3", cant: 0.55 }, { mpId: "mp6", cant: 1 }] }
+      ],
+      clientes: [
+        { id: "c1", nombre: "Farmacia La Fe", telefono: "04121112233", zona: "Ocumare", saldo: 25.00, cobradorId: "misaelfuenmayor" },
+        { id: "c2", nombre: "Boutique Miranda", telefono: "04149998877", zona: "Charallave", saldo: 40.00, cobradorId: "eglismarp" }
+      ],
+      cobrosHoy: [],
+      rendiciones: [],
+      stockCobrador: {
+        misaelfuenmayor: { pr1: 15, pr2: 20, pr3: 30 },
+        eglismarp: { pr1: 10, pr2: 15, pr3: 10 },
+        egleidy: { pr1: 10, pr2: 10, pr3: 10 }
+      },
+      historialDespachos: []
+    };
+
+    let DB = JSON.parse(localStorage.getItem("fito_v45_cache") || "null") || structuredClone(DEFAULT_DATA);
+    let COLA_OFFLINE = JSON.parse(localStorage.getItem("fito_v45_cola_offline") || "[]");
+    let COBRADOR_ACTIVO = null;
+    let ADMIN_AUTENTICADO = false;
+    let filtroPeriodoActivo = "hoy";
+    let clienteConsultando = null;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const cobradorParam = urlParams.get("cobrador");
+    const verCuentaParam = urlParams.get("ver_cuenta");
+
+    // UTILIDADES UI
+    function showToast(msg, type = "info") {
+      const c = document.getElementById("toastContainer");
+      const t = document.createElement("div");
+      t.className = `toast ${type}`;
+      t.textContent = msg;
+      c.appendChild(t);
+      setTimeout(() => t.remove(), 3500);
+    }
+
+    function fmtBs(val) {
+      return `Bs. ${(Number(val) || 0).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function fechaHoyCorta() {
+      return new Date().toLocaleDateString("es-VE", { day: "2-digit", month: "2-digit", year: "numeric" });
+    }
+
+    function horaActualCorta() {
+      return new Date().toLocaleTimeString("es-VE", { hour: "2-digit", minute: "2-digit", hour12: true });
+    }
+
+    function guardarLocalYCloud(motivoOffline = null) {
+      localStorage.setItem("fito_v45_cache", JSON.stringify(DB));
+      if (!navigator.onLine && motivoOffline) {
+        COLA_OFFLINE.push({ id: "off_" + Date.now(), texto: motivoOffline, fecha: `${fechaHoyCorta()} ${horaActualCorta()}` });
+        localStorage.setItem("fito_v45_cola_offline", JSON.stringify(COLA_OFFLINE));
+        actualizarEstadoRed();
+      }
+      setDoc(STATE_DOC_REF, DB, { merge: true }).catch(err => {
+        console.warn("Guardado en caché local (esperando señal):", err.message);
+      });
+    }
+
+    function actualizarEstadoRed() {
+      const dot = document.getElementById("netStatusDot");
+      const banner = document.getElementById("cintilloColaPendientes");
+      const txt = document.getElementById("cintilloColaTexto");
+      const cnt = document.getElementById("countColaBtn");
+      if (cnt) cnt.textContent = COLA_OFFLINE.length;
+      if (navigator.onLine) {
+        if (dot) dot.classList.remove("offline");
+        if (COLA_OFFLINE.length > 0) {
+          banner.style.display = "flex";
+          txt.textContent = `${COLA_OFFLINE.length} registro(s) en buzón local — Sincronizando con Firebase`;
+        } else {
+          banner.style.display = "none";
+        }
+      } else {
+        if (dot) dot.classList.add("offline");
+        banner.style.display = "flex";
+        txt.textContent = `Sin señal — Modo Offline Activo (${COLA_OFFLINE.length} en resguardo)`;
+      }
+    }
+
+    window.addEventListener("online", () => {
+      actualizarEstadoRed();
+      setDoc(STATE_DOC_REF, DB, { merge: true }).then(() => {
+        COLA_OFFLINE = [];
+        localStorage.setItem("fito_v45_cola_offline", "[]");
+        actualizarEstadoRed();
+        showToast("Conexión restablecida. Datos sincronizados con Firebase.", "success");
+      }).catch(() => {});
+    });
+    window.addEventListener("offline", () => {
+      actualizarEstadoRed();
+      showToast("Sin señal. Modo Offline activo: tus registros están seguros.", "info");
+    });
+
+    // RESOLVER RUTA ACTIVA (RESPETA NOMBRE PERSONALIZADO DEL ENLACE)
+    function resolverCobradorActivo() {
+      const nombreParam = urlParams.get("nombre");
+      const rolParam = urlParams.get("rol");
+      const comisionParam = urlParams.get("comision");
+
+      if (cobradorParam) {
+        let found = DB.cobradores.find(c => c.id === cobradorParam);
+        if (!found) {
+          found = {
+            id: cobradorParam,
+            nombre: nombreParam ? decodeURIComponent(nombreParam) : cobradorParam,
+            telefono: "",
+            comision: comisionParam ? parseFloat(comisionParam) : 20,
+            esAdmin: false,
+            rol: rolParam ? decodeURIComponent(rolParam) : "cobrador"
+          };
+          DB.cobradores.push(found);
+          guardarLocalYCloud();
+        }
+        COBRADOR_ACTIVO = found;
+      } else {
+        COBRADOR_ACTIVO = DB.cobradores.find(c => c.esAdmin) || DB.cobradores[0];
+      }
+    }
+
+    // CONEXIÓN EN TIEMPO REAL CON FIRESTORE
+    async function iniciarFirebaseSync() {
+      try {
+        const snap = await getDoc(STATE_DOC_REF);
+        if (!snap.exists()) {
+          await setDoc(STATE_DOC_REF, DB);
+        }
+      } catch (e) {
+        console.warn("Iniciando con caché local:", e.message);
+      }
+
+      onSnapshot(STATE_DOC_REF, (docSnap) => {
+        if (docSnap.exists()) {
+          DB = { ...structuredClone(DEFAULT_DATA), ...docSnap.data() };
+          localStorage.setItem("fito_v45_cache", JSON.stringify(DB));
+          refrescarTodaLaUI();
+        }
+      });
+
+      onAuthStateChanged(auth, (user) => {
+        ADMIN_AUTENTICADO = !!user;
+        const btn = document.getElementById("btnAbrirAdminTop");
+        if (btn && COBRADOR_ACTIVO && COBRADOR_ACTIVO.esAdmin) {
+          btn.style.display = "inline-flex";
+        }
+      });
+    }
+
+    // RENDER GENERAL
+    function refrescarTodaLaUI() {
+      if (verCuentaParam) {
+        activarModoCliente(verCuentaParam);
+        return;
+      }
+      resolverCobradorActivo();
+      actualizarEstadoRed();
+
+      const rol = COBRADOR_ACTIVO.rol || "cobrador";
+      const rolLabel = rol === "ventas" ? "Ejecutivo de Ventas" : (COBRADOR_ACTIVO.esAdmin ? "Administrador" : "Cobrador");
+      document.getElementById("activeRouteDisplay").textContent = `${COBRADOR_ACTIVO.nombre} (${rolLabel})`;
+      document.getElementById("badgeCobradorActivo").textContent = COBRADOR_ACTIVO.nombre.split(" ")[0];
+      document.getElementById("badgeCobradorComision").textContent = `Comisión: ${COBRADOR_ACTIVO.comision}%`;
+      document.getElementById("topBcvDisplay").textContent = fmtBs(DB.config.tasaBCV);
+      document.getElementById("promoTextDisplay").textContent = DB.config.promo;
+      document.getElementById("txtPctRend").textContent = COBRADOR_ACTIVO.comision;
+
+      if (COBRADOR_ACTIVO.esAdmin) {
+        document.getElementById("btnAbrirAdminTop").style.display = "inline-flex";
+      }
+
+      if (rol === "ventas") {
+        document.getElementById("lblTituloBalance").textContent = "Mis Colocaciones y Ventas";
+        document.getElementById("lblTituloStock").textContent = "Mi Stock de Productos";
+        document.querySelectorAll(".lbl-cobrar").forEach(el => el.textContent = "Colocar / Cobrar");
+        document.getElementById("navRendirBtn").style.display = "none";
+        document.getElementById("sideRendirBtn").style.display = "none";
+      }
+
+      renderSelectClientes();
+      renderStockLocal();
+      renderClientesLocal();
+      actualizarMetricasDia();
+      renderCuentasEnContenedor("listaCuentasModal");
+      if (document.getElementById("modalMaster").classList.contains("active")) {
+        cargarDatosMaster();
+      }
+    }
+
+    // TASA BCV EN VIVO
+    window.actualizarTasaBCVEnVivo = async function(conAviso = false) {
+      if (!navigator.onLine) {
+        if (conAviso) showToast("Sin internet. Usando última tasa BCV guardada.", "info");
+        return;
+      }
+      try {
+        const res = await fetch("https://ve.dolarapi.com/v1/dolares/bcv");
+        if (res.ok) {
+          const data = await res.json();
+          const tasa = parseFloat(data.promedio);
+          if (!isNaN(tasa) && tasa > 0) {
+            DB.config.tasaBCV = tasa;
+            guardarLocalYCloud();
+            refrescarTodaLaUI();
+            if (conAviso) showToast(`Tasa BCV actualizada: ${fmtBs(tasa)}`, "success");
+            return;
+          }
+        }
+      } catch (e) {}
+      if (conAviso) showToast("No se pudo consultar la API BCV ahora.", "error");
+    };
+
+    // NAVEGACIÓN
+    window.navegarA = function(viewId) {
+      document.querySelectorAll(".app-view").forEach(v => v.style.display = "none");
+      document.getElementById(viewId).style.display = "block";
+      document.querySelectorAll(".nav-btn, .side-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.view === viewId);
+      });
+    };
+
+    window.abrirModal = (id) => document.getElementById(id).classList.add("active");
+    window.cerrarModales = () => document.querySelectorAll(".modal-overlay").forEach(m => m.classList.remove("active"));
+
+    // MÉTRICAS
+    function perteneceAlPeriodo(iso, periodo) {
+      if (!iso) return true;
+      const d = new Date(iso);
+      const now = new Date();
+      if (periodo === "hoy") return d.toDateString() === now.toDateString();
+      if (periodo === "semana") return Math.abs(now - d) / 86400000 <= 7;
+      if (periodo === "mes") return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+      return true;
+    }
+
+    window.cambiarFiltroBalance = function(periodo) {
+      filtroPeriodoActivo = periodo;
+      document.querySelectorAll("#secBalance .filter-pill-btn").forEach(b => b.classList.remove("active"));
+      if (periodo === "hoy") document.getElementById("btnFilterHoy").classList.add("active");
+      if (periodo === "semana") document.getElementById("btnFilterSemana").classList.add("active");
+      if (periodo === "mes") document.getElementById("btnFilterMes").classList.add("active");
+      actualizarMetricasDia();
+    };
+
+    function actualizarMetricasDia() {
+      if (!COBRADOR_ACTIVO) return;
+      const tasa = DB.config.tasaBCV;
+      const pct = COBRADOR_ACTIVO.comision / 100;
+      const cobros = (DB.cobrosHoy || []).filter(c => c.cobradorId === COBRADOR_ACTIVO.id && perteneceAlPeriodo(c.timestamp, filtroPeriodoActivo));
+      const totalUSD = cobros.reduce((a, b) => a + b.montoUSD, 0);
+      const comUSD = totalUSD * pct;
+      const netoUSD = totalUSD - comUSD;
+
+      const cobrosHoy = (DB.cobrosHoy || []).filter(c => c.cobradorId === COBRADOR_ACTIVO.id && perteneceAlPeriodo(c.timestamp, "hoy"));
+      const netoHoy = cobrosHoy.reduce((a, b) => a + b.montoUSD, 0) * (1 - pct);
+      const rendidoHoy = (DB.rendiciones || []).filter(r => r.cobradorId === COBRADOR_ACTIVO.id && perteneceAlPeriodo(r.timestamp, "hoy")).reduce((a, b) => a + (b.montoAEntregarPlantaUSD || 0), 0);
+      const pendUSD = Math.max(0, netoHoy - rendidoHoy);
+
+      const etq = filtroPeriodoActivo === "hoy" ? "Hoy" : (filtroPeriodoActivo === "semana" ? "Semanal" : "Mensual");
+      document.getElementById("lblMetricTotal").textContent = `Cobrado (${etq})`;
+      document.getElementById("metricTotalUSD").textContent = `$${totalUSD.toFixed(2)}`;
+      document.getElementById("metricTotalBs").textContent = fmtBs(totalUSD * tasa);
+      document.getElementById("metricComisionUSD").textContent = `$${comUSD.toFixed(2)}`;
+      document.getElementById("metricComisionBs").textContent = fmtBs(comUSD * tasa);
+      document.getElementById("metricNetoUSD").textContent = `$${netoUSD.toFixed(2)}`;
+      document.getElementById("metricNetoBs").textContent = fmtBs(netoUSD * tasa);
+      document.getElementById("metricPendienteUSD").textContent = `$${pendUSD.toFixed(2)}`;
+      document.getElementById("metricPendienteBs").textContent = fmtBs(pendUSD * tasa);
+    }
+
+    // CLIENTES Y RECIBOS CON HISTORIAL + CLÁUSULA BCV
+    function obtenerHistorialCliente(clienteId) {
+      return (DB.cobrosHoy || []).filter(c => c.clienteId === clienteId).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    }
+
+    function construirTextoReciboOEstadoWA(cliente, ultimoPago = null) {
+      const tasa = DB.config.tasaBCV;
+      const hoy = fechaHoyCorta();
+      const hora = horaActualCorta();
+      const historial = obtenerHistorialCliente(cliente.id).slice(0, 5);
+      const linkPortal = `${window.location.origin}${window.location.pathname}?ver_cuenta=${cliente.id}`;
+
+      let histTxt = historial.length > 0
+        ? historial.map(p => `• ${p.fecha}: -$${p.montoUSD.toFixed(2)} (${p.metodo})`).join("\n")
+        : "• Sin abonos previos registrados.";
+
+      let bloqueSaldo = cliente.saldo <= 0.009
+        ? `✅ *Saldo Pendiente Actual:* $0.00 USD *(Cuenta Solvente)*`
+        : `💰 *Saldo Pendiente Actual:* $${cliente.saldo.toFixed(2)} USD (${fmtBs(cliente.saldo * tasa)})`;
+
+      let encabezado = ultimoPago
+        ? `🧾 *RECIBO DE PAGO Y ESTADO DE CUENTA*\n💵 *Pago Recibido Hoy:* $${ultimoPago.montoUSD.toFixed(2)} USD (${ultimoPago.metodo})`
+        : `📋 *ESTADO DE CUENTA OFICIAL*`;
+
+      return `🌿 *FITOCOSMÉTICA Y PERFUMES 100%*
+${encabezado}
+━━━━━━━━━━━━━━━━━━━━━━
+👤 *Cliente:* ${cliente.nombre}
+📅 *Fecha:* ${hoy} - ${hora}
+
+📜 *Historial reciente de pagos (últimos 5):*
+${histTxt}
+
+${bloqueSaldo}
+
+⚠️ *Aviso importante:* El monto en bolívares está calculado a la tasa oficial BCV de hoy (${hoy} - ${fmtBs(tasa)}). Si realiza su pago mañana o en una fecha posterior, debe consultar el monto actualizado con su asesor o abrir su enlace de cuenta.
+
+👉 *Aquí puede ver su historial completo y nuestros números de cuenta:*
+${linkPortal}
+
+Atendido por: ${COBRADOR_ACTIVO ? COBRADOR_ACTIVO.nombre : "Fitocosmética y Perfumes 100%"}`;
+    }
+
+    window.calcularEquivalenteBs = function() {
+      const usd = parseFloat(document.getElementById("cobroMontoUSD").value) || 0;
+      document.getElementById("cobroMontoBs").value = fmtBs(usd * DB.config.tasaBCV);
+    };
+
+    window.toggleCampoReferenciaCobro = function() {
+      const m = document.getElementById("cobroMetodoPago").value;
+      document.getElementById("grpCobroReferencia").style.display = m.includes("Efectivo") ? "none" : "block";
+    };
+
+    window.verificarSaldoClienteSeleccionado = function() {
+      const id = document.getElementById("cobroSelectCliente").value;
+      const c = DB.clientes.find(x => x.id === id);
+      if (c) document.getElementById("cobroMontoUSD").placeholder = `Deuda: ${c.saldo.toFixed(2)}`;
+    };
+
+    window.registrarCobro = function() {
+      const clienteId = document.getElementById("cobroSelectCliente").value;
+      const montoUSD = parseFloat(document.getElementById("cobroMontoUSD").value);
+      const metodo = document.getElementById("cobroMetodoPago").value;
+      const referencia = document.getElementById("cobroReferencia").value.trim() || (metodo.includes("Efectivo") ? "Efectivo" : "Sin ref");
+
+      if (!clienteId || !montoUSD || montoUSD <= 0) {
+        showToast("Selecciona un cliente e ingresa un monto válido.", "error");
+        return;
+      }
+
+      const cliente = DB.clientes.find(c => c.id === clienteId);
+      cliente.saldo = Math.max(0, +(cliente.saldo - montoUSD).toFixed(2));
+
+      const cobro = {
+        id: "tx_" + Date.now(),
+        clienteId: cliente.id,
+        clienteNombre: cliente.nombre,
+        cobradorId: COBRADOR_ACTIVO.id,
+        cobradorNombre: COBRADOR_ACTIVO.nombre,
+        montoUSD,
+        tasaBCV: DB.config.tasaBCV,
+        metodo,
+        referencia,
+        fecha: `${fechaHoyCorta()} (${horaActualCorta()})`,
+        timestamp: new Date().toISOString()
+      };
+
+      DB.cobrosHoy.push(cobro);
+      guardarLocalYCloud(`Cobro $${montoUSD.toFixed(2)} — ${cliente.nombre}`);
+
+      document.getElementById("cobroMontoUSD").value = "";
+      document.getElementById("cobroMontoBs").value = "";
+      document.getElementById("cobroReferencia").value = "";
+      refrescarTodaLaUI();
+      showToast("Cobro guardado y sincronizado.", "success");
+
+      // Mostrar modal de recibo post-cobro
+      const textoCliente = construirTextoReciboOEstadoWA(cliente, cobro);
+      document.getElementById("reciboResumenBox").textContent = textoCliente;
+
+      const telCliente = (cliente.telefono || "").replace(/[^0-9]/g, "");
+      document.getElementById("btnEnviarReciboClienteWA").onclick = () => {
+        window.open(`https://wa.me/${telCliente}?text=${encodeURIComponent(textoCliente)}`, "_blank");
+      };
+      document.getElementById("btnEnviarRespaldoCentralWA").onclick = () => {
+        const txtAdmin = `💵 *COBRO REGISTRADO*\nPersonal: ${COBRADOR_ACTIVO.nombre}\nCliente: ${cliente.nombre}\nMonto: $${montoUSD.toFixed(2)} (${metodo} | Ref: ${referencia})\nNuevo Saldo: $${cliente.saldo.toFixed(2)}`;
+        window.open(`https://wa.me/${NUMERO_CENTRAL_ADMIN}?text=${encodeURIComponent(txtAdmin)}`, "_blank");
+      };
+      abrirModal("modalReciboCobro");
+    };
+
+    function renderSelectClientes() {
+      const sel = document.getElementById("cobroSelectCliente");
+      const selEnt = document.getElementById("entregaSelectCliente");
+      const valActual = sel.value;
+      const lista = DB.clientes.filter(c => c.cobradorId === COBRADOR_ACTIVO.id || COBRADOR_ACTIVO.esAdmin);
+      sel.innerHTML = '<option value="">-- Elige un cliente registrado --</option>' +
+        lista.map(c => `<option value="${c.id}">${c.nombre} (Debe: $${c.saldo.toFixed(2)})</option>`).join("");
+      sel.value = valActual;
+      if (selEnt) selEnt.innerHTML = lista.map(c => `<option value="${c.id}">${c.nombre}</option>`).join("");
+    }
+
+    window.renderClientesLocal = function() {
+      const q = (document.getElementById("buscarClienteInput")?.value || "").toLowerCase();
+      const cont = document.getElementById("listaClientesLocal");
+      const lista = DB.clientes.filter(c => (c.cobradorId === COBRADOR_ACTIVO.id || COBRADOR_ACTIVO.esAdmin) &&
+        (c.nombre.toLowerCase().includes(q) || (c.zona || "").toLowerCase().includes(q)));
+
+      if (!lista.length) {
+        cont.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center; padding:12px;">No hay clientes registrados.</p>';
+        return;
+      }
+      cont.innerHTML = lista.map(c => `
+        <div class="item-row">
+          <div>
+            <div class="item-title">${c.nombre}</div>
+            <div class="item-sub">${c.telefono || "Sin tlf"} • ${c.zona || "Sin zona"}</div>
+            <div class="item-sub">Saldo: <strong style="color:${c.saldo > 0 ? "var(--warn)" : "var(--accent)"}">$${c.saldo.toFixed(2)}</strong> (${fmtBs(c.saldo * DB.config.tasaBCV)})</div>
+          </div>
+          <div class="item-actions">
+            <button class="btn btn-wa btn-sm" onclick="enviarEstadoCuentaClienteWA('${c.id}')">Cobrar / Estado WA</button>
+            <button class="btn-danger-sm" onclick="eliminarClienteLocal('${c.id}')">Eliminar</button>
+          </div>
+        </div>
+      `).join("");
+    };
+
+    window.enviarEstadoCuentaClienteWA = function(clienteId) {
+      const c = DB.clientes.find(x => x.id === clienteId);
+      if (!c) return;
+      const txt = construirTextoReciboOEstadoWA(c, null);
+      const num = (c.telefono || "").replace(/[^0-9]/g, "");
+      window.open(`https://wa.me/${num}?text=${encodeURIComponent(txt)}`, "_blank");
+    };
+
+    window.guardarNuevoCliente = function() {
+      const nombre = document.getElementById("newClienteNombre").value.trim();
+      const telefono = document.getElementById("newClienteTelefono").value.trim();
+      const zona = document.getElementById("newClienteZona").value.trim();
+      const saldo = parseFloat(document.getElementById("newClienteSaldo").value) || 0;
+      if (!nombre) return showToast("Ingresa el nombre del cliente.", "error");
+
+      DB.clientes.push({
+        id: "cli_" + Date.now(),
+        nombre, telefono, zona, saldo,
+        cobradorId: COBRADOR_ACTIVO.id
+      });
+      guardarLocalYCloud(`Nuevo cliente: ${nombre}`);
+      document.getElementById("newClienteNombre").value = "";
+      document.getElementById("newClienteTelefono").value = "";
+      document.getElementById("newClienteZona").value = "";
+      document.getElementById("newClienteSaldo").value = "";
+      cerrarModales();
+      refrescarTodaLaUI();
+      showToast("Cliente registrado correctamente.", "success");
+    };
+
+    window.eliminarClienteLocal = function(id) {
+      DB.clientes = DB.clientes.filter(c => c.id !== id);
+      guardarLocalYCloud();
+      refrescarTodaLaUI();
+      showToast("Cliente eliminado.", "info");
+    };
+
+    // STOCK LOCAL Y ENTREGAS
+    window.renderStockLocal = function() {
+      const cont = document.getElementById("listaStockLocal");
+      const stockObj = (DB.stockCobrador && DB.stockCobrador[COBRADOR_ACTIVO.id]) || {};
+      const items = [];
+
+      DB.productos.forEach(p => {
+        if (stockObj[p.id] !== undefined) {
+          items.push({ id: p.id, nombre: p.nombre, sub: `${p.categoria} • $${p.precio.toFixed(2)}`, cant: stockObj[p.id] });
+        }
+      });
+      Object.keys(stockObj).forEach(k => {
+        if (!DB.productos.some(p => p.id === k)) {
+          items.push({ id: k, nombre: k, sub: "Artículo de ruta", cant: stockObj[k] });
+        }
+      });
+
+      if (!items.length) {
+        cont.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center; padding:12px;">Sin stock asignado en ruta.</p>';
+        return;
+      }
+      cont.innerHTML = items.map(it => `
+        <div class="item-row">
+          <div>
+            <div class="item-title">${it.nombre}</div>
+            <div class="item-sub">${it.sub}</div>
+          </div>
+          <div class="item-actions">
+            <span class="badge">${it.cant} disp.</span>
+            ${it.cant > 0 ? `<button class="btn btn-primary btn-sm" onclick="abrirModalEntregaProducto('${it.id}')">Entregar</button>` : ""}
+          </div>
+        </div>
+      `).join("");
+    };
+
+    window.ejecutarAsentamientoStockManual = function() {
+      const nombre = document.getElementById("inputNombreProductoManual").value.trim();
+      const cant = parseInt(document.getElementById("inputCantidadStockManual").value, 10);
+      const cod = document.getElementById("inputNotaReciboManual").value.trim();
+      if (!nombre || !cant || cant <= 0 || !cod) {
+        return showToast("Completa producto, cantidad y código de seguimiento.", "error");
+      }
+      if (!DB.stockCobrador[COBRADOR_ACTIVO.id]) DB.stockCobrador[COBRADOR_ACTIVO.id] = {};
+      const key = `[${cod}] ${nombre}`;
+      DB.stockCobrador[COBRADOR_ACTIVO.id][key] = (DB.stockCobrador[COBRADOR_ACTIVO.id][key] || 0) + cant;
+      guardarLocalYCloud(`Stock manual +${cant} ${nombre}`);
+      document.getElementById("inputNombreProductoManual").value = "";
+      document.getElementById("inputCantidadStockManual").value = "";
+      document.getElementById("inputNotaReciboManual").value = "";
+      renderStockLocal();
+      showToast(`+${cant} unidades incorporadas a tu stock.`, "success");
+    };
+
+    window.abrirModalEntregaProducto = function(prodId) {
+      const prod = DB.productos.find(p => p.id === prodId) || { id: prodId, nombre: prodId, precio: 0 };
+      const sel = document.getElementById("entregaSelectProducto");
+      sel.innerHTML = `<option value="${prod.id}">${prod.nombre}</option>`;
+      document.getElementById("entregaPrecioUnit").value = prod.precio ? prod.precio.toFixed(2) : "";
+      document.getElementById("entregaCantidad").value = 1;
+      calcularTotalEntrega();
+      abrirModal("modalEntregarProductoCliente");
+    };
+
+    window.actualizarPrecioSugeridoEntrega = () => calcularTotalEntrega();
+    window.calcularTotalEntrega = function() {
+      const c = parseInt(document.getElementById("entregaCantidad").value, 10) || 0;
+      const p = parseFloat(document.getElementById("entregaPrecioUnit").value) || 0;
+      document.getElementById("entregaTotalCalculado").textContent = `$${(c * p).toFixed(2)}`;
+    };
+
+    window.procesarEntregaProducto = function() {
+      const clienteId = document.getElementById("entregaSelectCliente").value;
+      const prodId = document.getElementById("entregaSelectProducto").value;
+      const cant = parseInt(document.getElementById("entregaCantidad").value, 10) || 0;
+      const precio = parseFloat(document.getElementById("entregaPrecioUnit").value) || 0;
+      if (!clienteId || cant <= 0 || precio <= 0) return showToast("Completa todos los campos.", "error");
+
+      const disp = (DB.stockCobrador[COBRADOR_ACTIVO.id] && DB.stockCobrador[COBRADOR_ACTIVO.id][prodId]) || 0;
+      if (disp < cant) return showToast(`Stock insuficiente (${disp} disponibles).`, "error");
+
+      const cliente = DB.clientes.find(c => c.id === clienteId);
+      DB.stockCobrador[COBRADOR_ACTIVO.id][prodId] -= cant;
+      cliente.saldo = +(cliente.saldo + cant * precio).toFixed(2);
+      guardarLocalYCloud(`Entrega ${cant}x a ${cliente.nombre}`);
+      cerrarModales();
+      refrescarTodaLaUI();
+      showToast("Mercancía entregada y cargada a la cuenta del cliente.", "success");
+    };
+
+    // RENDICIÓN Y WHATSAPP
+    window.autoCompletarRendicionHoy = function() {
+      const cobros = (DB.cobrosHoy || []).filter(c => c.cobradorId === COBRADOR_ACTIVO.id && perteneceAlPeriodo(c.timestamp, "hoy"));
+      if (!cobros.length) return showToast("No tienes cobros registrados hoy.", "info");
+      const factor = 1 - (COBRADOR_ACTIVO.comision / 100);
+      let pm = 0, cta = 0, bin = 0, efU = 0, efB = 0;
+      const rPM = [], rCta = [], rBin = [];
+      cobros.forEach(c => {
+        const netoU = c.montoUSD * factor;
+        const netoB = netoU * DB.config.tasaBCV;
+        if (c.metodo.includes("Pago Móvil")) { pm += netoB; if (c.referencia) rPM.push(c.referencia); }
+        else if (c.metodo.includes("Ahorro") || c.metodo.includes("Transferencia")) { cta += netoB; if (c.referencia) rCta.push(c.referencia); }
+        else if (c.metodo.includes("Binance")) { bin += netoU; if (c.referencia) rBin.push(c.referencia); }
+        else if (c.metodo.includes("Efectivo USD")) efU += netoU;
+        else efB += netoB;
+      });
+      document.getElementById("rendPagoMovil").value = pm ? pm.toFixed(2) : "";
+      document.getElementById("rendRefPagoMovil").value = rPM.join(", ");
+      document.getElementById("rendCtaAhorro").value = cta ? cta.toFixed(2) : "";
+      document.getElementById("rendRefCtaAhorro").value = rCta.join(", ");
+      document.getElementById("rendBinance").value = bin ? bin.toFixed(2) : "";
+      document.getElementById("rendRefBinance").value = rBin.join(", ");
+      document.getElementById("rendEfectivoUSD").value = efU ? efU.toFixed(2) : "";
+      document.getElementById("rendEfectivoBs").value = efB ? efB.toFixed(2) : "";
+      showToast("Neto a rendir calculado automáticamente.", "success");
+    };
+
+    window.enviarRendicion = function() {
+      const pm = parseFloat(document.getElementById("rendPagoMovil").value) || 0;
+      const cta = parseFloat(document.getElementById("rendCtaAhorro").value) || 0;
+      const bin = parseFloat(document.getElementById("rendBinance").value) || 0;
+      const efU = parseFloat(document.getElementById("rendEfectivoUSD").value) || 0;
+      const efB = parseFloat(document.getElementById("rendEfectivoBs").value) || 0;
+      const totalNetoUSD = bin + efU + ((pm + cta + efB) / DB.config.tasaBCV);
+
+      DB.rendiciones.push({
+        id: "rend_" + Date.now(),
+        cobradorId: COBRADOR_ACTIVO.id,
+        cobradorNombre: COBRADOR_ACTIVO.nombre,
+        montoAEntregarPlantaUSD: totalNetoUSD,
+        fecha: `${fechaHoyCorta()} ${horaActualCorta()}`,
+        timestamp: new Date().toISOString()
+      });
+      guardarLocalYCloud(`Rendición $${totalNetoUSD.toFixed(2)}`);
+      refrescarTodaLaUI();
+      showToast("Rendición registrada en Firebase.", "success");
+
+      const msg = `📑 *RENDICIÓN OFICIAL*\n👤 Personal: ${COBRADOR_ACTIVO.nombre}\n🏢 Neto Planta: $${totalNetoUSD.toFixed(2)} (${fmtBs(totalNetoUSD * DB.config.tasaBCV)})\n📅 ${fechaHoyCorta()}`;
+      window.open(`https://wa.me/${NUMERO_CENTRAL_ADMIN}?text=${encodeURIComponent(msg)}`, "_blank");
+    };
+
+    window.enviarResumenJornadaWA = function() {
+      const cobros = (DB.cobrosHoy || []).filter(c => c.cobradorId === COBRADOR_ACTIVO.id && perteneceAlPeriodo(c.timestamp, "hoy"));
+      const tot = cobros.reduce((a, b) => a + b.montoUSD, 0);
+      const com = tot * (COBRADOR_ACTIVO.comision / 100);
+      const msg = `📊 *CORTE DE JORNADA*\n👤 ${COBRADOR_ACTIVO.nombre}\n💵 Cobros: ${cobros.length} | Total: $${tot.toFixed(2)} (${fmtBs(tot * DB.config.tasaBCV)})\n💼 Comisión: $${com.toFixed(2)}\n🏢 Neto Planta: $${(tot - com).toFixed(2)}`;
+      window.open(`https://wa.me/${NUMERO_CENTRAL_ADMIN}?text=${encodeURIComponent(msg)}`, "_blank");
+    };
+
+    // CUENTAS BANCARIAS
+    function renderCuentasEnContenedor(containerId) {
+      const el = document.getElementById(containerId);
+      if (!el) return;
+      const c = DB.config;
+      el.innerHTML = `
+        <div class="item-row">
+          <div><div class="item-title">1. Pago Móvil Banesco (0134)</div><div class="item-sub">${c.bancoTelefono} • C.I. ${c.bancoCedula} • ${c.titular}</div></div>
+          <button class="btn btn-outline btn-sm" onclick="copiarTexto('0134 ${c.bancoTelefono.replace(/-/g,"")} ${c.bancoCedula.replace(/[^0-9]/g,"")}')">Copiar</button>
+        </div>
+        <div class="item-row">
+          <div><div class="item-title">2. Cuenta de Ahorro Banesco</div><div class="item-sub">${c.bancoCuentaAhorro} • ${c.titular}</div></div>
+          <button class="btn btn-outline btn-sm" onclick="copiarTexto('${c.bancoCuentaAhorro}')">Copiar</button>
+        </div>
+        <div class="item-row">
+          <div><div class="item-title">3. Binance Pay (USDT)</div><div class="item-sub">ID / Cuenta: ${c.binanceID}</div></div>
+          <button class="btn btn-outline btn-sm" onclick="copiarTexto('${c.binanceID}')">Copiar</button>
+        </div>
+        <div class="item-row"><div><div class="item-title">4. Efectivo Divisa ($)</div><div class="item-sub">Billetes en buen estado</div></div></div>
+        <div class="item-row"><div><div class="item-title">5. Efectivo Bolívares (Bs.)</div><div class="item-sub">Calculado a Tasa BCV del día (${fmtBs(c.tasaBCV)})</div></div></div>
+      `;
+    }
+
+    window.copiarTexto = function(txt) {
+      navigator.clipboard.writeText(txt).then(() => showToast("Copiado al portapapeles.", "success"));
+    };
+
+    window.abrirModalCuentas = () => {
+      renderCuentasEnContenedor("listaCuentasModal");
+      abrirModal("modalCuentas");
+    };
+
+    window.compartirDatosPagoWA = function() {
+      const c = DB.config;
+      const txt = `🌿 *DATOS DE PAGO OFICIALES*\n*Fitocosmética y Perfumes 100%*\n\n📱 *Pago Móvil Banesco (0134):*\nTel: ${c.bancoTelefono} | C.I.: ${c.bancoCedula}\nTitular: ${c.titular}\n\n🏦 *Cta Ahorro Banesco:*\n${c.bancoCuentaAhorro}\n\n🟡 *Binance Pay (USDT):*\nID: ${c.binanceID}\n\n💵 *Efectivo $ / Bs. (Tasa BCV del día)*`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`, "_blank");
+    };
+
+    window.abrirModalColaPendientes = function() {
+      const cont = document.getElementById("listaColaPendientesModal");
+      if (!COLA_OFFLINE.length) {
+        cont.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center; padding:14px;">Todo sincronizado. No hay registros pendientes en el buzón offline.</p>';
+      } else {
+        cont.innerHTML = COLA_OFFLINE.map(x => `
+          <div class="item-row">
+            <div><div class="item-title">${x.texto}</div><div class="item-sub">${x.fecha}</div></div>
+            <span class="badge badge-warn">En cola</span>
+          </div>
+        `).join("");
+      }
+      abrirModal("modalColaPendientes");
+    };
+
+    window.procesarTextoResguardo = function(id) {
+      const val = document.getElementById(id).value.trim();
+      if (!val) return showToast("Pega el mensaje de WhatsApp primero.", "error");
+      showToast("Enlace procesado en el respaldo.", "success");
+      document.getElementById(id).value = "";
+    };
+
+    // PORTAL DEL CLIENTE
+    function activarModoCliente(idCliente) {
+      document.getElementById("appInternaView").style.display = "none";
+      document.getElementById("portalClienteView").style.display = "block";
+      clienteConsultando = DB.clientes.find(c => c.id === idCliente);
+      if (!clienteConsultando) {
+        document.getElementById("pcNombre").textContent = "Cuenta no encontrada";
+        return;
+      }
+      const cob = DB.cobradores.find(x => x.id === clienteConsultando.cobradorId) || { nombre: "Central Administrativa" };
+      const tasa = DB.config.tasaBCV;
+      document.getElementById("pcNombre").textContent = clienteConsultando.nombre;
+      document.getElementById("pcCobrador").textContent = `${cob.nombre} (${clienteConsultando.zona || "Venezuela"})`;
+
+      const box = document.getElementById("pcSaldoBox");
+      if (clienteConsultando.saldo <= 0.009) {
+        box.style.background = "#dcfce7";
+        box.style.borderColor = "#86efac";
+        document.getElementById("pcSaldoLabel").textContent = "Estado de Cuenta";
+        document.getElementById("pcSaldoUSD").textContent = "SOLVENTE ($0.00)";
+        document.getElementById("pcSaldoUSD").style.color = "#166534";
+        document.getElementById("pcSaldoBs").textContent = "Gracias por su puntualidad";
+      } else {
+        document.getElementById("pcSaldoUSD").textContent = `$${clienteConsultando.saldo.toFixed(2)}`;
+        document.getElementById("pcSaldoBs").textContent = fmtBs(clienteConsultando.saldo * tasa);
+      }
+
+      document.getElementById("pcClauseBCV").innerHTML = `<strong>Aviso BCV (${fechaHoyCorta()}):</strong> El monto en bolívares está calculado a la tasa oficial de hoy (${fmtBs(tasa)}). Si realiza su pago mañana o en una fecha posterior, consulte el monto actualizado con su asesor o recargue este enlace.`;
+
+      const hist = obtenerHistorialCliente(clienteConsultando.id);
+      const listEl = document.getElementById("pcHistorialLista");
+      listEl.innerHTML = hist.length
+        ? hist.map(p => `
+            <div class="item-row">
+              <div><div class="item-title">Abono de $${p.montoUSD.toFixed(2)} USD</div><div class="item-sub">${p.fecha} • ${p.metodo} (Ref: ${p.referencia})</div></div>
+              <span class="badge badge-ok">Confirmado</span>
+            </div>`).join("")
+        : '<p style="font-size:12px; color:var(--text-muted); text-align:center; padding:12px;">Aún no registra pagos en el historial.</p>';
+
+      renderCuentasEnContenedor("pcCuentasLista");
+    }
+
+    window.cambiarTabPortalCliente = function(tab) {
+      document.getElementById("pcTabEstado").style.display = tab === "estado" ? "block" : "none";
+      document.getElementById("pcTabCuentas").style.display = tab === "cuentas" ? "block" : "none";
+      document.getElementById("pcTabEstadoBtn").classList.toggle("active", tab === "estado");
+      document.getElementById("pcTabCuentasBtn").classList.toggle("active", tab === "cuentas");
+    };
+
+    window.enviarComprobantePagoWA = function() {
+      if (!clienteConsultando) return;
+      const cob = DB.cobradores.find(x => x.id === clienteConsultando.cobradorId);
+      const dest = (cob && cob.telefono) ? cob.telefono : NUMERO_CENTRAL_ADMIN;
+      const txt = `Hola, adjunto mi comprobante de pago para *Fitocosmética y Perfumes 100%*:\n👤 Cliente: ${clienteConsultando.nombre}\n💰 Saldo actual: $${clienteConsultando.saldo.toFixed(2)} USD`;
+      window.open(`https://wa.me/${dest}?text=${encodeURIComponent(txt)}`, "_blank");
+    };
+
+    // PANEL CENTRAL MAESTRO + FIREBASE AUTH
+    window.abrirAccesoAdmin = function() {
+      if (ADMIN_AUTENTICADO) {
+        cargarDatosMaster();
+        abrirModal("modalMaster");
+      } else {
+        abrirModal("modalAuthAdmin");
+      }
+    };
+
+    window.iniciarSesionAdminFirebase = async function() {
+      const email = document.getElementById("adminEmailInput").value.trim();
+      const pass = document.getElementById("adminPassInput").value;
+      if (!email || !pass) return showToast("Ingresa correo y contraseña.", "error");
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+        cerrarModales();
+        cargarDatosMaster();
+        abrirModal("modalMaster");
+        showToast("Bienvenido al Panel Central.", "success");
+      } catch (e) {
+        showToast("Credenciales inválidas. Verifica tu usuario en Firebase Auth.", "error");
+      }
+    };
+
+    window.cerrarSesionAdminFirebase = async function() {
+      await signOut(auth);
+      cerrarModales();
+      showToast("Sesión cerrada.", "info");
+    };
+
+    window.cambiarTabMaster = function(tabId, btn) {
+      document.querySelectorAll(".master-tab-content").forEach(t => t.style.display = "none");
+      document.getElementById(tabId).style.display = "block";
+      document.querySelectorAll("#modalMaster .tab-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+    };
+
+    function cargarDatosMaster() {
+      const tasa = DB.config.tasaBCV;
+      let totG = 0, comG = 0;
+      (DB.cobrosHoy || []).forEach(c => {
+        totG += c.montoUSD;
+        const cob = DB.cobradores.find(x => x.id === c.cobradorId);
+        comG += c.montoUSD * ((cob ? cob.comision : 20) / 100);
+      });
+      const deudaG = DB.clientes.reduce((a, b) => a + b.saldo, 0);
+
+      document.getElementById("masterTotalGlobalUSD").textContent = `$${totG.toFixed(2)}`;
+      document.getElementById("masterTotalGlobalBs").textContent = fmtBs(totG * tasa);
+      document.getElementById("masterTotalComisionesUSD").textContent = `$${comG.toFixed(2)}`;
+      document.getElementById("masterTotalComisionesBs").textContent = fmtBs(comG * tasa);
+      document.getElementById("masterNetoPlantaUSD").textContent = `$${(totG - comG).toFixed(2)}`;
+      document.getElementById("masterNetoPlantaBs").textContent = fmtBs((totG - comG) * tasa);
+      document.getElementById("masterDeudaCarteraUSD").textContent = `$${deudaG.toFixed(2)}`;
+      document.getElementById("masterDeudaCarteraBs").textContent = fmtBs(deudaG * tasa);
+
+      document.getElementById("listaDesempenoCobradoresMaster").innerHTML = DB.cobradores.map(cb => {
+        const s = (DB.cobrosHoy || []).filter(x => x.cobradorId === cb.id).reduce((a, b) => a + b.montoUSD, 0);
+        return `<div class="item-row"><div><div class="item-title">${cb.nombre}</div><div class="item-sub">Comisión: ${cb.comision}%</div></div><span class="badge">$${s.toFixed(2)}</span></div>`;
+      }).join("");
+
+      const optsCob = '<option value="TODOS">Todo el Personal</option>' + DB.cobradores.map(c => `<option value="${c.id}">${c.nombre}</option>`).join("");
+      document.getElementById("filtroAuditoriaCobrador").innerHTML = optsCob;
+      document.getElementById("filtroClienteCobrador").innerHTML = optsCob;
+      document.getElementById("despachoCobradorSelect").innerHTML = DB.cobradores.map(c => `<option value="${c.id}">${c.nombre}</option>`).join("");
+      document.getElementById("despachoProductoSelect").innerHTML = DB.productos.map(p => `<option value="${p.id}">${p.nombre} (Stock: ${p.stock})</option>`).join("");
+      document.getElementById("selectFormulaFabricar").innerHTML = DB.formulas.map(f => `<option value="${f.id}">${f.nombre}</option>`).join("");
+
+      document.getElementById("listaFormulasMaster").innerHTML = DB.formulas.map(f => `<div class="item-row"><div class="item-title">${f.nombre}</div><span class="badge">${f.insumos.length} insumos</span></div>`).join("");
+      document.getElementById("listaMateriaPrimaMaster").innerHTML = DB.materiaPrima.map(m => `<div class="item-row"><div><div class="item-title">${m.nombre}</div><div class="item-sub">Costo: $${m.costo}/${m.unidad}</div></div><span class="badge">${m.stock} ${m.unidad}</span></div>`).join("");
+      document.getElementById("listaProductosMaster").innerHTML = DB.productos.map(p => `<div class="item-row"><div><div class="item-title">${p.nombre}</div><div class="item-sub">${p.categoria} • $${p.precio.toFixed(2)}</div></div><span class="badge">${p.stock} unid.</span></div>`).join("");
+      document.getElementById("listaHistorialDespachos").innerHTML = (DB.historialDespachos || []).slice().reverse().map(d => `<div class="item-row"><div><div class="item-title">${d.cantidad}x ${d.producto} → ${d.destinatario}</div><div class="item-sub">${d.fecha}</div></div></div>`).join("") || '<p style="font-size:12px; color:var(--text-muted);">Sin despachos aún.</p>';
+
+      document.getElementById("listaCobradoresMaster").innerHTML = DB.cobradores.map(c => {
+        const link = `${window.location.origin}${window.location.pathname}?cobrador=${c.id}&nombre=${encodeURIComponent(c.nombre)}&rol=${c.rol}&comision=${c.comision}`;
+        return `<div class="item-row"><div><div class="item-title">${c.nombre} (${c.rol})</div><div class="item-sub">Comisión: ${c.comision}% • ${c.telefono}</div></div><button class="btn btn-outline btn-sm" onclick="copiarTexto('${link}')">Copiar Enlace</button></div>`;
+      }).join("");
+
+      document.getElementById("cfgTasaBCV").value = DB.config.tasaBCV;
+      document.getElementById("cfgPMTelefono").value = DB.config.bancoTelefono;
+      document.getElementById("cfgPMCedula").value = DB.config.bancoCedula;
+      document.getElementById("cfgBinanceID").value = DB.config.binanceID;
+      document.getElementById("cfgCtaAhorro").value = DB.config.bancoCuentaAhorro;
+      document.getElementById("cfgTitular").value = DB.config.titular;
+      document.getElementById("cfgPromoTexto").value = DB.config.promo;
+
+      renderAuditoriaCobrosMaster();
+      renderClientesMaster();
+    }
+
+    window.renderAuditoriaCobrosMaster = function() {
+      const f = document.getElementById("filtroAuditoriaCobrador").value || "TODOS";
+      const list = (DB.cobrosHoy || []).filter(c => f === "TODOS" || c.cobradorId === f).slice().reverse();
+      document.getElementById("listaCobrosAuditoriaMaster").innerHTML = list.map(c => `
+        <div class="item-row">
+          <div><div class="item-title">${c.clienteNombre} — $${c.montoUSD.toFixed(2)}</div><div class="item-sub">${c.cobradorNombre} • ${c.metodo} (${c.referencia}) • ${c.fecha}</div></div>
+          <button class="btn-danger-sm" onclick="revertirCobroMaster('${c.id}')">Revertir</button>
+        </div>
+      `).join("") || '<p style="font-size:12px; color:var(--text-muted);">Sin cobros registrados.</p>';
+    };
+
+    window.revertirCobroMaster = function(id) {
+      const c = DB.cobrosHoy.find(x => x.id === id);
+      if (!c) return;
+      const cli = DB.clientes.find(x => x.id === c.clienteId);
+      if (cli) cli.saldo = +(cli.saldo + c.montoUSD).toFixed(2);
+      DB.cobrosHoy = DB.cobrosHoy.filter(x => x.id !== id);
+      guardarLocalYCloud();
+      cargarDatosMaster();
+      showToast("Cobro revertido y saldo restaurado.", "info");
+    };
+
+    window.renderClientesMaster = function() {
+      const f = document.getElementById("filtroClienteCobrador").value || "TODOS";
+      const list = DB.clientes.filter(c => f === "TODOS" || c.cobradorId === f);
+      document.getElementById("listaClientesMasterPrivado").innerHTML = list.map(c => `
+        <div class="item-row">
+          <div><div class="item-title">${c.nombre}</div><div class="item-sub">${c.zona} • Saldo: $${c.saldo.toFixed(2)}</div></div>
+          <button class="btn btn-wa btn-sm" onclick="enviarEstadoCuentaClienteWA('${c.id}')">Estado WA</button>
+        </div>
+      `).join("");
+    };
+
+    window.ejecutarDespachoCentral = function() {
+      const cobId = document.getElementById("despachoCobradorSelect").value;
+      const prodId = document.getElementById("despachoProductoSelect").value;
+      const cant = parseInt(document.getElementById("despachoCantidad").value, 10);
+      if (!cant || cant <= 0) return showToast("Ingresa una cantidad válida.", "error");
+      const prod = DB.productos.find(p => p.id === prodId);
+      if (!prod || prod.stock < cant) return showToast("Stock insuficiente en almacén central.", "error");
+
+      prod.stock -= cant;
+      if (!DB.stockCobrador[cobId]) DB.stockCobrador[cobId] = {};
+      DB.stockCobrador[cobId][prodId] = (DB.stockCobrador[cobId][prodId] || 0) + cant;
+      const cob = DB.cobradores.find(c => c.id === cobId);
+      DB.historialDespachos = DB.historialDespachos || [];
+      DB.historialDespachos.push({ producto: prod.nombre, destinatario: cob ? cob.nombre : cobId, cantidad: cant, fecha: `${fechaHoyCorta()} ${horaActualCorta()}` });
+      guardarLocalYCloud();
+      cargarDatosMaster();
+      showToast(`Despachadas ${cant} unid. a ${cob ? cob.nombre : cobId}.`, "success");
+    };
+
+    window.crearCobradorMaster = function() {
+      const nombre = document.getElementById("newCobradorNombre").value.trim();
+      const telefono = document.getElementById("newCobradorTelefono").value.trim();
+      const comision = parseFloat(document.getElementById("newCobradorComision").value) || 20;
+      const rol = document.getElementById("newCobradorRol").value;
+      if (!nombre) return showToast("Ingresa el nombre del personal.", "error");
+      const id = nombre.toLowerCase().replace(/[^a-z0-9]/g, "") + "_" + Date.now().toString().slice(-3);
+      DB.cobradores.push({ id, nombre, telefono, comision, esAdmin: false, rol });
+      guardarLocalYCloud();
+      document.getElementById("newCobradorNombre").value = "";
+      document.getElementById("newCobradorTelefono").value = "";
+      cargarDatosMaster();
+      showToast("Personal creado. Ya puedes copiar su enlace.", "success");
+    };
+
+    window.ejecutarFabricacionLote = function() {
+      const fId = document.getElementById("selectFormulaFabricar").value;
+      const cant = parseInt(document.getElementById("loteCantidadProducir").value, 10);
+      const f = DB.formulas.find(x => x.id === fId);
+      if (!f || !cant || cant <= 0) return showToast("Indica cantidad válida.", "error");
+      f.insumos.forEach(ins => {
+        const mp = DB.materiaPrima.find(m => m.id === ins.mpId);
+        if (mp) mp.stock = Math.max(0, +(mp.stock - ins.cant * cant).toFixed(2));
+      });
+      const prod = DB.productos.find(p => p.id === f.productoId);
+      if (prod) prod.stock += cant;
+      guardarLocalYCloud();
+      cargarDatosMaster();
+      showToast(`Lote de ${cant} unidades fabricado.`, "success");
+    };
+
+    window.agregarMateriaPrimaMaster = function() {
+      const nombre = document.getElementById("newMPNombre").value.trim();
+      const unidad = document.getElementById("newMPUnidad").value.trim() || "unid";
+      const stock = parseFloat(document.getElementById("newMPStock").value) || 0;
+      const costo = parseFloat(document.getElementById("newMPCosto").value) || 0;
+      if (!nombre) return showToast("Ingresa el nombre del insumo.", "error");
+      DB.materiaPrima.push({ id: "mp_" + Date.now(), nombre, unidad, stock, costo });
+      guardarLocalYCloud();
+      cargarDatosMaster();
+      showToast("Insumo guardado.", "success");
+    };
+
+    window.agregarProductoMaster = function() {
+      const nombre = document.getElementById("newProdNombre").value.trim();
+      const categoria = document.getElementById("newProdCategoria").value.trim() || "General";
+      const stock = parseInt(document.getElementById("newProdStock").value, 10) || 0;
+      const precio = parseFloat(document.getElementById("newProdPrecio").value) || 0;
+      if (!nombre) return showToast("Ingresa el nombre del producto.", "error");
+      DB.productos.push({ id: "pr_" + Date.now(), nombre, categoria, stock, precio });
+      guardarLocalYCloud();
+      cargarDatosMaster();
+      showToast("Producto guardado.", "success");
+    };
+
+    window.guardarAjustesMaster = function() {
+      DB.config.tasaBCV = parseFloat(document.getElementById("cfgTasaBCV").value) || DB.config.tasaBCV;
+      DB.config.bancoTelefono = document.getElementById("cfgPMTelefono").value.trim();
+      DB.config.bancoCedula = document.getElementById("cfgPMCedula").value.trim();
+      DB.config.binanceID = document.getElementById("cfgBinanceID").value.trim();
+      DB.config.bancoCuentaAhorro = document.getElementById("cfgCtaAhorro").value.trim();
+      DB.config.titular = document.getElementById("cfgTitular").value.trim();
+      DB.config.promo = document.getElementById("cfgPromoTexto").value.trim();
+      guardarLocalYCloud();
+      refrescarTodaLaUI();
+      showToast("Ajustes guardados y sincronizados en todos los equipos.", "success");
+    };
+
+    // ARRANQUE
+    refrescarTodaLaUI();
+    iniciarFirebaseSync();
+    actualizarTasaBCVEnVivo(false);
+  </script>
+</body>
+</html>
