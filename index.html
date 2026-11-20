@@ -2095,9 +2095,9 @@ Atendido por: ${COBRADOR_ACTIVO ? COBRADOR_ACTIVO.nombre : "Fitocosmética y Per
     // ARRANQUE
     refrescarTodaLaUI();
     iniciarFirebaseSync();
-    try {
+       try {
     actualizarTasaBCVEnVivo(false);
-
+  } catch (e) {
     console.error("Error al actualizar tasa:", e);
   }
 
