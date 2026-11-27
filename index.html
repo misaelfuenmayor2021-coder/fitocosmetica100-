@@ -8161,6 +8161,10 @@ Los frascos e insumos base ya se descontaron. Ahora ve a la pestaña "5. Depósi
 </div>
 
 </body>
+<!-- Pie de página discreto: funciona como interruptor secreto de 5 toques -->
+<footer id="zona-secreta" style="text-align:center; padding:24px 12px 32px; margin-top:20px; font-size:12px; color:#6b7280; cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent;">
+  <span>© Fitocosmética y perfumes al 100%</span>
+</footer>
 
 <!-- === INICIO BLOQUE MASTER: CENTRO DE OPERACIONES DELEGADAS (OCULTO POR DEFECTO) === -->
 <div id="master-centro-operaciones" style="display:none; background:#ffffff; border:2px solid #1b5e3a; border-radius:12px; padding:18px; margin:20px 0;">
@@ -8314,6 +8318,41 @@ Los frascos e insumos base ya se descontaron. Ahora ve a la pestaña "5. Depósi
       });
     }
   }
+(function() {
+  let contadorToques = 0;
+  let tiempoUltimoToque = 0;
+  const CLAVE_MAESTRA = "TU_CLAVE_AQUI"; // Reemplaza por tu clave secreta
+
+  const disparador = document.getElementById('zona-secreta');
+  const bloqueMaster = document.getElementById('master-centro-operaciones');
+
+  if (disparador && bloqueMaster) {
+    disparador.addEventListener('click', function() {
+      const ahora = Date.now();
+      if (ahora - tiempoUltimoToque < 600) {
+        contadorToques++;
+      } else {
+        contadorToques = 1;
+      }
+      tiempoUltimoToque = ahora;
+
+      if (contadorToques === 5) {
+        contadorToques = 0;
+        const clave = prompt("Acceso Gerencial - Ingrese Clave Maestra:");
+        if (clave === CLAVE_MAESTRA) {
+          bloqueMaster.style.display = "block";
+          if (typeof iniciarControlMaster === "function") {
+            iniciarControlMaster();
+          }
+          bloqueMaster.scrollIntoView({ behavior: "smooth" });
+        } else if (clave !== null) {
+          alert("Clave incorrecta.");
+        }
+      }
+    });
+  }
+})();
+
 </script>
 <!-- === FIN BLOQUE MASTER === -->
           
