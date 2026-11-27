@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vende con Nosotros | Fitocosmética y Perfumes al 100%</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream-bg: #FAF7F0;
+      --cream-card: #FFFFFF;
+      --gold-soft: #F3EAD3;
+      --gold-metallic: #B8860B;
+      --gold-ochre: #996515;
+      --gold-champagne: #C5A059;
+      --gold-deep: #6E470B;
+      --forest-deep: #064E3B;
+      --forest-mid: #047857;
+      --forest-soft: #ECFDF5;
+      --slate-dark: #1E293B;
+      --text-dark: #1F2937;
+      --text-muted: #4B5563;
+      --white: #FFFFFF;
+      --danger: #DC2626;
+      --shadow-sm: 0 4px 12px rgba(110, 71, 11, 0.08);
+      --shadow-md: 0 10px 25px rgba(110, 71, 11, 0.16);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, #F3EAD3 0%, #FAF7F0 35%, #FDFBF7 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-ochre) 55%, var(--gold-metallic) 100%);
+      color: var(--white);
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(110, 71, 11, 0.28);
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand-icon {
+      background: var(--forest-deep);
+      color: #F3EAD3;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      border: 1.5px solid var(--gold-champagne);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-catalog-top {
+      background: var(--forest-deep);
+      color: #F3EAD3;
+      border: 1.5px solid var(--gold-champagne);
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+
+    .btn-catalog-top:hover { background: var(--forest-mid); }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .hero {
+      background: linear-gradient(145deg, #996515 0%, #B8860B 50%, #7C5111 100%);
+      color: var(--white);
+      border-radius: 22px;
+      padding: 34px 24px;
+      margin-top: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border: 1.5px solid #D4AF37;
+    }
+
+    .hero-pill {
+      display: inline-block;
+      background: var(--forest-deep);
+      color: #F3EAD3;
+      font-weight: 700;
+      font-size: 0.74rem;
+      padding: 6px 14px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      max-width: 720px;
+      margin: 0 auto 22px;
+      color: #FAF7F0;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-forest {
+      background: var(--forest-deep);
+      color: var(--white);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 16px rgba(6, 78, 59, 0.32);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn-forest:hover { background: var(--forest-mid); transform: translateY(-2px); }
+
+    .btn-outline-light {
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--white);
+      border: 1.5px solid #F3EAD3;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* PUENTE DIRECTO A CATÁLOGOS OFICIALES */
+    .catalog-showcase {
+      background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      margin-top: 22px;
+      border: 2px solid var(--gold-champagne);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .catalog-showcase-info {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .catalog-showcase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(184, 134, 11, 0.25);
+      color: #E6C775;
+      border: 1px solid var(--gold-champagne);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .catalog-showcase h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: #F3EAD3;
+      margin-bottom: 6px;
+    }
+
+    .catalog-showcase p {
+      font-size: 0.86rem;
+      color: #D1FAE5;
+    }
+
+    .btn-gold-cta {
+      background: linear-gradient(135deg, #B8860B 0%, #996515 100%);
+      color: var(--white);
+      border: 1.5px solid #F3EAD3;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.88rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      white-space: nowrap;
+    }
+
+    .btn-gold-cta:hover { filter: brightness(1.08); }
+
+    /* SECCIÓN ESPECIAL: CORRETAJE DE BIENES DE ALTO VALOR */
+    .high-value-box {
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      margin-top: 24px;
+      border: 2px solid #D4AF37;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hv-badge {
+      display: inline-block;
+      background: #D4AF37;
+      color: #0F172A;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+    }
+
+    .high-value-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #F3EAD3;
+      margin-bottom: 8px;
+    }
+
+    .high-value-box p {
+      font-size: 0.9rem;
+      color: #CBD5E1;
+      margin-bottom: 16px;
+    }
+
+    .hv-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hv-feat-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.82rem;
+      color: #F8FAFC;
+    }
+
+    .hv-feat-item strong {
+      color: #E6C775;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .btn-hv-wa {
+      background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+      color: var(--white);
+      border: 1.5px solid #86EFAC;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(22, 163, 74, 0.35);
+    }
+
+    .btn-hv-wa:hover { filter: brightness(1.07); }
+
+    .section-card {
+      background: var(--cream-card);
+      border: 1.5px solid #E5D3A3;
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      margin-top: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--gold-deep);
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: #111827;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--gold-metallic);
+    }
+
+    .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #F3EAD3;
+      text-align: center;
+      padding: 20px;
+      background: radial-gradient(circle, #064E3B 0%, #022C22 100%);
+    }
+
+    .ai-banner {
+      background: linear-gradient(135deg, #292116 0%, #42331E 100%);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      margin-top: 24px;
+      border: 2px solid var(--gold-champagne);
+      box-shadow: var(--shadow-md);
+    }
+
+    .ai-banner h2 {
+      font-family: 'Playfair Display', serif;
+      color: #E6C775;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .ai-banner p {
+      font-size: 0.9rem;
+      color: #FAF7F0;
+      margin-bottom: 16px;
+    }
+
+    .social-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .btn-tiktok, .btn-yt, .btn-wa-gold {
+      color: #FFFFFF;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-tiktok { background: #000000; border: 1px solid #4B5563; }
+    .btn-yt { background: #B91C1C; }
+    .btn-wa-gold { background: linear-gradient(135deg, #B8860B 0%, #996515 100%); border: 1px solid #E6C775; }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .plan-card {
+      background: #FAF7F0;
+      border: 1.5px solid #DEC68B;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .plan-card.featured {
+      background: linear-gradient(180deg, #F3EAD3 0%, #FAF7F0 100%);
+      border: 2px solid var(--forest-deep);
+    }
+
+    .plan-card.executive {
+      background: linear-gradient(180deg, #F1F5F9 0%, #FFFFFF 100%);
+      border: 2px solid var(--slate-dark);
+    }
+
+    .plan-tag {
+      display: inline-block;
+      background: var(--gold-ochre);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+
+    .plan-card.featured .plan-tag { background: var(--forest-deep); color: #F3EAD3; }
+    .plan-card.executive .plan-tag { background: var(--slate-dark); color: #FDE68A; }
+    .plan-card h3 { font-size: 1.12rem; color: var(--forest-deep); margin-bottom: 6px; }
+    .plan-card.executive h3 { color: var(--slate-dark); }
+    .plan-price { font-size: 1.35rem; font-weight: 800; color: var(--gold-deep); margin-bottom: 10px; }
+    .plan-price span { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+
+    .plan-list { list-style: none; font-size: 0.82rem; margin-bottom: 16px; }
+    .plan-list li { margin-bottom: 7px; padding-left: 18px; position: relative; }
+    .plan-list li::before { content: "✓"; position: absolute; left: 0; color: var(--forest-mid); font-weight: 800; }
+
+    .vitrina-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .prod-card {
+      background: var(--white);
+      border: 1.5px solid #E5D3A3;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prod-img { width: 100%; height: 175px; object-fit: cover; background: #F3EAD3; }
+    .prod-body { padding: 14px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+    .prod-cat { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--gold-deep); background: #F3EAD3; padding: 3px 8px; border-radius: 6px; width: fit-content; margin-bottom: 6px; }
+    .prod-title { font-size: 0.98rem; font-weight: 700; margin-bottom: 4px; }
+    .prod-vendor { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+    .prod-price { font-size: 1.15rem; font-weight: 800; color: var(--forest-deep); margin-bottom: 10px; }
+
+    .btn-direct-wa {
+      background: #16A34A;
+      color: var(--white);
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--forest-deep); margin-bottom: 5px; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1.5px solid #DEC68B;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      background: #FDFBF7;
+    }
+
+    .calc-box { background: var(--forest-soft); border: 1.5px solid #A7F3D0; border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 0.85rem; }
+    .calc-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+
+    .legal-box { background: #FEF2F2; border: 1.5px solid #FECACA; border-radius: 12px; padding: 14px; font-size: 0.8rem; color: #7F1D1D; margin-bottom: 14px; }
+    .legal-box.strict { background: #FAF7F0; border: 2px solid var(--gold-metallic); color: #5C3A08; }
+
+    .checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; font-weight: 600; font-size: 0.82rem; }
+    .checkbox-row input { width: 18px; height: 18px; margin-top: 2px; }
+
+    .img-preview-box { margin-top: 10px; display: none; align-items: center; gap: 12px; background: #F3EAD3; padding: 10px; border-radius: 10px; }
+    .img-preview-box img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
+
+    .admin-panel {
+      display: none;
+      background: #111827;
+      color: #F9FAFB;
+      border: 2px solid var(--gold-champagne);
+      border-radius: 18px;
+      padding: 22px 18px;
+      margin-top: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    }
+
+    .admin-panel h2 { color: #E6C775; font-family: 'Playfair Display', serif; margin-bottom: 6px; }
+
+    .promo-share-box {
+      background: linear-gradient(135deg, #064E3B 0%, #111827 100%);
+      border: 1.5px solid #10B981;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 14px 0;
+    }
+
+    .promo-share-box h3 {
+      color: #A7F3D0;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .promo-share-box p {
+      font-size: 0.8rem;
+      color: #D1FAE5;
+      margin-bottom: 12px;
+    }
+
+    .promo-share-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-promo-wa {
+      background: #25D366;
+      color: #022C22;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .btn-promo-wa:hover { filter: brightness(1.06); }
+
+    .btn-promo-social {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid #93C5FD;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-promo-social:hover { filter: brightness(1.08); }
+
+    .admin-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+    .tab-btn { background: #1F2937; color: #D1D5DB; border: 1px solid #374151; padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+    .tab-btn.active { background: var(--gold-ochre); color: var(--white); }
+    .admin-item { background: #1F2937; border: 1px solid #374151; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+    .badge-status { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+    .badge-green { background: #065F46; color: #A7F3D0; }
+    .badge-amber { background: #7C5111; color: #F3EAD3; }
+    .badge-red { background: #991B1B; color: #FECACA; }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .btn-sm { padding: 7px 12px; border-radius: 8px; border: none; font-size: 0.78rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+    .btn-approve { background: #10B981; color: #022C22; }
+    .btn-reject { background: #EF4444; color: #FFFFFF; }
+    .btn-wa-share { background: #25D366; color: #FFFFFF; }
+    .btn-pause { background: #B8860B; color: #FFFFFF; }
+    .hidden { display: none !important; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.65rem; }
+      .brand-title span.txt-brand { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand-title" onclick="countAdminTaps()" title="Fitocosmética y Perfumes al 100%">
+      <span class="brand-icon">🌿</span>
+      <span>Fitocosmética <span class="txt-brand">100%</span></span>
+    </div>
+    <div class="top-actions">
+      <a href="index.html" target="_blank" class="btn-catalog-top">👁️ Ver Catálogos</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-pill">✨ Vitrina Digital, Almacén Externo & Corretaje</div>
+      <h1>Impulsa tu Negocio y Vende con Nosotros</h1>
+      <p>Desde pequeños emprendedores con prueba gratuita hasta proveedores con RIF para nuestro <strong>Stock Externo</strong> y propietarios de casas, terrenos, vehículos o maquinaria. Elige el modelo que mejor se adapte a tu negocio.</p>
+      <div class="hero-actions">
+        <a href="#formulario-postulacion" class="btn-forest">🚀 Registrar Producto o Almacén Externo</a>
+        <a href="#corretaje-alto-valor" class="btn-outline-light">🏠🌱🚗 Vender Casa, Terreno o Vehículo</a>
+      </div>
+    </section>
+
+    <!-- TARJETA DE ENLACE DIRECTO A LA TIENDA OFICIAL -->
+    <section class="catalog-showcase">
+      <div class="catalog-showcase-info">
+        <div class="catalog-showcase-badge">🌿 Tienda Matriz Fitocosmética y Perfumes al 100%</div>
+        <h2>¿Dónde se exhiben los productos de nuestros Proveedores y Aliados?</h2>
+        <p>Explora nuestra plataforma principal de perfumería, fitocosmética, stock de proveedores, inmuebles y variedades. Aquí es donde nuestra red de vendedores y clientes activos navegan todos los días.</p>
+      </div>
+      <a href="index.html" target="_blank" class="btn-gold-cta">👁️ Conoce Nuestros Catálogos</a>
+    </section>
+
+    <!-- SECCIÓN EXCLUSIVA: BIENES DE ALTO VALOR (CASAS, TERRENOS, VEHÍCULOS, MAQUINARIA) -->
+    <section id="corretaje-alto-valor" class="high-value-box">
+      <span class="hv-badge">🏛️ División de Corretaje & Bienes Mayores</span>
+      <h2>¿Vendes una Casa, Terreno, Vehículo o Maquinaria?</h2>
+      <p>Para bienes de alto valor <strong>no pagas suscripción mensual</strong>. Trabajamos bajo acuerdo directo de corretaje y comisión por venta cerrada (ej. 3%, 5% o 10% pactado según el valor del bien).</p>
+      <div class="hv-features">
+        <div class="hv-feat-item">
+          <strong>1. Negociación Directa</strong>
+          Conversas directamente con la dirección comercial para fijar precio y porcentaje de comisión por tu casa, terreno o vehículo.
+        </div>
+        <div class="hv-feat-item">
+          <strong>2. Catálogo Exclusivo</strong>
+          Creamos una vitrina dedicada en nuestra plataforma principal para impulsar tu propiedad o equipo.
+        </div>
+        <div class="hv-feat-item">
+          <strong>3. Red de Vendedores Activa</strong>
+          Nuestros ejecutivos promocionan y filtran compradores reales hasta concretar el cierre.
+        </div>
+      </div>
+      <a id="link-wa-corretaje" href="https://wa.me/584123184756?text=Hola%2C%20tengo%20un%20bien%20de%20alto%20valor%20(Casa%20%2F%20Terreno%20%2F%20Veh%C3%ADculo%20%2F%20Maquinaria)%20y%20quiero%20enviar%20fotos%20para%20negociar%20su%20venta%20por%20comisi%C3%B3n." target="_blank" class="btn-hv-wa">
+        💬 Enviar Fotos y Negociar Corretaje por WhatsApp
+      </a>
+    </section>
+
+    <!-- PANEL PRIVADO (CLAVE: M2611f - ACTIVACIÓN CON 5 TOQUES EN EL LOGO) -->
+    <section id="admin-panel" class="admin-panel">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+        <div>
+          <h2>⚙️ Consola Privada de Aprobación y Control</h2>
+          <p style="font-size:0.8rem; color:#9CA3AF;">Gestión de vitrina de emprendedores, almacén externo (Stock con Proveedores), semáforo y enlaces.</p>
+        </div>
+        <button class="btn-sm btn-reject" onclick="closeAdmin()">Cerrar</button>
+      </div>
+
+      <!-- CAJA DE DIFUSIÓN RÁPIDA DE VENDE CON NOSOTROS -->
+      <div class="promo-share-box">
+        <h3>📣 Difusión Rápida: Captar Proveedores, Emprendedores y Bienes Raíces</h3>
+        <p>Comparte el enlace directo de <strong>Vende con Nosotros</strong> en tus estados de WhatsApp, grupos o redes sociales para atraer clientes con casas, carros o mercancía.</p>
+        <div class="promo-share-actions">
+          <button type="button" class="btn-promo-wa" onclick="compartirVendeWhatsApp()">
+            💬 Compartir en WhatsApp
+          </button>
+          <button type="button" class="btn-promo-social" onclick="compartirVendeRedes()">
+            📲 Compartir en Redes / Copiar Enlace
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="tab-btn active" onclick="switchAdminTab('pendientes', this)">📥 Solicitudes Pendientes (<span id="count-pendientes">0</span>)</button>
+        <button class="tab-btn" onclick="switchAdminTab('activos', this)">🟢 Vitrina Activa & Semáforo (<span id="count-activos">0</span>)</button>
+        <button class="tab-btn" onclick="switchAdminTab('config', this)">🔗 Video & Redes Sociales</button>
+      </div>
+
+      <div id="tab-pendientes">
+        <div id="lista-pendientes" style="font-size:0.85rem; color:#D1D5DB;">Cargando solicitudes...</div>
+      </div>
+
+      <div id="tab-activos" class="hidden">
+        <div id="lista-activos" style="font-size:0.85rem; color:#D1D5DB;">Cargando publicaciones activas...</div>
+      </div>
+
+      <div id="tab-config" class="hidden">
+        <div class="form-group">
+          <label style="color:#E6C775;">Enlace de Video Explicativo (YouTube):</label>
+          <input type="url" id="cfg-youtube-video" placeholder="https://www.youtube.com/watch?v=..." />
+        </div>
+        <div class="form-group">
+          <label style="color:#E6C775;">Enlace de TikTok (Asesoría IA y Páginas Web):</label>
+          <input type="url" id="cfg-tiktok" placeholder="https://www.tiktok.com/@tuusuario" />
+        </div>
+        <div class="form-group">
+          <label style="color:#E6C775;">Enlace Canal Secundario / YouTube:</label>
+          <input type="url" id="cfg-youtube-channel" placeholder="https://www.youtube.com/@tucanal" />
+        </div>
+        <div class="form-group">
+          <label style="color:#E6C775;">WhatsApp Oficial (Asesoría IA, Soporte y Corretaje):</label>
+          <input type="text" id="cfg-whatsapp" placeholder="584123184756" />
+        </div>
+        <button class="btn-sm btn-approve" onclick="guardarConfiguracion()">💾 Guardar Enlaces en Tiempo Real</button>
+      </div>
+    </section>
+
+    <!-- VIDEO EXPLICATIVO SIN AUTOPLAY -->
+    <section class="section-card">
+      <h2 class="section-title">🎬 ¿Cómo Funciona Nuestra Plataforma?</h2>
+      <p class="section-sub">Dale play al video cuando desees ver cómo multiplicamos tus ventas sin complicaciones.</p>
+      <div class="video-wrapper" id="video-container">
+        <div class="video-placeholder">
+          <p style="font-weight:700; font-size:1.05rem; margin-bottom:8px;">Video Explicativo Disponible</p>
+          <p style="font-size:0.82rem; color:#D1FAE5;">El administrador puede vincular el video de YouTube desde su consola privada. Sin sonidos automáticos ni interrupciones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER IMPULSO CON IA Y TIKTOK -->
+    <section class="ai-banner">
+      <h2>🤖 ¿Tu tienda no tiene fotos profesionales o página web?</h2>
+      <p>Impulsamos tu emprendimiento con <strong>Inteligencia Artificial</strong>: mejoramos la calidad de tus fotos, eliminamos fondos, creamos catálogos web modernos y te enseñamos a vender más en redes sociales.</p>
+      <div class="social-row">
+        <a id="link-tiktok-public" href="https://www.tiktok.com" target="_blank" class="btn-tiktok">🎵 Ver Tips en TikTok</a>
+        <a id="link-yt-public" href="https://www.youtube.com" target="_blank" class="btn-yt">▶️ Canal de YouTube</a>
+        <a id="link-wa-ia" href="https://wa.me/584123184756?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20impulsar%20mi%20negocio%20con%20IA%20y%20mejorar%20mis%20fotos" target="_blank" class="btn-wa-gold">💬 Cotizar Fotos IA / Web por WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- LAS 4 MODALIDADES CLARAS -->
+    <section class="section-card">
+      <h2 class="section-title">💎 Elige tu Modalidad de Crecimiento</h2>
+      <p class="section-sub">Desde emprendedores locales hasta proveedores con almacén externo y bienes raíces: cada modelo está diseñado a tu medida.</p>
+
+      <div class="plans-grid">
+        <!-- 1. PRUEBA GRATUITA -->
+        <div class="plan-card">
+          <div>
+            <span class="plan-tag">1 • Emprendedores</span>
+            <h3>Prueba Gratuita</h3>
+            <div class="plan-price">$0 <span>/ 7 días de prueba</span></div>
+            <ul class="plan-list">
+              <li>Publica <strong>1 producto activo</strong> por 7 días para probar resultados reales.</li>
+              <li>Ideal para postres, yogur, hielo, comida y ropa.</li>
+              <li>Sin compromiso inicial.</li>
+            </ul>
+          </div>
+          <a href="#formulario-postulacion" onclick="preselectPlan('prueba_gratis')" class="btn-forest" style="justify-content:center;">Probar 7 Días Gratis</a>
+        </div>
+
+        <!-- 2. PLAN IMPULSO -->
+        <div class="plan-card featured">
+          <div>
+            <span class="plan-tag">2 • Vitrina Directa</span>
+            <h3>Plan Impulso</h3>
+            <div class="plan-price">$2.50 <span>/ mes (o $6 Pro)</span></div>
+            <ul class="plan-list">
+              <li><strong>Botón directo a tu WhatsApp:</strong> cobras el 100% directo sin intermediarios.</li>
+              <li>0% margen por tus ventas diarias.</li>
+              <li>Hasta 5 productos ($2.50) o 15 productos ($6).</li>
+            </ul>
+          </div>
+          <a href="#formulario-postulacion" onclick="preselectPlan('plan_impulso')" class="btn-forest" style="justify-content:center;">Activar Plan Impulso</a>
+        </div>
+
+        <!-- 3. PROVEEDOR CONFIABLE / ALMACÉN EXTERNO -->
+        <div class="plan-card">
+          <div>
+            <span class="plan-tag">3 • Stock Proveedores</span>
+            <h3>Proveedor Confiable (Almacén Externo)</h3>
+            <div class="plan-price">$0 fijo <span>/ % Ganancia acordado</span></div>
+            <ul class="plan-list">
+              <li><strong>Ingresas directo a nuestro catálogo de Stock con Proveedores</strong> para ventas masivas.</li>
+              <li>Cero cobro por publicar: acordamos un margen de ganancia (ej. 10%, 15% o 20% por venta).</li>
+              <li>Requiere RIF/CI y compromiso formal de despacho.</li>
+            </ul>
+          </div>
+          <a href="#formulario-postulacion" onclick="preselectPlan('proveedor_confiable')" class="btn-forest" style="justify-content:center;">Registrar Almacén Externo</a>
+        </div>
+
+        <!-- 4. BIENES DE ALTO VALOR (CASAS, TERRENOS, AUTOS, MAQUINARIA) -->
+        <div class="plan-card executive">
+          <div>
+            <span class="plan-tag">4 • Casas, Terrenos & Autos</span>
+            <h3>Corretaje Alto Valor</h3>
+            <div class="plan-price">% Pactado <span>/ Solo al vender</span></div>
+            <ul class="plan-list">
+              <li><strong>Cero pago por publicar:</strong> negociamos contigo el porcentaje (ej. 3% a 10%).</li>
+              <li>Para casas, terrenos, parcelas, carros, motos y maquinaria.</li>
+              <li>Catálogo independiente + gestión directa.</li>
+            </ul>
+          </div>
+          <a id="link-wa-card-hv" href="https://wa.me/584123184756?text=Hola%2C%20quiero%20negociar%20la%20venta%20de%20una%20casa%20%2F%20terreno%20%2F%20veh%C3%ADculo%20%2F%20maquinaria%20bajo%20comisi%C3%B3n." target="_blank" class="btn-forest" style="justify-content:center; background:#1E293B;">💬 Negociar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VITRINA PÚBLICA DE EMPRENDEDORES -->
+    <section id="vitrina-emprendedores" class="section-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:6px;">
+        <h2 class="section-title" style="margin-bottom:0;">🛍️ Vitrina de Emprendedores y Ofertas</h2>
+        <a href="index.html" target="_blank" style="font-size:0.82rem; font-weight:700; color:var(--forest-deep); text-decoration:underline;">Ir al Catálogo Principal de Perfumes, Stock Externo, Casas y Terrenos →</a>
+      </div>
+      <p class="section-sub">Trato directo con cada emprendedor verificado en nuestra plataforma.</p>
+      <div id="grid-vitrina-publica" class="vitrina-grid">
+        <p style="font-size:0.88rem; color:var(--text-muted);">Cargando productos de emprendedores...</p>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE POSTULACIÓN -->
+    <section id="formulario-postulacion" class="section-card">
+      <h2 class="section-title">📝 Formulario de Registro (Emprendedores y Almacén Externo)</h2>
+      <p class="section-sub">Si deseas vender una <strong>casa, terreno, vehículo o maquinaria grande</strong>, usa el <a href="#corretaje-alto-valor" style="color:var(--gold-deep); font-weight:700;">botón directo de WhatsApp arriba</a> para negociar personalmente.</p>
+
+      <form id="vendor-form" onsubmit="enviarSolicitud(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Modalidad deseada *</label>
+            <select id="f-modalidad" onchange="actualizarFormularioPorModalidad()" required>
+              <option value="prueba_gratis">🎁 Prueba Gratuita (7 días - 1 producto en Vitrina)</option>
+              <option value="plan_impulso">🚀 Plan Impulso ($2.50 o $6/mes - WhatsApp Directo)</option>
+              <option value="proveedor_confiable">🏭 Proveedor Confiable / Almacén Externo (Catálogo Stock con % Ganancia)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Categoría / Rubro *</label>
+            <select id="f-categoria" required>
+              <option value="Alimentos y Repostería">🍰 Alimentos, Postres, Yogur y Hielo</option>
+              <option value="Fitocosmética y Salud">🌿 Fitocosmética, Belleza y Cuidado</option>
+              <option value="Variedades y Ropa">👕 Ropa, Calzado y Variedades</option>
+              <option value="Hogar y Electrodomésticos">🏠 Hogar, Tecnología y Equipos</option>
+              <option value="Servicios Profesionales">🛠️ Servicios y Oficios Lícitos</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Nombre del Producto o Mercancía *</label>
+            <input type="text" id="f-nombre-prod" placeholder="Ej. Quesillo Artesanal 1Kg / Lote Calzado Deportivo" required />
+          </div>
+
+          <div class="form-group">
+            <label>Nombre de tu Empresa, Tienda o Almacén *</label>
+            <input type="text" id="f-negocio" placeholder="Ej. Distribuidora El Sol C.A. / Inversiones Dulce Sabor" required />
+          </div>
+
+          <div class="form-group">
+            <label>WhatsApp de Contacto (con código de país) *</label>
+            <input type="tel" id="f-whatsapp" placeholder="Ej. 584121234567" required />
+          </div>
+
+          <div class="form-group">
+            <label>Ubicación del Almacén o Negocio *</label>
+            <input type="text" id="f-ubicacion" placeholder="Ej. Ocumare del Tuy / Caracas" required />
+          </div>
+
+          <!-- CAMPOS EXTRA SOLO PARA PROVEEDOR CONFIABLE / ALMACÉN EXTERNO -->
+          <div id="bloque-aliado-extra" class="form-group full hidden">
+            <div class="form-grid" style="background:#F3EAD3; padding:14px; border-radius:12px; border:1px solid #B8860B;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label>RIF de la Empresa o Cédula de Identidad *</label>
+                <input type="text" id="f-cedula" placeholder="Ej. J-12345678-9 o V-16246468" />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Datos para recibir tus liquidaciones (Pago Móvil / Binance) *</label>
+                <input type="text" id="f-datos-pago" placeholder="Ej. Banco Venezuela 0412-0000000 RIF J-123456789" />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Stock Disponible en tu Almacén *</label>
+                <input type="number" id="f-stock" value="20" min="1" />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Porcentaje de Ganancia que nos ofreces (%) *</label>
+                <input type="number" id="f-comision" value="15" min="5" max="60" oninput="recalcularMargen()" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label id="lbl-precio">Precio de Venta al Público (USD $) *</label>
+            <input type="number" id="f-precio" step="0.01" min="0.5" placeholder="Ej. 10.00" oninput="recalcularMargen()" required />
+          </div>
+
+          <div class="form-group">
+            <label>Foto del Producto (Desde tu Galería) *</label>
+            <input type="file" id="f-foto" accept="image/*" onchange="procesarImagen(event)" required />
+            <small style="display:block; font-size:0.74rem; color:var(--text-muted); margin-top:4px;">
+              ⚡ Se optimiza automáticamente (&lt;45 KB). ¿Quieres que nuestra IA mejore tu foto? <a href="https://wa.me/584123184756?text=Hola%2C%20necesito%20mejorar%20la%20foto%20de%20mi%20producto%20con%20IA" target="_blank" style="color:var(--gold-deep); font-weight:700;">Escríbenos aquí</a>.
+            </small>
+            <div id="preview-container" class="img-preview-box">
+              <img id="img-preview" src="" alt="Vista previa" />
+              <div style="font-size:0.78rem;">
+                <strong style="color:var(--forest-deep);">✅ Foto optimizada y lista</strong>
+                <div id="img-size-info" style="color:var(--text-muted);">Peso ligero garantizado</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label>Descripción breve del producto o condiciones de entrega *</label>
+            <textarea id="f-descripcion" rows="3" placeholder="Describe detalles importantes, presentaciones, tiempos de despacho o garantías..." required></textarea>
+          </div>
+        </div>
+
+        <div id="calculadora-aliado" class="calc-box hidden">
+          <strong style="color:var(--forest-deep); display:block; margin-bottom:6px;">📊 Simulador de Acuerdo para Stock con Proveedores (Almacén Externo):</strong>
+          <div class="calc-row"><span>Precio de Venta al Público:</span><strong id="calc-publico">$0.00</strong></div>
+          <div class="calc-row"><span>Monto Neto que recibes por cada unidad vendida:</span><strong id="calc-neto" style="color:var(--forest-mid);">$0.00</strong></div>
+          <div class="calc-row"><span>Margen de Ganancia acordado para Fitocosmética:</span><strong id="calc-comision" style="color:var(--gold-deep);">$0.00</strong></div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">* No pagas mensualidad ni comisiones fijas: nosotros impulsamos tu producto en nuestro catálogo masivo y liquidamos tu precio neto acordado al concretar cada venta.</p>
+        </div>
+
+        <div id="clausulas-container" class="legal-box">
+          <strong>⚖️ Declaración de Licitud y Normas de Vitrina:</strong>
+          <p style="margin-top:4px;">Certifico que el producto o servicio publicado es 100% lícito, real y cumple con las leyes vigentes. Queda estrictamente prohibido publicar armas, sustancias ilícitas, medicamentos sin permiso sanitario, estafas o contenido fraudulento. La administración se reserva el derecho de pausar o retirar cualquier publicación sin previo aviso.</p>
+          <div id="clausulas-aliado-extra" class="hidden" style="margin-top:8px; padding-top:8px; border-top:1px dashed #B8860B;">
+            <strong>🏭 Compromiso Formal de Proveedor Confiable (Almacén Externo):</strong>
+            <p style="margin-top:4px;">1) Certifico poseer RIF/identificación vigente y existencia real en mi almacén externo, respetando el precio y porcentaje de ganancia acordado. 2) Me comprometo a entregar/despachar cada pedido vendido en un plazo máximo de 24 a 48 horas tras confirmarse el pago. 3) Asumo la garantía directa por defectos de fábrica, reponiendo el producto sin afectar la reputación de Fitocosmética y Perfumes al 100%.</p>
+          </div>
+          <label class="checkbox-row">
+            <input type="checkbox" id="f-acepto" required />
+            <span>He leído y acepto todas las condiciones, políticas de licitud y términos comerciales.</span>
+          </label>
+        </div>
+
+        <button type="submit" id="btn-submit" class="btn-forest" style="width:100%; justify-content:center; font-size:1rem; padding:15px;">
+          🚀 Enviar Solicitud para Revisión
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, set, push, onValue, remove, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBg-VEMsVqx27oaEWL05IOrxWnif0XiH5w",
+      authDomain: "fitocosmeticacatalogo.firebaseapp.com",
+      databaseURL: "https://fitocosmeticacatalogo-default-rtdb.firebaseio.com",
+      projectId: "fitocosmeticacatalogo",
+      storageBucket: "fitocosmeticacatalogo.firebasestorage.app",
+      messagingSenderId: "361356762285",
+      appId: "1:361356762285:web:abd5b94bc4a90d3f22ba24",
+      measurementId: "G-XJ9R5HN1F8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const ADMIN_PIN = "M2611f";
+    let compressedBase64 = "";
+    let isAdminLogged = false;
+    let adminTapCount = 0;
+    let adminTapTimer = null;
+
+    const BANNED_WORDS = [
+      "arma", "pistola", "droga", "marihuana", "cocaina", "cocaína", "estafa",
+      "pornografia", "pornografía", "sexo", "escort", "falsificado", "clonado",
+      "veneno", "explosivo", "municion", "munición", "sicario", "hack"
+    ];
+
+    window.countAdminTaps = function() {
+      adminTapCount++;
+      clearTimeout(adminTapTimer);
+      adminTapTimer = setTimeout(() => {
+        adminTapCount = 0;
+      }, 2000);
+
+      if (adminTapCount >= 5) {
+        adminTapCount = 0;
+        window.toggleAdminAuth();
+      }
+    };
+
+    window.compartirVendeWhatsApp = function() {
+      const pageUrl = window.location.href.split("#")[0];
+      const texto = `🌿 *¡Vende con Nosotros en Fitocosmética y Perfumes al 100%!* 🚀\n\n¿Tienes mercancía, un emprendimiento, o deseas vender una *casa, terreno, vehículo o maquinaria*?\n\n✅ *Emprendedores:* Prueba gratuita de 7 días.\n✅ *Almacén Externo:* Ingresa tu stock a nuestro catálogo masivo sin pagar mensualidad.\n✅ *Bienes Raíces y Vehículos:* Corretaje directo bajo comisión por venta cerrada.\n\nRegístrate o contáctanos aquí 👇\n${pageUrl}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, "_blank");
+    };
+
+    window.compartirVendeRedes = async function() {
+      const pageUrl = window.location.href.split("#")[0];
+      const texto = `🌿 ¡Vende con Nosotros en Fitocosmética y Perfumes al 100%! Impulsa tu mercancía, almacén externo, casa, terreno o vehículo con nuestra red de ventas.`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Vende con Nosotros | Fitocosmética y Perfumes al 100%",
+            text: texto,
+            url: pageUrl
+          });
+          return;
+        } catch (err) {
+          if (err.name === "AbortError") return;
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(`${texto}\n${pageUrl}`);
+        alert("✅ Enlace y mensaje promocional copiados al portapapeles. Ya puedes pegarlos en Facebook, Instagram, TikTok o Telegram.");
+      } catch (e) {
+        prompt("Copia este enlace para compartir en tus redes sociales:", pageUrl);
+      }
+    };
+
+    window.procesarImagen = function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement("canvas");
+          const MAX_WIDTH = 480;
+          const MAX_HEIGHT = 480;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          compressedBase64 = canvas.toDataURL("image/jpeg", 0.62);
+          const approxKb = Math.round((compressedBase64.length * 3) / 4 / 1024);
+
+          document.getElementById("img-preview").src = compressedBase64;
+          document.getElementById("img-size-info").innerText = `Peso optimizado: ${approxKb} KB (Ultra rápido)`;
+          document.getElementById("preview-container").style.display = "flex";
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.preselectPlan = function(plan) {
+      document.getElementById("f-modalidad").value = plan;
+      actualizarFormularioPorModalidad();
+    };
+
+    window.actualizarFormularioPorModalidad = function() {
+      const mod = document.getElementById("f-modalidad").value;
+      const bloqueAliado = document.getElementById("bloque-aliado-extra");
+      const calcAliado = document.getElementById("calculadora-aliado");
+      const clausulasBox = document.getElementById("clausulas-container");
+      const clausulasExtra = document.getElementById("clausulas-aliado-extra");
+
+      if (mod === "proveedor_confiable") {
+        bloqueAliado.classList.remove("hidden");
+        calcAliado.classList.remove("hidden");
+        clausulasBox.classList.add("strict");
+        clausulasExtra.classList.remove("hidden");
+        document.getElementById("f-cedula").required = true;
+        document.getElementById("f-datos-pago").required = true;
+        recalcularMargen();
+      } else {
+        bloqueAliado.classList.add("hidden");
+        calcAliado.classList.add("hidden");
+        clausulasBox.classList.remove("strict");
+        clausulasExtra.classList.add("hidden");
+        document.getElementById("f-cedula").required = false;
+        document.getElementById("f-datos-pago").required = false;
+      }
+    };
+
+    window.recalcularMargen = function() {
+      const precio = parseFloat(document.getElementById("f-precio").value) || 0;
+      const pct = parseFloat(document.getElementById("f-comision").value) || 15;
+      const gananciaFito = (precio * pct) / 100;
+      const netoProveedor = precio - gananciaFito;
+
+      document.getElementById("calc-publico").innerText = `$${precio.toFixed(2)}`;
+      document.getElementById("calc-neto").innerText = `$${netoProveedor.toFixed(2)}`;
+      document.getElementById("calc-comision").innerText = `$${gananciaFito.toFixed(2)} (${pct}%)`;
+    };
+
+    window.enviarSolicitud = async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btn-submit");
+
+      const modalidad = document.getElementById("f-modalidad").value;
+      const categoria = document.getElementById("f-categoria").value;
+      const nombreProd = document.getElementById("f-nombre-prod").value.trim();
+      const negocio = document.getElementById("f-negocio").value.trim();
+      const whatsapp = document.getElementById("f-whatsapp").value.replace(/\D/g, "");
+      const ubicacion = document.getElementById("f-ubicacion").value.trim();
+      const precio = parseFloat(document.getElementById("f-precio").value) || 0;
+      const descripcion = document.getElementById("f-descripcion").value.trim();
+
+      const cedula = document.getElementById("f-cedula").value.trim();
+      const datosPago = document.getElementById("f-datos-pago").value.trim();
+      const stock = parseInt(document.getElementById("f-stock").value) || 20;
+      const comisionPct = parseFloat(document.getElementById("f-comision").value) || 15;
+
+      const fullText = `${nombreProd} ${negocio} ${descripcion}`.toLowerCase();
+      for (const word of BANNED_WORDS) {
+        if (fullText.includes(word)) {
+          alert(`⚠️ Contenido bloqueado por políticas de seguridad: no se permite publicar artículos relacionados con "${word}".`);
+          return;
+        }
+      }
+
+      if (!compressedBase64) {
+        alert("Por favor selecciona una foto del producto desde tu galería.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = "⏳ Enviando solicitud segura...";
+
+      try {
+        const buzonRef = ref(db, "buzon_proveedores_pendientes");
+        const newRef = push(buzonRef);
+
+        await set(newRef, {
+          id: newRef.key,
+          modalidad,
+          categoria,
+          nombreProd,
+          negocio,
+          whatsapp,
+          ubicacion,
+          precio,
+          descripcion,
+          img: compressedBase64,
+          cedula: modalidad === "proveedor_confiable" ? cedula : "",
+          datosPago: modalidad === "proveedor_confiable" ? datosPago : "",
+          stock: modalidad === "proveedor_confiable" ? stock : 1,
+          comisionPct: modalidad === "proveedor_confiable" ? comisionPct : 0,
+          fechaSolicitud: Date.now(),
+          estado: "pendiente"
+        });
+
+        alert("✅ ¡Solicitud enviada con éxito! Nuestro equipo revisará tu registro en breve.");
+        document.getElementById("vendor-form").reset();
+        document.getElementById("preview-container").style.display = "none";
+        compressedBase64 = "";
+        actualizarFormularioPorModalidad();
+      } catch (err) {
+        console.error(err);
+        alert("❌ Error al enviar la solicitud. Verifica tu conexión a internet e intenta nuevamente.");
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "🚀 Enviar Solicitud para Revisión";
+      }
+    };
+
+    function extractYouTubeId(url) {
+      if (!url) return null;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : null;
+    }
+
+    onValue(ref(db, "config_vende_con_nosotros"), (snap) => {
+      const cfg = snap.val() || {};
+      if (cfg.tiktok) {
+        document.getElementById("link-tiktok-public").href = cfg.tiktok;
+        document.getElementById("cfg-tiktok").value = cfg.tiktok;
+      }
+      if (cfg.youtubeChannel) {
+        document.getElementById("link-yt-public").href = cfg.youtubeChannel;
+        document.getElementById("cfg-youtube-channel").value = cfg.youtubeChannel;
+      }
+      if (cfg.whatsapp) {
+        const waClean = cfg.whatsapp.replace(/\D/g, "");
+        document.getElementById("link-wa-ia").href = `https://wa.me/${waClean}?text=Hola%2C%20quiero%20impulsar%20mi%20negocio%20con%20IA%20y%20publicar%20en%20la%20vitrina`;
+        document.getElementById("link-wa-corretaje").href = `https://wa.me/${waClean}?text=Hola%2C%20tengo%20un%20bien%20de%20alto%20valor%20(Casa%20%2F%20Terreno%20%2F%20Veh%C3%ADculo%20%2F%20Maquinaria)%20y%20quiero%20enviar%20fotos%20para%20negociar%20su%20venta%20por%20comisi%C3%B3n.`;
+        document.getElementById("link-wa-card-hv").href = `https://wa.me/${waClean}?text=Hola%2C%20quiero%20negociar%20la%20venta%20de%20una%20casa%20%2F%20terreno%20%2F%20veh%C3%ADculo%20%2F%20maquinaria%20bajo%20comisi%C3%B3n.`;
+        document.getElementById("cfg-whatsapp").value = waClean;
+      }
+      if (cfg.youtubeVideo) {
+        document.getElementById("cfg-youtube-video").value = cfg.youtubeVideo;
+        const vidId = extractYouTubeId(cfg.youtubeVideo);
+        if (vidId) {
+          document.getElementById("video-container").innerHTML = `
+            <iframe src="https://www.youtube.com/embed/${vidId}?autoplay=0&rel=0" 
+              title="Video Explicativo" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>`;
+        }
+      }
+    });
+
+    onValue(ref(db, "vitrina_impulso_publica"), (snap) => {
+      const grid = document.getElementById("grid-vitrina-publica");
+      const data = snap.val();
+      if (!data) {
+        grid.innerHTML = `<p style="font-size:0.88rem; color:var(--text-muted); grid-column:1/-1;">Aún no hay emprendedores publicados hoy. ¡Sé el primero en activar tu Prueba Gratuita arriba!</p>`;
+        return;
+      }
+
+      const items = Object.values(data).filter(item => item.activo !== false);
+      if (items.length === 0) {
+        grid.innerHTML = `<p style="font-size:0.88rem; color:var(--text-muted); grid-column:1/-1;">No hay publicaciones activas en este momento.</p>`;
+        return;
+      }
+
+      grid.innerHTML = items.map(item => {
+        const msg = encodeURIComponent(`Hola ${item.negocio}, vi tu producto "${item.nombreProd}" ($${Number(item.precio).toFixed(2)}) en la vitrina de Fitocosmética y me interesa comprarlo.`);
+        const waUrl = `https://wa.me/${item.whatsapp}?text=${msg}`;
+        return `
+          <div class="prod-card">
+            <img class="prod-img" src="${item.img}" alt="${item.nombreProd}" loading="lazy" />
+            <div class="prod-body">
+              <div>
+                <span class="prod-cat">${item.categoria}</span>
+                <div class="prod-title">${item.nombreProd}</div>
+                <div class="prod-vendor">🏪 ${item.negocio} • 📍 ${item.ubicacion}</div>
+                <p style="font-size:0.78rem; color:#4B5563; margin-bottom:8px;">${item.descripcion}</p>
+              </div>
+              <div>
+                <div class="prod-price">$${Number(item.precio).toFixed(2)}</div>
+                <a href="${waUrl}" target="_blank" class="btn-direct-wa">💬 Comprar Directo al Emprendedor</a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    });
+
+    window.toggleAdminAuth = function() {
+      if (isAdminLogged) {
+        const panel = document.getElementById("admin-panel");
+        panel.style.display = "block";
+        panel.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      const pin = prompt("🔐 Ingresa la clave maestra de administración:");
+      if (pin === ADMIN_PIN) {
+        isAdminLogged = true;
+        const panel = document.getElementById("admin-panel");
+        panel.style.display = "block";
+        panel.scrollIntoView({ behavior: "smooth" });
+        cargarPanelAdmin();
+      } else if (pin !== null) {
+        alert("❌ Clave incorrecta.");
+      }
+    };
+
+    window.closeAdmin = function() {
+      document.getElementById("admin-panel").style.display = "none";
+    };
+
+    window.switchAdminTab = function(tabName, btnEl) {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btnEl.classList.add("active");
+      document.getElementById("tab-pendientes").classList.add("hidden");
+      document.getElementById("tab-activos").classList.add("hidden");
+      document.getElementById("tab-config").classList.add("hidden");
+      document.getElementById(`tab-${tabName}`).classList.remove("hidden");
+    };
+
+    window.guardarConfiguracion = async function() {
+      const youtubeVideo = document.getElementById("cfg-youtube-video").value.trim();
+      const tiktok = document.getElementById("cfg-tiktok").value.trim();
+      const youtubeChannel = document.getElementById("cfg-youtube-channel").value.trim();
+      const whatsapp = document.getElementById("cfg-whatsapp").value.replace(/\D/g, "");
+
+      await set(ref(db, "config_vende_con_nosotros"), {
+        youtubeVideo,
+        tiktok,
+        youtubeChannel,
+        whatsapp
+      });
+      alert("✅ Enlaces actualizados en vivo.");
+    };
+
+    function cargarPanelAdmin() {
+      onValue(ref(db, "buzon_proveedores_pendientes"), (snap) => {
+        const cont = document.getElementById("lista-pendientes");
+        const data = snap.val();
+        if (!data) {
+          document.getElementById("count-pendientes").innerText = "0";
+          cont.innerHTML = "<p>No hay solicitudes pendientes por revisar.</p>";
+          return;
+        }
+        const list = Object.values(data);
+        document.getElementById("count-pendientes").innerText = list.length;
+
+        cont.innerHTML = list.map(item => {
+          const isProveedor = item.modalidad === "proveedor_confiable";
+          const badge = isProveedor
+            ? `<span class="badge-status badge-amber">🏭 ALMACÉN EXTERNO / PROVEEDOR (${item.comisionPct}% ganancia)</span>`
+            : `<span class="badge-status badge-green">🚀 ${item.modalidad === 'prueba_gratis' ? 'PRUEBA GRATIS (7 días)' : 'PLAN IMPULSO'}</span>`;
+
+          return `
+            <div class="admin-item">
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <img src="${item.img}" style="width:70px; height:70px; object-fit:cover; border-radius:8px;" />
+                <div style="flex:1;">
+                  ${badge}
+                  <h4 style="margin-top:4px; color:#E6C775;">${item.nombreProd} — PVP: $${Number(item.precio).toFixed(2)}</h4>
+                  <p style="font-size:0.78rem; color:#D1D5DB;">Almacén/Negocio: <strong>${item.negocio}</strong> | WhatsApp: ${item.whatsapp} | 📍 ${item.ubicacion}</p>
+                  <p style="font-size:0.75rem; color:#9CA3AF; margin-top:3px;">${item.descripcion}</p>
+                  ${isProveedor ? `<p style="font-size:0.75rem; color:#F3EAD3; margin-top:4px;">RIF/CI: ${item.cedula} | Liquidación: ${item.datosPago} | Stock: ${item.stock}</p>` : ''}
+                </div>
+              </div>
+              <div class="admin-actions">
+                <button class="btn-sm btn-approve" onclick="aprobarSolicitud('${item.id}')">✅ Aprobar e Ingresar</button>
+                <button class="btn-sm btn-reject" onclick="rechazarSolicitud('${item.id}')">🗑️ Rechazar</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      });
+
+      onValue(ref(db, "vitrina_impulso_publica"), (snap) => {
+        const cont = document.getElementById("lista-activos");
+        const data = snap.val();
+        if (!data) {
+          document.getElementById("count-activos").innerText = "0";
+          cont.innerHTML = "<p>No hay productos activos en la vitrina de emprendedores.</p>";
+          return;
+        }
+        const list = Object.values(data);
+        document.getElementById("count-activos").innerText = list.length;
+
+        const now = Date.now();
+        cont.innerHTML = list.map(item => {
+          const diasRestantes = item.venceEn ? Math.ceil((item.venceEn - now) / (1000 * 60 * 60 * 24)) : 30;
+          let semaforo = `<span class="badge-status badge-green">🟢 Activo (${diasRestantes} días rest.)</span>`;
+          if (diasRestantes <= 0) {
+            semaforo = `<span class="badge-status badge-red">🔴 VENCIDO (Cobrar Plan o Pausar)</span>`;
+          } else if (diasRestantes <= 2) {
+            semaforo = `<span class="badge-status badge-amber">🟡 Por vencer (${diasRestantes} días)</span>`;
+          }
+
+          const pageUrl = window.location.href.split("#")[0] + "#vitrina-emprendedores";
+          const msgPromo = encodeURIComponent(`¡Felicidades ${item.negocio}! Tu producto "${item.nombreProd}" ya está aprobado y activo en nuestra vitrina oficial de Fitocosmética. Compártelo en tus estados aquí: ${pageUrl}`);
+          const msgCobro = encodeURIComponent(`Hola ${item.negocio}, tu fase de prueba gratuita en Fitocosmética está por culminar. Activa tu Plan Impulso mensual ($2.50) para mantener tu producto visible y seguir recibiendo clientes directos.`);
+
+          return `
+            <div class="admin-item">
+              <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                <strong>${item.nombreProd} ($${Number(item.precio).toFixed(2)})</strong>
+                ${semaforo}
+              </div>
+              <p style="font-size:0.78rem; color:#9CA3AF; margin-top:4px;">Emprendedor: ${item.negocio} | Tel: ${item.whatsapp}</p>
+              <div class="admin-actions">
+                <a href="https://wa.me/${item.whatsapp}?text=${msgPromo}" target="_blank" class="btn-sm btn-wa-share">📲 Enviar Link Viral</a>
+                <a href="https://wa.me/${item.whatsapp}?text=${msgCobro}" target="_blank" class="btn-sm btn-pause">💰 Recordar Pago Plan</a>
+                <button class="btn-sm btn-reject" onclick="retirarDeVitrina('${item.id}')">⛔ Retirar / Pausar</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      });
+    }
+
+    window.aprobarSolicitud = async function(id) {
+      const snap = await get(ref(db, `buzon_proveedores_pendientes/${id}`));
+      const item = snap.val();
+      if (!item) return;
+
+      const now = Date.now();
+
+      if (item.modalidad === "proveedor_confiable") {
+        const costoNetoProveedor = Number((item.precio * (1 - (item.comisionPct / 100))).toFixed(2));
+        const prodId = "ext_" + now;
+
+        const nuevoStockExterno = {
+          id: prodId,
+          name: `${item.nombreProd} (${item.negocio})`,
+          img: item.img,
+          stock: item.stock || 20,
+          costUsdt: costoNetoProveedor,
+          rawCost: costoNetoProveedor,
+          wholesaleMin: 1,
+          dept: item.categoria,
+          rubro: item.categoria,
+          supplier: item.negocio,
+          supplierPhone: item.whatsapp,
+          supplierPaymentData: item.datosPago,
+          supplierCedula: item.cedula,
+          sourceType: "Proveedor (Almacén Externo)",
+          vitrinas: { detal: true, fitocuotas: false, mayor: false }
+        };
+
+        const stateSnap = await get(ref(db, "fito_unified_state"));
+        const state = stateSnap.val() || {};
+
+        if (Array.isArray(state.supplierProducts)) {
+          state.supplierProducts.push(nuevoStockExterno);
+          await set(ref(db, "fito_unified_state/supplierProducts"), state.supplierProducts);
+        } else {
+          await set(ref(db, `fito_unified_state/supplierProducts/${prodId}`), nuevoStockExterno);
+        }
+
+        alert(`✅ ¡Ingresado a STOCK CON PROVEEDORES (Almacén Externo)!\nProducto: "${item.nombreProd}"\nPrecio Público: $${Number(item.precio).toFixed(2)} | Costo Neto Proveedor: $${costoNetoProveedor} (Margen acordado: ${item.comisionPct}%).`);
+      } else {
+        const diasDuracion = item.modalidad === "prueba_gratis" ? 7 : 30;
+        const venceEn = now + (diasDuracion * 24 * 60 * 60 * 1000);
+
+        await set(ref(db, `vitrina_impulso_publica/${item.id}`), {
+          ...item,
+          activo: true,
+          aprobadoEn: now,
+          venceEn: venceEn
+        });
+
+        alert(`✅ ¡Publicado en la Vitrina de Emprendedores!\nDuración activa: ${diasDuracion} días.`);
+      }
+
+      await remove(ref(db, `buzon_proveedores_pendientes/${id}`));
+    };
+
+    window.rechazarSolicitud = async function(id) {
+      if (!confirm("¿Seguro que deseas rechazar y eliminar esta solicitud?")) return;
+      await remove(ref(db, `buzon_proveedores_pendientes/${id}`));
+    };
+
+    window.retirarDeVitrina = async function(id) {
+      if (!confirm("¿Retirar este producto de la vitrina pública?")) return;
+      await remove(ref(db, `vitrina_impulso_publica/${id}`));
+    };
+  </script>
+</body>
+</html>
