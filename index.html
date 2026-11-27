@@ -8161,4 +8161,157 @@ Los frascos e insumos base ya se descontaron. Ahora ve a la pestaña "5. Depósi
 </div>
 
 </body>
+  <!-- === INICIO BLOQUE MASTER: CENTRO DE OPERACIONES DELEGADAS === -->
+<div id="master-centro-operaciones" style="background:#ffffff; border:2px solid #1b5e3a; border-radius:12px; padding:18px; margin:20px 0;">
+  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+    <h2 style="margin:0; color:#0f3d26;">⚙️ Centro de Operaciones Delegadas (6 Roles)</h2>
+    <button type="button" onclick="togglePanelOperaciones()" style="background:#0f3d26; color:#d4af37; border:none; padding:10px 16px; border-radius:8px; font-weight:bold; cursor:pointer;">
+      Abrir / Cerrar Control de Llaves
+    </button>
+  </div>
+  <p style="font-size:0.88rem; color:#475569; margin:6px 0 0;">
+    Libera módulos bajo demanda con claves de un solo uso. Al revocar un acceso, la clave anterior se destruye y el empleado queda expulsado al instante.
+  </p>
+
+  <div id="contenedor-llaves-master" style="display:none; margin-top:16px;">
+    <div id="grid-modulos-master" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;"></div>
+
+    <h3 style="margin-top:22px; color:#0f3d26;">📋 Auditoría en Tiempo Real (Trabajos Asentados)</h3>
+    <div style="overflow-x:auto; max-height:320px; border:1px solid #e2e8f0; border-radius:8px;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.84rem;">
+        <thead style="background:#f1f5f9;">
+          <tr>
+            <th style="padding:8px; text-align:left;">Área</th>
+            <th style="padding:8px; text-align:left;">Fecha</th>
+            <th style="padding:8px; text-align:left;">Detalle Asentado</th>
+            <th style="padding:8px; text-align:left;">Acción Master</th>
+          </tr>
+        </thead>
+        <tbody id="master-tabla-auditoria"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const MODULOS_CONFIG = [
+    { id: "almacen", nombre: "1. Almacén e Inventario", prefijo: "ALM" },
+    { id: "contabilidad", nombre: "2. Contabilidad y SENIAT", prefijo: "CON" },
+    { id: "redes", nombre: "3. Redes Sociales e IA", prefijo: "RED" },
+    { id: "soporte", nombre: "4. Atención al Cliente", prefijo: "SOP" },
+    { id: "laboratorio", nombre: "5. Laboratorio y Calidad", prefijo: "LAB" },
+    { id: "territorio", nombre: "6. Territorio y Cobranza", prefijo: "TER" }
+  ];
+
+  function togglePanelOperaciones() {
+    const panel = document.getElementById("contenedor-llaves-master");
+    panel.style.display = panel.style.display === "none" ? "block" : "none";
+    if (panel.style.display === "block") iniciarControlMaster();
+  }
+
+  function generarClaveNueva(prefijo) {
+    return prefijo + "-" + Math.floor(1000 + Math.random() * 9000);
+  }
+
+  function iniciarControlMaster() {
+    const refLlaves = firebase.database().ref("sistema_operaciones/llaves");
+    refLlaves.on("value", (snap) => {
+      const data = snap.val() || {};
+      const grid = document.getElementById("grid-modulos-master");
+      grid.innerHTML = "";
+
+      MODULOS_CONFIG.forEach(m => {
+        const info = data[m.id] || { estado: "BLOQUEADO", clave: generarClaveNueva(m.prefijo), asignado: "", nota_tarea: "" };
+        if (!data[m.id]) refLlaves.child(m.id).set(info);
+
+        const activo = info.estado === "ACTIVO";
+        const urlCompleta = `${window.location.origin}${window.location.pathname.replace("index.html", "")}operaciones.html?token=${info.clave}`;
+
+        grid.innerHTML += `
+          <div style="border:1px solid ${activo ? '#16a34a' : '#cbd5e1'}; background:${activo ? '#f0fdf4' : '#f8fafc'}; border-radius:10px; padding:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong style="color:#0f3d26;">${m.nombre}</strong>
+              <span style="padding:3px 8px; border-radius:12px; font-size:0.75rem; font-weight:bold; background:${activo ? '#16a34a' : '#dc2626'}; color:#fff;">
+                ${info.estado}
+              </span>
+            </div>
+            <p style="margin:8px 0 4px; font-size:0.85rem;">🔑 Llave actual: <code style="font-size:0.95rem; font-weight:bold;">${info.clave}</code></p>
+            <input type="text" id="asig-${m.id}" value="${info.asignado || ''}" placeholder="Nombre del trabajador..." style="width:100%; padding:6px; margin-bottom:6px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.85rem;" />
+            <input type="text" id="nota-${m.id}" value="${info.nota_tarea || ''}" placeholder="Instrucción puntual de la tarea..." style="width:100%; padding:6px; margin-bottom:8px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.85rem;" />
+            ${activo ? `
+              <button type="button" onclick="copiarAccesoWhatsApp('${m.nombre}', '${urlCompleta}', '${info.clave}')" style="width:100%; background:#0284c7; color:#fff; border:none; padding:8px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:6px;">
+                📋 Copiar Link + Clave para WhatsApp
+              </button>
+              <button type="button" onclick="revocarModulo('${m.id}', '${m.prefijo}')" style="width:100%; background:#dc2626; color:#fff; border:none; padding:8px; border-radius:6px; font-weight:bold; cursor:pointer;">
+                🔒 Revocar Acceso y Rotar Clave
+              </button>
+            ` : `
+              <button type="button" onclick="liberarModulo('${m.id}', '${info.clave}')" style="width:100%; background:#15803d; color:#fff; border:none; padding:8px; border-radius:6px; font-weight:bold; cursor:pointer;">
+                🔓 Liberar Módulo Ahora
+              </button>
+            `}
+          </div>
+        `;
+      });
+    });
+
+    // Escuchar auditoría en tiempo real
+    firebase.database().ref("sistema_operaciones/bitacora_auditoria").limitToLast(40).on("value", (snap) => {
+      const tbody = document.getElementById("master-tabla-auditoria");
+      tbody.innerHTML = "";
+      const logs = snap.val();
+      if (!logs) return;
+
+      Object.entries(logs).reverse().forEach(([key, item]) => {
+        tbody.innerHTML += `
+          <tr style="border-bottom:1px solid #e2e8f0;">
+            <td style="padding:8px;"><b>${item.modulo.toUpperCase()}</b><br><small>${item.ruta}</small></td>
+            <td style="padding:8px;">${item.fecha}</td>
+            <td style="padding:8px;">${item.detalle}</td>
+            <td style="padding:8px;">
+              ${item.estado.includes("Pendiente") ? `
+                <button type="button" onclick="aprobarRegistroMaster('${key}')" style="background:#15803d; color:#fff; border:none; padding:5px 9px; border-radius:5px; cursor:pointer; font-size:0.78rem;">
+                  ✅ Aprobar
+                </button>
+              ` : `<span style="color:#15803d; font-weight:bold;">${item.estado}</span>`}
+            </td>
+          </tr>
+        `;
+      });
+    });
+  }
+
+  function liberarModulo(id, claveActual) {
+    const asignado = document.getElementById("asig-" + id).value.trim();
+    const nota = document.getElementById("nota-" + id).value.trim();
+    firebase.database().ref("sistema_operaciones/llaves/" + id).update({
+      estado: "ACTIVO",
+      clave: claveActual,
+      asignado: asignado,
+      nota_tarea: nota
+    });
+  }
+
+  function revocarModulo(id, prefijo) {
+    const nuevaClave = generarClaveNueva(prefijo);
+    firebase.database().ref("sistema_operaciones/llaves/" + id).update({
+      estado: "BLOQUEADO",
+      clave: nuevaClave
+    });
+    alert("🔒 Acceso revocado al instante. Se generó una nueva llave en reserva (" + nuevaClave + ") para la próxima vez.");
+  }
+
+  function copiarAccesoWhatsApp(nombre, url, clave) {
+    const texto = `Hola, te comparto acceso temporal al área de *${nombre}* en Fitocosmética, Perfumes, Productos y Servicios al 100%:\n\n🔗 Enlace directo: ${url}\n🔑 Código de acceso: *${clave}*\n\nSigue las instrucciones en pantalla y avísame al finalizar.`;
+    navigator.clipboard.writeText(texto);
+    alert("✅ Enlace y clave copiados. Pégalos directo en el WhatsApp del colaborador.");
+  }
+
+  function aprobarRegistroMaster(key) {
+    firebase.database().ref("sistema_operaciones/bitacora_auditoria/" + key).update({
+      estado: "✅ Aprobado por Gerencia"
+    });
+  }
+</script>
+<!-- === FIN BLOQUE MASTER === -->
 </html>
