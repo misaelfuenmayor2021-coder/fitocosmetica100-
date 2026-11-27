@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabaja con Nosotros | Fuerza Comercial y Carrera — Fitocosmética 100%</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #071324;
+      --navy-mid: #0F2342;
+      --royal-blue: #1D4ED8;
+      --emerald-deep: #064E3B;
+      --emerald-mid: #059669;
+      --gold-bright: #FBBF24;
+      --gold-metallic: #D4AF37;
+      --gold-soft: #FEF3C7;
+      --text-light: #F8FAFC;
+      --text-muted: #CBD5E1;
+      --glass-bg: rgba(15, 35, 66, 0.72);
+      --glass-border: rgba(212, 175, 55, 0.38);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--navy-deep);
+      color: var(--text-light);
+      line-height: 1.6;
+      padding-bottom: 70px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* FONDO LINEAL TRANSLÚCIDO (PERFUMES, CASAS Y LÍNEAS ARQUITECTÓNICAS) */
+    .line-art-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(5, 150, 105, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(29, 78, 216, 0.28) 0%, transparent 50%),
+        linear-gradient(160deg, #050D1A 0%, #0A1D37 50%, #052E24 100%);
+    }
+
+    .line-art-backdrop svg {
+      width: 100%;
+      height: 100%;
+      opacity: 0.24;
+    }
+
+    .topbar {
+      background: rgba(7, 19, 36, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--gold-metallic);
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-light);
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand-icon {
+      background: linear-gradient(135deg, var(--emerald-deep), var(--royal-blue));
+      color: var(--gold-bright);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      border: 1.5px solid var(--gold-metallic);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-nav-pill {
+      background: rgba(6, 78, 59, 0.85);
+      color: var(--gold-soft);
+      border: 1px solid var(--gold-metallic);
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+
+    .btn-nav-pill:hover { background: var(--emerald-mid); color: #FFFFFF; }
+
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* HERO CON FILTRO ANTI-CURIOSOS */
+    .hero {
+      background: linear-gradient(145deg, rgba(15, 35, 66, 0.82) 0%, rgba(6, 78, 59, 0.78) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid var(--gold-metallic);
+      border-radius: 24px;
+      padding: 36px 24px;
+      margin-top: 22px;
+      text-align: center;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+    }
+
+    .medal-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #92400E, #D97706);
+      color: #FFFBEB;
+      font-weight: 800;
+      font-size: 0.74rem;
+      padding: 6px 15px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border: 1px solid var(--gold-bright);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.05rem;
+      line-height: 1.22;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      max-width: 760px;
+      margin: 0 auto 18px;
+      color: #E2E8F0;
+    }
+
+    .filter-warning {
+      background: rgba(7, 19, 36, 0.72);
+      border: 1px dashed var(--gold-bright);
+      border-radius: 12px;
+      padding: 12px 16px;
+      max-width: 740px;
+      margin: 0 auto 22px;
+      font-size: 0.83rem;
+      color: var(--gold-soft);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-gold-main {
+      background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+      color: #FFFFFF;
+      border: 1.5px solid var(--gold-bright);
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
+      transition: transform 0.2s;
+    }
+
+    .btn-gold-main:hover { transform: translateY(-2px); filter: brightness(1.08); }
+
+    .btn-emerald-outline {
+      background: rgba(6, 78, 59, 0.65);
+      color: #ECFDF5;
+      border: 1.5px solid #34D399;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* TARJETAS TRANSLÚCIDAS */
+    .glass-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 26px 20px;
+      margin-top: 24px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold-bright);
+      margin-bottom: 6px;
+    }
+
+    .sec-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* ESCALA DE ASCENSO (BRONCE -> PLATA -> ORO) */
+    .ladder-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .ladder-card {
+      background: rgba(7, 19, 36, 0.72);
+      border-radius: 14px;
+      padding: 18px;
+      border: 1.5px solid rgba(148, 163, 184, 0.35);
+      position: relative;
+    }
+
+    .ladder-card.silver { border-color: #93C5FD; }
+    .ladder-card.gold {
+      border-color: var(--gold-bright);
+      background: linear-gradient(160deg, rgba(120, 53, 15, 0.45) 0%, rgba(7, 19, 36, 0.85) 100%);
+    }
+
+    .medal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 11px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .medal-bronze { background: rgba(180, 83, 9, 0.35); color: #FDBA74; border: 1px solid #F97316; }
+    .medal-silver { background: rgba(30, 64, 175, 0.45); color: #BFDBFE; border: 1px solid #60A5FA; }
+    .medal-gold { background: linear-gradient(135deg, #B45309, #D97706); color: #FFFBEB; border: 1px solid var(--gold-bright); }
+
+    .ladder-card h3 { font-size: 1.05rem; color: #FFFFFF; margin-bottom: 6px; }
+    .ladder-card p { font-size: 0.82rem; color: #CBD5E1; }
+
+    /* CANDADOS FINANCIEROS */
+    .locks-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .lock-item {
+      background: rgba(6, 78, 59, 0.42);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.8rem;
+      color: #ECFDF5;
+    }
+
+    .lock-item strong { color: var(--gold-bright); display: block; margin-bottom: 3px; }
+
+    /* TARJETAS DE CARGOS Y RAMAS */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .role-card {
+      background: rgba(7, 19, 36, 0.78);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .role-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-bright);
+    }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .role-medal {
+      background: linear-gradient(135deg, #B45309, #F59E0B);
+      color: #071324;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .role-card h3 {
+      font-size: 1.08rem;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .role-gain {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #34D399;
+      margin-bottom: 10px;
+    }
+
+    .role-list {
+      list-style: none;
+      font-size: 0.81rem;
+      color: #CBD5E1;
+      margin-bottom: 16px;
+    }
+
+    .role-list li {
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .role-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold-bright);
+      font-size: 0.75rem;
+    }
+
+    .btn-select-role {
+      background: linear-gradient(135deg, var(--emerald-deep), var(--royal-blue));
+      color: #FFFFFF;
+      border: 1px solid var(--gold-metallic);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+
+    .btn-select-role:hover { filter: brightness(1.12); }
+
+    /* CUADRO DE HONOR / RANKING PÚBLICO */
+    .ranking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .rank-card {
+      background: linear-gradient(135deg, rgba(15, 35, 66, 0.85), rgba(6, 78, 59, 0.65));
+      border: 1.5px solid var(--gold-bright);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rank-trophy {
+      font-size: 1.8rem;
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid var(--gold-bright);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* VIDEO */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: #050D1A;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--gold-metallic);
+    }
+
+    .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      background: radial-gradient(circle, rgba(29, 78, 216, 0.25) 0%, rgba(7, 19, 36, 0.95) 100%);
+    }
+
+    /* FORMULARIO DINÁMICO */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gold-soft);
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1.5px solid rgba(212, 175, 55, 0.45);
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      background: rgba(7, 19, 36, 0.85);
+      color: #FFFFFF;
+    }
+
+    input::placeholder, textarea::placeholder { color: #94A3B8; }
+
+    .tools-checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      background: rgba(7, 19, 36, 0.65);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .tool-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #E2E8F0;
+      cursor: pointer;
+    }
+
+    .tool-check input { width: 17px; height: 17px; accent-color: #10B981; }
+
+    .role-rules-box {
+      background: rgba(6, 78, 59, 0.38);
+      border: 1.5px solid #34D399;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 16px;
+      font-size: 0.83rem;
+      color: #ECFDF5;
+    }
+
+    .legal-commitment {
+      background: rgba(120, 53, 15, 0.28);
+      border: 1.5px solid var(--gold-bright);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      font-size: 0.81rem;
+      color: #FEF3C7;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 0.83rem;
+      color: #FFFFFF;
+    }
+
+    .checkbox-row input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--gold-bright); }
+
+    /* PANEL PRIVADO ADMIN (5 TOQUES EN LOGO) */
+    .admin-panel {
+      display: none;
+      background: #060D19;
+      border: 2px solid var(--gold-bright);
+      border-radius: 18px;
+      padding: 22px 18px;
+      margin-top: 24px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.65);
+    }
+
+    .promo-share-box {
+      background: linear-gradient(135deg, #064E3B 0%, #0F2342 100%);
+      border: 1.5px solid #34D399;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 14px 0;
+    }
+
+    .promo-share-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-promo-wa {
+      background: #25D366;
+      color: #022C22;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-promo-social {
+      background: #2563EB;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid #93C5FD;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .admin-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+    .tab-btn {
+      background: #1E293B;
+      color: #CBD5E1;
+      border: 1px solid #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .tab-btn.active { background: #B45309; color: #FFFFFF; border-color: var(--gold-bright); }
+
+    .admin-item {
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .bg-gold { background: #92400E; color: #FEF3C7; }
+    .bg-emerald { background: #065F46; color: #A7F3D0; }
+    .bg-blue { background: #1E3A8A; color: #BFDBFE; }
+    .bg-red { background: #991B1B; color: #FECACA; }
+
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .btn-sm {
+      padding: 7px 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-approve { background: #10B981; color: #022C22; }
+    .btn-reject { background: #EF4444; color: #FFFFFF; }
+    .btn-wa { background: #25D366; color: #022C22; }
+    .btn-gold-sm { background: #D97706; color: #FFFFFF; }
+    .hidden { display: none !important; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.65rem; }
+      .brand-title span.txt-brand { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FONDO LINEAL DECORATIVO (PERFUMES Y BIENES RAÍCES EN LÍNEAS FINAS) -->
+  <div class="line-art-backdrop" aria-hidden="true">
+    <svg viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <!-- Líneas arquitectónicas de fondo -->
+      <line x1="0" y1="180" x2="1200" y2="180" stroke="#D4AF37" stroke-width="0.7" stroke-dasharray="6 6"/>
+      <line x1="0" y1="720" x2="1200" y2="720" stroke="#10B981" stroke-width="0.7" stroke-dasharray="6 6"/>
+      <line x1="220" y1="0" x2="220" y2="900" stroke="#3B82F6" stroke-width="0.6"/>
+      <line x1="980" y1="0" x2="980" y2="900" stroke="#D4AF37" stroke-width="0.6"/>
+
+      <!-- Silueta lineal de Frasco de Perfume de Lujo (Izquierda) -->
+      <g transform="translate(90, 220)" stroke="#D4AF37" stroke-width="1.5">
+        <rect x="35" y="0" width="50" height="28" rx="4"/>
+        <rect x="48" y="28" width="24" height="18"/>
+        <rect x="10" y="46" width="100" height="140" rx="14"/>
+        <rect x="24" y="64" width="72" height="104" rx="8" stroke="#10B981" stroke-width="1"/>
+        <circle cx="60" cy="116" r="20" stroke="#D4AF37" stroke-width="1"/>
+        <path d="M60 102 C68 112, 68 122, 60 130 C52 122, 52 112, 60 102 Z" stroke="#10B981"/>
+      </g>
+
+      <!-- Silueta lineal de Casa / Arquitectura Moderna (Derecha) -->
+      <g transform="translate(860, 240)" stroke="#10B981" stroke-width="1.5">
+        <polygon points="120,10 10,95 230,95" stroke="#D4AF37"/>
+        <rect x="30" y="95" width="180" height="125"/>
+        <rect x="100" y="145" width="40" height="75" stroke="#D4AF37"/>
+        <rect x="50" y="120" width="32" height="32"/>
+        <rect x="158" y="120" width="32" height="32"/>
+        <line x1="0" y1="220" x2="240" y2="220" stroke="#D4AF37"/>
+      </g>
+
+      <!-- Medalla Geométrica Central Sutil -->
+      <g transform="translate(540, 400)" stroke="#D4AF37" stroke-width="1">
+        <circle cx="60" cy="60" r="55" stroke-dasharray="4 4"/>
+        <circle cx="60" cy="60" r="42"/>
+        <polygon points="60,26 69,48 93,48 74,62 81,85 60,71 39,85 46,62 27,48 51,48" stroke="#10B981"/>
+      </g>
+    </svg>
+  </div>
+
+  <header class="topbar">
+    <div class="brand-title" onclick="countAdminTaps()" title="Fitocosmética y Perfumes al 100%">
+      <span class="brand-icon">🌿</span>
+      <span>Fitocosmética <span class="txt-brand">100%</span></span>
+    </div>
+    <div class="top-actions">
+      <a href="index.html" target="_blank" class="btn-nav-pill">👁️ Catálogos</a>
+      <a href="vende-con-nosotros.html" target="_blank" class="btn-nav-pill">🏭 Proveedores</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO PRINCIPAL -->
+    <section class="hero">
+      <div class="medal-pill">🏅 Carrera Comercial, Operaciones & Méritos</div>
+      <h1>Construye tus Ingresos y Escala con Nosotros</h1>
+      <p>En <strong>Fitocosmética y Perfumes al 100%</strong> no te limitas a un solo producto: puedes operar desde tu teléfono, abrir planes Fitocuotas, recuperar cobranzas, vender en patio libre o intermediar casas, terrenos y vehículos.</p>
+
+      <div class="filter-warning">
+        ⚠️ <strong>Filtro de Compromiso Real:</strong> Buscamos personas disciplinadas con herramientas activas (teléfono inteligente e internet) y disposición para cumplir metas y normas de atención. Si buscas dinero sin trabajar, esta plataforma no es para ti.
+      </div>
+
+      <div class="hero-actions">
+        <a href="#postulacion-ejecutiva" class="btn-gold-main">📝 Postularme Ahora</a>
+        <a href="#ramas-trabajo" class="btn-emerald-outline">🧭 Ver Ramas y Comisiones</a>
+      </div>
+    </section>
+
+    <!-- SISTEMA DE ASCENSO Y CANDADOS FINANCIEROS -->
+    <section class="glass-section">
+      <h2 class="sec-title">🏆 Plan de Carrera: Escala según tu Desempeño</h2>
+      <p class="sec-sub">Tu historial de ventas cobradas, puntualidad y cero reclamos define tu nivel y desbloquea mayores comisiones.</p>
+
+      <div class="ladder-grid">
+        <div class="ladder-card">
+          <span class="medal-badge medal-bronze">🥉 Nivel Bronce • Ingreso</span>
+          <h3>Ejecutivo Activo</h3>
+          <p>Acceso inmediato a los catálogos oficiales, enlace personalizado para trabajar desde tu teléfono y comisiones base (<strong>1% a 3%</strong> según línea + captación de proveedores).</p>
+        </div>
+
+        <div class="ladder-card silver">
+          <span class="medal-badge medal-silver">🥈 Nivel Plata • Destacado</span>
+          <h3>Ejecutivo Certificado (15+ ventas/mes)</h3>
+          <p>Desbloqueas <strong>Productos Estrella</strong> de mayor margen, bono semanal por metas cumplidas y prioridad en clientes que llegan directo a la web.</p>
+        </div>
+
+        <div class="ladder-card gold">
+          <span class="medal-badge medal-gold">🥇 Nivel Oro • Líder & Alto Valor</span>
+          <h3>Especialista & Líder de Célula</h3>
+          <p>Acceso a cartera <strong>Fitocuotas</strong>, operaciones de <strong>Bienes Raíces y Vehículos</strong>, y posibilidad de supervisar un equipo ganando bono residual por grupo.</p>
+        </div>
+      </div>
+
+      <div class="locks-bar">
+        <div class="lock-item">
+          <strong>🔒 Regla 1: Pago sobre Venta Liquidada</strong>
+          Las comisiones se calculan y pagan únicamente sobre ventas efectivamente pagadas y entregadas. Tú mismo te pones tu sueldo con tu gestión diaria.
+        </div>
+        <div class="lock-item">
+          <strong>🔒 Regla 2: Cartera Propia Fidelizada</strong>
+          Si registras un cliente y lo atiendes con excelencia, mantienes tu comisión en sus recompras recurrentes durante 60 días.
+        </div>
+        <div class="lock-item">
+          <strong>🔒 Regla 3: Cero Desvío de Clientes</strong>
+          Prohibido alterar precios oficiales o desviar clientes fuera de la plataforma. El incumplimiento implica baja inmediata.
+        </div>
+      </div>
+    </section>
+
+    <!-- RAMAS DE TRABAJO Y COMISIONES -->
+    <section id="ramas-trabajo" class="glass-section">
+      <h2 class="sec-title">🧭 Elige tu Rama Principal de Trabajo</h2>
+      <p class="sec-sub">Cada área tiene funciones claras, porcentajes definidos y normas específicas. Puedes combinar habilidades complementarias según tu perfil.</p>
+
+      <div class="roles-grid">
+        <!-- 1. VENTAS WEB -->
+        <div class="role-card">
+          <div>
+            <div class="role-header">
+              <h3>1. Ejecutivo de Ventas Web</h3>
+              <span class="role-medal">🏅 1% a 3%+ & Estrella</span>
+            </div>
+            <div class="role-gain">💰 Tú te pones tu sueldo desde tu teléfono</div>
+            <ul class="role-list">
+              <li>Promociona toda nuestra gama de catálogos, perfumes al 70% y planes desde casa usando WhatsApp y redes.</li>
+              <li><strong>Ejemplo práctico:</strong> Vendiendo 10 productos semanales de gama media/baja ($30 c/u) más productos estrella, construyes un ingreso semanal constante.</li>
+              <li><strong>Requisito:</strong> Teléfono inteligente propio, internet estable y respuesta rápida al cliente.</li>
+            </ul>
+          </div>
+          <a href="#postulacion-ejecutiva" onclick="seleccionarCargo('ventas_web')" class="btn-select-role">Postular a Ventas Web</a>
+        </div>
+
+        <!-- 2. FITOCUOTAS Y CRÉDITO -->
+        <div class="role-card">
+          <div>
+            <div class="role-header">
+              <h3>2. Asesor Fitocuotas & Crédito</h3>
+              <span class="role-medal">🏅 Comisión + Bono Puntual</span>
+            </div>
+            <div class="role-gain">💰 Colocación + Seguimiento y Cobro de su Cartera</div>
+            <ul class="role-list">
+              <li>Coloca ventas bajo modalidad de cuotas aprobadas, verifica solvencia del cliente y <strong>hace seguimiento hasta cobrar cada cuota</strong>.</li>
+              <li>Cobra su comisión por cuota cobrada al día + bono de cartera sana (si cae en mora sin gestión, pasa a Cobranzas).</li>
+              <li><strong>Requisito:</strong> Cédula, RIF, capacidad de evaluación y seguimiento disciplinado.</li>
+            </ul>
+          </div>
+          <a href="#postulacion-ejecutiva" onclick="seleccionarCargo('fitocuotas')" class="btn-select-role">Postular a Fitocuotas</a>
+        </div>
+
+        <!-- 3. GESTOR DE COBRANZAS -->
+        <div class="role-card">
+          <div>
+            <div class="role-header">
+              <h3>3. Gestor de Cobranzas</h3>
+              <span class="role-medal">🏅 Hasta 20% Recuperación</span>
+            </div>
+            <div class="role-gain">💰 20% sobre cobro efectivo recuperado</div>
+            <ul class="role-list">
+              <li>Gestión exclusiva de cobro en ruta o digital sobre cuentas vencidas o carteras asignadas por la administración.</li>
+              <li><strong>Compromiso estricto:</strong> Rendición de cuentas diaria, trato firme pero respetuoso y entrega íntegra de lo recaudado.</li>
+              <li><strong>Requisito:</strong> Alta solvencia moral, dirección comprobable y RIF vigente.</li>
+            </ul>
+          </div>
+          <a href="#postulacion-ejecutiva" onclick="seleccionarCargo('cobranzas')" class="btn-select-role">Postular a Cobranzas</a>
+        </div>
+
+        <!-- 4. VENTAS CAMPO / PATIO LIBRE -->
+        <div class="role-card">
+          <div>
+            <div class="role-header">
+              <h3>4. Vendedor de Campo / Patio Libre</h3>
+              <span class="role-medal">🏅 Margen Directo + Volumen</span>
+            </div>
+            <div class="role-gain">💰 Ganancia por unidad vendida en calle</div>
+            <ul class="role-list">
+              <li>Venta presencial en comercios, puntos estratégicos o rutas locales con muestrario o mercancía asignada.</li>
+              <li><strong>Compromiso legal:</strong> Firma de acta de custodia sobre inventario/muestras y liquidación puntual.</li>
+              <li><strong>Requisito:</strong> Cédula, RIF y dirección de habitación verificable.</li>
+            </ul>
+          </div>
+          <a href="#postulacion-ejecutiva" onclick="seleccionarCargo('campo_patio')" class="btn-select-role">Postular a Campo / Patio Libre</a>
+        </div>
+
+        <!-- 5. BIENES RAÍCES Y VEHÍCULOS -->
+        <div class="role-card">
+          <div>
+            <div class="role-header">
+              <h3>5. Asesor Bienes Raíces & Autos</h3>
+              <span class="role-medal">🏅 Comisión Alto Valor</span>
+            </div>
+            <div class="role-gain">💰 Altos ingresos por operación cerrada</div>
+            <ul class="role-list">
+              <li>Promociona las casas, terrenos, carros y maquinaria de nuestra división inmobiliaria y filtra compradores reales.</li>
+              <li>Participación porcentual sobre la comisión de corretaje al concretarse la firma y pago.</li>
+              <li><strong>Requisito:</strong> Perfil ejecutivo, buena presencia, confidencialidad y habilidad negociadora.</li>
+            </ul>
+          </div>
+          <a href="#postulacion-ejecutiva" onclick="seleccionarCargo('bienes_raices')" class="btn-select-role">Postular a Bienes Raíces</a>
+        </div>
+
+        <!-- 6. CAPTADOR DE PROVEEDORES / EMBAJADOR -->
+        <div class="role-card">
+          <div>
+            <div class="role-header">
+              <h3>6. Captador & Embajador Digital</h3>
+              <span class="role-medal">🏅 Bono por Aliado / Video</span>
+            </div>
+            <div class="role-gain">💰 Gana afiliando tiendas o creando contenido</div>
+            <ul class="role-list">
+              <li>Afilia dueños de tiendas, almacenes externos o propietarios de inmuebles en <em>Vende con Nosotros</em>, o graba videos virales mostrando los productos.</li>
+              <li>Cobra porcentaje por las ventas generadas por tus proveedores afiliados o enlaces referidos.</li>
+              <li><strong>Requisito:</strong> Buena cámara o habilidad comercial en calle/redes.</li>
+            </ul>
+          </div>
+          <a href="#postulacion-ejecutiva" onclick="seleccionarCargo('captador_embajador')" class="btn-select-role">Postular a Captador / Embajador</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUADRO DE HONOR / RANKING SEMANAL -->
+    <section class="glass-section">
+      <h2 class="sec-title">🏅 Cuadro de Honor & Ranking de Desempeño</h2>
+      <p class="sec-sub">Reconocemos públicamente a los ejecutivos con mayor volumen de ventas liquidadas y puntualidad en cartera.</p>
+      <div id="public-ranking-grid" class="ranking-grid">
+        <div class="rank-card">
+          <div class="rank-trophy">🏆</div>
+          <div>
+            <strong style="color:var(--gold-bright); font-size:0.95rem;">Top Ventas de la Semana</strong>
+            <p style="font-size:0.8rem; color:#CBD5E1;">Tu nombre y medalla pueden estar aquí al cumplir tu meta semanal.</p>
+          </div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-trophy">💎</div>
+          <div>
+            <strong style="color:#34D399; font-size:0.95rem;">Mejor Cartera & Cobranza</strong>
+            <p style="font-size:0.8rem; color:#CBD5E1;">Premio especial a la disciplina, cero morosidad y liquidación puntual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO EXPLICATIVO SIN AUTOPLAY -->
+    <section class="glass-section">
+      <h2 class="sec-title">🎬 Inducción: Cómo Trabajamos y Cómo Ganas</h2>
+      <p class="sec-sub">Mira el video explicativo antes de llenar tu planilla para conocer nuestra cultura de trabajo.</p>
+      <div class="video-wrapper" id="video-container">
+        <div class="video-placeholder">
+          <p style="font-weight:700; font-size:1.05rem; color:var(--gold-bright); margin-bottom:8px;">Video de Inducción Disponible</p>
+          <p style="font-size:0.82rem; color:#CBD5E1;">La dirección comercial puede vincular el video explicativo desde su consola privada. Sin reproducción automática.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE ENTREVISTA Y COMPROMISO -->
+    <section id="postulacion-ejecutiva" class="glass-section">
+      <h2 class="sec-title">📋 Planilla de Entrevista Virtual y Compromiso</h2>
+      <p class="sec-sub">Completa tus datos reales y herramientas disponibles. El administrador evaluará tu perfil antes de asignarte código y catálogos.</p>
+
+      <form id="staff-form" onsubmit="enviarPostulacion(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Rama Principal a la que Postulas *</label>
+            <select id="s-cargo" onchange="actualizarReglasCargo()" required>
+              <option value="ventas_web">💻 Ejecutivo de Ventas Web (Desde tu Teléfono)</option>
+              <option value="fitocuotas">💳 Asesor de Fitocuotas y Crédito</option>
+              <option value="cobranzas">💰 Gestor de Cobranzas (Hasta 20% Recuperación)</option>
+              <option value="campo_patio">🚶 Vendedor de Campo / Patio Libre</option>
+              <option value="bienes_raices">🏠 Asesor de Bienes Raíces y Vehículos</option>
+              <option value="captador_embajador">📣 Captador de Proveedores / Embajador Digital</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Disponibilidad de Tiempo *</label>
+            <select id="s-disponibilidad" required>
+              <option value="Tiempo Completo">⏰ Tiempo Completo (Dedicación total)</option>
+              <option value="Medio Tiempo">🌗 Medio Tiempo (4 horas diarias)</option>
+              <option value="Por Metas desde Casa">📱 Por Metas desde Casa / Fines de semana</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Nombres y Apellidos Completos *</label>
+            <input type="text" id="s-nombre" placeholder="Ej. Carlos Alberto Mendoza" required />
+          </div>
+
+          <div class="form-group">
+            <label>Cédula de Identidad *</label>
+            <input type="text" id="s-cedula" placeholder="Ej. V-20123456" required />
+          </div>
+
+          <div class="form-group">
+            <label>RIF Personal Vigente *</label>
+            <input type="text" id="s-rif" placeholder="Ej. V-20123456-0" required />
+          </div>
+
+          <div class="form-group">
+            <label>WhatsApp Principal (con código de país) *</label>
+            <input type="tel" id="s-whatsapp" placeholder="Ej. 584121234567" required />
+          </div>
+
+          <div class="form-group full">
+            <label>Dirección Exacta de Habitación (Estado, Municipio, Sector/Calle) *</label>
+            <input type="text" id="s-direccion" placeholder="Ej. Miranda, Ocumare del Tuy, Urb. Jardines de Betania..." required />
+          </div>
+
+          <!-- FILTRO DE HERRAMIENTAS TÉCNICAS -->
+          <div class="form-group full">
+            <label>Filtro de Herramientas: ¿Con qué cuentas hoy mismo para trabajar? *</label>
+            <div class="tools-checklist">
+              <label class="tool-check"><input type="checkbox" id="t-smartphone" value="Teléfono Inteligente" /> 📱 Teléfono Inteligente Propio</label>
+              <label class="tool-check"><input type="checkbox" id="t-internet" value="Internet Estable / Datos" /> 🌐 Internet Estable / Datos</label>
+              <label class="tool-check"><input type="checkbox" id="t-pc" value="Computadora / Laptop" /> 💻 Computadora / Laptop</label>
+              <label class="tool-check"><input type="checkbox" id="t-vehiculo" value="Moto o Vehículo Propio" /> 🏍️ Moto o Vehículo Propio</label>
+              <label class="tool-check"><input type="checkbox" id="t-camara" value="Buena Cámara para Videos" /> 🎥 Buena Cámara para Videos</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Aspiración de Ganancia Semanal (USD $) *</label>
+            <input type="number" id="s-aspiracion" min="10" placeholder="Ej. 50" required />
+          </div>
+
+          <div class="form-group">
+            <label>Habilidad Complementaria (Para ganar extra)</label>
+            <select id="s-extra">
+              <option value="Ninguna adicional">Solo mi rama principal</option>
+              <option value="Captar Proveedores y Casas">También puedo captar proveedores, casas y carros</option>
+              <option value="Grabar Videos / Redes">También sé grabar videos para TikTok/Estados</option>
+              <option value="Punto de Entrega Local">Puedo servir como Punto de Entrega en mi zona</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>Experiencia Comercial y Por Qué Debemos Elegirte *</label>
+            <textarea id="s-experiencia" rows="3" placeholder="Cuéntanos brevemente tu experiencia en ventas, cobros o atención al cliente..." required></textarea>
+          </div>
+        </div>
+
+        <!-- REGLAS DINÁMICAS SEGÚN EL CARGO ELEGIDO -->
+        <div id="caja-reglas-cargo" class="role-rules-box">
+          <strong>📌 Normas y Esquema del Cargo Seleccionado:</strong>
+          <p id="texto-reglas-cargo" style="margin-top:5px;">Ejecutivo de Ventas Web: Comisiones desde 1% hasta 3%+ y Productos Estrella sobre ventas cobradas. Debes atender clientes con amabilidad en menos de 15 minutos, respetar precios oficiales y reportar tus cierres diariamente.</p>
+        </div>
+
+        <!-- COMPROMISO LEGAL Y FIRMA DIGITAL -->
+        <div class="legal-commitment">
+          <strong>⚖️ Acta de Compromiso Laboral, Confidencialidad y Custodia:</strong>
+          <p style="margin-top:5px;">1) Declaro que mis datos de identidad, RIF y dirección son verídicos y autorizo su verificación. 2) Me comprometo a atender a cada cliente bajo las normas de excelencia de <strong>Fitocosmética y Perfumes al 100%</strong>, sin alterar precios ni desviar operaciones. 3) En caso de manejar mercancía, muestras o dinero de cobranzas, asumo plena responsabilidad civil y administrativa por su custodia y liquidación puntual.</p>
+
+          <div class="form-group" style="margin-top:12px; margin-bottom:6px;">
+            <label style="color:#FBBF24;">Firma Digital (Escribe tu Nombre Completo y Cédula en señal de aceptación) *</label>
+            <input type="text" id="s-firma" placeholder="Ej. Carlos Alberto Mendoza V-20123456" required />
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" id="s-acepto" required />
+            <span>Acepto las condiciones, el sistema de comisiones por desempeño y firmo digitalmente este compromiso.</span>
+          </label>
+        </div>
+
+        <button type="submit" id="btn-submit-staff" class="btn-gold-main" style="width:100%; justify-content:center; font-size:1rem; padding:15px;">
+          🚀 Enviar Planilla de Entrevista y Compromiso
+        </button>
+      </form>
+    </section>
+
+    <!-- PANEL PRIVADO ADMIN (CLAVE: M2611f - 5 TOQUES EN LOGO) -->
+    <section id="admin-panel" class="admin-panel">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+        <div>
+          <h2 style="color:var(--gold-bright); font-family:'Playfair Display', serif;">⚙️ Consola Privada de Talento, Ranking y Control</h2>
+          <p style="font-size:0.8rem; color:#94A3B8;">Entrevista, aprobación de ejecutivos, control de desempeño, medallas y enlace promocional.</p>
+        </div>
+        <button class="btn-sm btn-reject" onclick="closeAdmin()">Cerrar</button>
+      </div>
+
+      <!-- BOTONES VERDES DE DIFUSIÓN RÁPIDA -->
+      <div class="promo-share-box">
+        <h3 style="color:#A7F3D0; font-size:0.95rem;">📣 Reclutamiento Rápido: Invitar a Trabajar con Nosotros</h3>
+        <p style="font-size:0.8rem; color:#D1FAE5; margin-top:4px;">Envía este enlace oficial a quienes pidan trabajo para que pasen primero por el filtro de herramientas y firmen su compromiso.</p>
+        <div class="promo-share-actions">
+          <button type="button" class="btn-promo-wa" onclick="compartirTrabajaWhatsApp()">
+            💬 Compartir en WhatsApp
+          </button>
+          <button type="button" class="btn-promo-social" onclick="compartirTrabajaRedes()">
+            📲 Compartir en Redes / Copiar Enlace
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="tab-btn active" onclick="switchAdminTab('aspirantes', this)">📥 Aspirantes por Entrevistar (<span id="count-aspirantes">0</span>)</button>
+        <button class="tab-btn" onclick="switchAdminTab('activos', this)">🏅 Equipo Activo & Ranking (<span id="count-equipo">0</span>)</button>
+        <button class="tab-btn" onclick="switchAdminTab('config', this)">🎬 Video & Enlaces</button>
+      </div>
+
+      <div id="tab-aspirantes">
+        <div id="lista-aspirantes" style="font-size:0.85rem; color:#CBD5E1;">Cargando postulaciones...</div>
+      </div>
+
+      <div id="tab-activos" class="hidden">
+        <div id="lista-equipo" style="font-size:0.85rem; color:#CBD5E1;">Cargando equipo activo...</div>
+      </div>
+
+      <div id="tab-config" class="hidden">
+        <div class="form-group">
+          <label>Enlace de Video Explicativo de Trabajo (YouTube):</label>
+          <input type="url" id="cfg-yt-trabajo" placeholder="https://www.youtube.com/watch?v=..." />
+        </div>
+        <div class="form-group">
+          <label>Enlace Base del Catálogo para Asignar a Vendedores:</label>
+          <input type="url" id="cfg-catalogo-url" placeholder="https://misaelfuenmayor.github.io/fitocosmetica100-/index.html" />
+        </div>
+        <button class="btn-sm btn-approve" onclick="guardarConfigTrabajo()">💾 Guardar Configuración</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, set, push, onValue, remove, get, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBg-VEMsVqx27oaEWL05IOrxWnif0XiH5w",
+      authDomain: "fitocosmeticacatalogo.firebaseapp.com",
+      databaseURL: "https://fitocosmeticacatalogo-default-rtdb.firebaseio.com",
+      projectId: "fitocosmeticacatalogo",
+      storageBucket: "fitocosmeticacatalogo.firebasestorage.app",
+      messagingSenderId: "361356762285",
+      appId: "1:361356762285:web:abd5b94bc4a90d3f22ba24",
+      measurementId: "G-XJ9R5HN1F8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const ADMIN_PIN = "M2611f";
+    let isAdminLogged = false;
+    let adminTapCount = 0;
+    let adminTapTimer = null;
+    let catalogBaseUrl = window.location.href.replace("trabaja-con-nosotros.html", "index.html").split("#")[0];
+
+    const CARGO_LABELS = {
+      ventas_web: "💻 Ejecutivo Ventas Web (1%-3%+)",
+      fitocuotas: "💳 Asesor Fitocuotas y Crédito",
+      cobranzas: "💰 Gestor de Cobranzas (20%)",
+      campo_patio: "🚶 Vendedor Campo / Patio Libre",
+      bienes_raices: "🏠 Asesor Bienes Raíces y Autos",
+      captador_embajador: "📣 Captador / Embajador Digital"
+    };
+
+    const CARGO_RULES = {
+      ventas_web: "Ejecutivo de Ventas Web: Comisiones desde 1% hasta 3%+ y Productos Estrella sobre ventas cobradas. Debes atender clientes con amabilidad en menos de 15 minutos, respetar precios oficiales y reportar tus cierres diariamente.",
+      fitocuotas: "Asesor Fitocuotas y Crédito: Colocas ventas a plazo aprobadas y haces seguimiento y cobro de tus propios clientes hasta el cierre. Cobras tu comisión por cuota cobrada al día + bono por cartera puntual.",
+      cobranzas: "Gestor de Cobranzas: Ganancia de hasta el 20% sobre cobro efectivo recuperado en rutas o carteras morosas asignadas. Requiere rendición de cuentas diaria y entrega íntegra del dinero recaudado.",
+      campo_patio: "Vendedor de Campo / Patio Libre: Ganancia directa por unidad vendida en calle o comercios. Implica firma de acta de custodia sobre mercancía/muestras entregadas y liquidación puntual.",
+      bienes_raices: "Asesor de Bienes Raíces y Vehículos: Participación porcentual pactada sobre la comisión de cierre en casas, terrenos, carros y maquinaria. Requiere perfil ejecutivo y confidencialidad.",
+      captador_embajador: "Captador de Proveedores / Embajador Digital: Ganas comisiones por afiliar tiendas/almacenes externos o propietarios en 'Vende con Nosotros', y por ventas generadas mediante tus videos."
+    };
+
+    window.countAdminTaps = function() {
+      adminTapCount++;
+      clearTimeout(adminTapTimer);
+      adminTapTimer = setTimeout(() => { adminTapCount = 0; }, 2000);
+      if (adminTapCount >= 5) {
+        adminTapCount = 0;
+        window.toggleAdminAuth();
+      }
+    };
+
+    window.seleccionarCargo = function(cargo) {
+      document.getElementById("s-cargo").value = cargo;
+      actualizarReglasCargo();
+    };
+
+    window.actualizarReglasCargo = function() {
+      const cargo = document.getElementById("s-cargo").value;
+      document.getElementById("texto-reglas-cargo").innerText = CARGO_RULES[cargo] || CARGO_RULES.ventas_web;
+    };
+
+    window.compartirTrabajaWhatsApp = function() {
+      const pageUrl = window.location.href.split("#")[0];
+      const texto = `🏅 *¡Trabaja con Nosotros en Fitocosmética y Perfumes al 100%!* 🚀
+
+Buscamos personas comprometidas para crecer en nuestras áreas:
+💻 *Ventas Web desde tu Teléfono* (1% a 3%+ y Productos Estrella)
+💳 *Asesores Fitocuotas y Crédito*
+💰 *Gestores de Cobranzas* (hasta 20% por recuperación)
+🏠 *Asesores de Bienes Raíces y Vehículos*
+
+Revisa las comisiones, herramientas requeridas y llena tu planilla de entrevista aquí 👇
+${pageUrl}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, "_blank");
+    };
+
+    window.compartirTrabajaRedes = async function() {
+      const pageUrl = window.location.href.split("#")[0];
+      const texto = `🏅 ¡Únete al equipo comercial de Fitocosmética y Perfumes al 100%! Ventas Web, Fitocuotas, Cobranzas y Bienes Raíces con plan de carrera por méritos.`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Trabaja con Nosotros | Fitocosmética 100%",
+            text: texto,
+            url: pageUrl
+          });
+          return;
+        } catch (err) {
+          if (err.name === "AbortError") return;
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(`${texto}
+${pageUrl}`);
+        alert("✅ Enlace y mensaje de reclutamiento copiados al portapapeles.");
+      } catch (e) {
+        prompt("Copia este enlace para compartir en redes:", pageUrl);
+      }
+    };
+
+    window.enviarPostulacion = async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btn-submit-staff");
+
+      const herramientas = [];
+      if (document.getElementById("t-smartphone").checked) herramientas.push("Teléfono Inteligente");
+      if (document.getElementById("t-internet").checked) herramientas.push("Internet/Datos");
+      if (document.getElementById("t-pc").checked) herramientas.push("PC/Laptop");
+      if (document.getElementById("t-vehiculo").checked) herramientas.push("Moto/Vehículo");
+      if (document.getElementById("t-camara").checked) herramientas.push("Buena Cámara");
+
+      if (herramientas.length === 0) {
+        alert("⚠️ Por favor marca al menos una herramienta con la que cuentes hoy para trabajar.");
+        return;
+      }
+
+      const cargo = document.getElementById("s-cargo").value;
+      if ((cargo === "ventas_web" || cargo === "captador_embajador") && (!document.getElementById("t-smartphone").checked || !document.getElementById("t-internet").checked)) {
+        alert("⚠️ Filtro técnico: Para trabajar en Ventas Web o Gestión Digital es indispensable contar con Teléfono Inteligente propio e Internet/Datos activos.");
+        return;
+      }
+
+      const nombre = document.getElementById("s-nombre").value.trim();
+      const cedula = document.getElementById("s-cedula").value.trim();
+      const rif = document.getElementById("s-rif").value.trim();
+      const whatsapp = document.getElementById("s-whatsapp").value.replace(/\D/g, "");
+      const direccion = document.getElementById("s-direccion").value.trim();
+      const disponibilidad = document.getElementById("s-disponibilidad").value;
+      const aspiracion = parseFloat(document.getElementById("s-aspiracion").value) || 0;
+      const extra = document.getElementById("s-extra").value;
+      const experiencia = document.getElementById("s-experiencia").value.trim();
+      const firma = document.getElementById("s-firma").value.trim();
+
+      btn.disabled = true;
+      btn.innerText = "⏳ Registrando planilla y compromiso...";
+
+      try {
+        const listRef = ref(db, "buzon_aspirantes_trabajo");
+        const newRef = push(listRef);
+
+        await set(newRef, {
+          id: newRef.key,
+          cargo,
+          cargoNombre: CARGO_LABELS[cargo] || cargo,
+          nombre,
+          cedula,
+          rif,
+          whatsapp,
+          direccion,
+          disponibilidad,
+          herramientas,
+          aspiracion,
+          extra,
+          experiencia,
+          firma,
+          fechaPostulacion: Date.now(),
+          estado: "pendiente"
+        });
+
+        alert("✅ ¡Planilla enviada con éxito! Tu perfil y compromiso quedaron registrados. Te contactaremos por WhatsApp para tu entrevista.");
+        document.getElementById("staff-form").reset();
+        actualizarReglasCargo();
+      } catch (err) {
+        console.error(err);
+        alert("❌ Error al enviar la planilla. Verifica tu conexión e intenta de nuevo.");
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "🚀 Enviar Planilla de Entrevista y Compromiso";
+      }
+    };
+
+    function extractYouTubeId(url) {
+      if (!url) return null;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : null;
+    }
+
+    onValue(ref(db, "config_trabaja_con_nosotros"), (snap) => {
+      const cfg = snap.val() || {};
+      if (cfg.catalogoUrl) {
+        catalogBaseUrl = cfg.catalogoUrl;
+        document.getElementById("cfg-catalogo-url").value = cfg.catalogoUrl;
+      } else {
+        document.getElementById("cfg-catalogo-url").value = catalogBaseUrl;
+      }
+      if (cfg.youtubeVideo) {
+        document.getElementById("cfg-yt-trabajo").value = cfg.youtubeVideo;
+        const vidId = extractYouTubeId(cfg.youtubeVideo);
+        if (vidId) {
+          document.getElementById("video-container").innerHTML = `
+            <iframe src="https://www.youtube.com/embed/${vidId}?autoplay=0&rel=0" 
+              title="Video Inducción" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>`;
+        }
+      }
+    });
+
+    // ACTUALIZAR CUADRO DE HONOR PÚBLICO SI HAY DESTACADOS EN EQUIPO ACTIVO
+    onValue(ref(db, "equipo_comercial_activo"), (snap) => {
+      const data = snap.val();
+      const grid = document.getElementById("public-ranking-grid");
+      if (!data) return;
+
+      const destacados = Object.values(data).filter(emp => emp.destacado === true);
+      if (destacados.length > 0) {
+        grid.innerHTML = destacados.map(emp => `
+          <div class="rank-card">
+            <div class="rank-trophy">${emp.nivel === 'Oro' ? '🥇' : emp.nivel === 'Plata' ? '🥈' : '🏆'}</div>
+            <div>
+              <strong style="color:var(--gold-bright); font-size:0.95rem;">${emp.nombre} (${emp.codigo})</strong>
+              <p style="font-size:0.8rem; color:#ECFDF5;">${emp.cargoNombre} • Nivel ${emp.nivel || 'Bronce'}</p>
+              <p style="font-size:0.75rem; color:#CBD5E1;">Ventas liquidadas: ${emp.ventasLiquidadas || 0} | Puntos mérito: ${emp.puntos || 0}</p>
+            </div>
+          </div>
+        `).join("");
+      }
+    });
+
+    window.toggleAdminAuth = function() {
+      if (isAdminLogged) {
+        const panel = document.getElementById("admin-panel");
+        panel.style.display = "block";
+        panel.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      const pin = prompt("🔐 Ingresa la clave maestra de administración:");
+      if (pin === ADMIN_PIN) {
+        isAdminLogged = true;
+        const panel = document.getElementById("admin-panel");
+        panel.style.display = "block";
+        panel.scrollIntoView({ behavior: "smooth" });
+        cargarConsolaTalento();
+      } else if (pin !== null) {
+        alert("❌ Clave incorrecta.");
+      }
+    };
+
+    window.closeAdmin = function() {
+      document.getElementById("admin-panel").style.display = "none";
+    };
+
+    window.switchAdminTab = function(tabName, btnEl) {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btnEl.classList.add("active");
+      document.getElementById("tab-aspirantes").classList.add("hidden");
+      document.getElementById("tab-activos").classList.add("hidden");
+      document.getElementById("tab-config").classList.add("hidden");
+      document.getElementById(`tab-${tabName}`).classList.remove("hidden");
+    };
+
+    window.guardarConfigTrabajo = async function() {
+      const youtubeVideo = document.getElementById("cfg-yt-trabajo").value.trim();
+      const catalogoUrl = document.getElementById("cfg-catalogo-url").value.trim();
+      await set(ref(db, "config_trabaja_con_nosotros"), { youtubeVideo, catalogoUrl });
+      alert("✅ Configuración guardada correctamente.");
+    };
+
+    function cargarConsolaTalento() {
+      onValue(ref(db, "buzon_aspirantes_trabajo"), (snap) => {
+        const cont = document.getElementById("lista-aspirantes");
+        const data = snap.val();
+        if (!data) {
+          document.getElementById("count-aspirantes").innerText = "0";
+          cont.innerHTML = "<p>No hay postulaciones pendientes por revisar.</p>";
+          return;
+        }
+        const list = Object.values(data);
+        document.getElementById("count-aspirantes").innerText = list.length;
+
+        cont.innerHTML = list.map(item => {
+          const msgEntrevista = encodeURIComponent(`Hola ${item.nombre}, recibimos tu postulación para ${item.cargoNombre} en Fitocosmética y Perfumes al 100%. Vamos a realizar una breve entrevista para validar tus datos y asignarte tu enlace de trabajo.`);
+          return `
+            <div class="admin-item">
+              <span class="badge-tag bg-gold">${item.cargoNombre}</span>
+              <h4 style="margin-top:6px; color:#FBBF24;">${item.nombre} — ${item.cedula} (RIF: ${item.rif})</h4>
+              <p style="font-size:0.78rem; color:#E2E8F0; margin-top:4px;">📍 ${item.direccion} | ⏰ ${item.disponibilidad} | Meta: $${item.aspiracion}/sem</p>
+              <p style="font-size:0.76rem; color:#34D399; margin-top:3px;">🛠️ Herramientas: ${(item.herramientas || []).join(", ")} | Extra: ${item.extra}</p>
+              <p style="font-size:0.75rem; color:#94A3B8; margin-top:3px;">Exp: ${item.experiencia}</p>
+              <p style="font-size:0.74rem; color:#FDE68A; margin-top:3px;">✍️ Firma Digital: <em>${item.firma}</em></p>
+              <div class="admin-actions">
+                <a href="https://wa.me/${item.whatsapp}?text=${msgEntrevista}" target="_blank" class="btn-sm btn-wa">💬 Entrevistar por WhatsApp</a>
+                <button class="btn-sm btn-approve" onclick="aprobarEjecutivo('${item.id}')">✅ Aprobar y Dar Código</button>
+                <button class="btn-sm btn-reject" onclick="rechazarAspirante('${item.id}')">🗑️ Descartar</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      });
+
+      onValue(ref(db, "equipo_comercial_activo"), (snap) => {
+        const cont = document.getElementById("lista-equipo");
+        const data = snap.val();
+        if (!data) {
+          document.getElementById("count-equipo").innerText = "0";
+          cont.innerHTML = "<p>Aún no hay ejecutivos aprobados en el directorio activo.</p>";
+          return;
+        }
+        const list = Object.values(data);
+        document.getElementById("count-equipo").innerText = list.length;
+
+        cont.innerHTML = list.map(emp => {
+          const linkAsignado = `${catalogBaseUrl}?asesor=${encodeURIComponent(emp.codigo)}`;
+          const msgCredenciales = encodeURIComponent(`🎉 *¡Bienvenido/a al Equipo de Fitocosmética y Perfumes al 100%!* 🌿
+
+Tu postulación fue aprobada.
+👤 *Ejecutivo:* ${emp.nombre}
+🆔 *Código Oficial:* ${emp.codigo}
+🧭 *Rama:* ${emp.cargoNombre}
+🏅 *Nivel Actual:* ${emp.nivel || 'Bronce'}
+
+🔗 *Tu Enlace Oficial de Catálogo para Clientes:*
+${linkAsignado}
+
+📌 *Normas Clave:*
+1. Atiende a cada cliente con amabilidad y rapidez.
+2. Respeta los precios oficiales.
+3. Reporta tus pedidos cerrados para acreditar tus ventas en el ranking semanal.`);
+
+          return `
+            <div class="admin-item">
+              <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                <strong style="color:#FFFFFF;">${emp.nombre} <span style="color:#FBBF24;">(${emp.codigo})</span></strong>
+                <span class="badge-tag bg-emerald">Nivel ${emp.nivel || 'Bronce'} • Ventas: ${emp.ventasLiquidadas || 0}</span>
+              </div>
+              <p style="font-size:0.78rem; color:#94A3B8; margin-top:4px;">${emp.cargoNombre} | Tel: ${emp.whatsapp} | RIF: ${emp.rif}</p>
+              <div class="admin-actions">
+                <a href="https://wa.me/${emp.whatsapp}?text=${msgCredenciales}" target="_blank" class="btn-sm btn-wa">📲 Enviar Usuario y Link</a>
+                <button class="btn-sm btn-gold-sm" onclick="sumarVentaRanking('${emp.id}', ${emp.ventasLiquidadas || 0})">➕ +1 Venta Liquidada</button>
+                <button class="btn-sm btn-gold-sm" onclick="toggleDestacado('${emp.id}', ${emp.destacado ? 'true' : 'false'})">${emp.destacado ? '⭐ Quitar de Honor' : '🏆 Subir a Cuadro Honor'}</button>
+                <button class="btn-sm btn-reject" onclick="darDeBaja('${emp.id}')">⛔ Dar de Baja</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      });
+    }
+
+    window.aprobarEjecutivo = async function(id) {
+      const snap = await get(ref(db, `buzon_aspirantes_trabajo/${id}`));
+      const item = snap.val();
+      if (!item) return;
+
+      const codigo = "FITO-" + Math.floor(1000 + Math.random() * 9000);
+      await set(ref(db, `equipo_comercial_activo/${item.id}`), {
+        ...item,
+        codigo,
+        nivel: "Bronce",
+        ventasLiquidadas: 0,
+        puntos: 10,
+        destacado: false,
+        aprobadoEn: Date.now()
+      });
+
+      await remove(ref(db, `buzon_aspirantes_trabajo/${id}`));
+      alert(`✅ ¡Ejecutivo Aprobado!
+Código asignado: ${codigo}
+Ya puedes enviarle su usuario y enlace desde la pestaña "Equipo Activo & Ranking".`);
+    };
+
+    window.sumarVentaRanking = async function(id, ventasActuales) {
+      const nuevasVentas = ventasActuales + 1;
+      let nuevoNivel = "Bronce";
+      if (nuevasVentas >= 30) nuevoNivel = "Oro";
+      else if (nuevasVentas >= 15) nuevoNivel = "Plata";
+
+      await update(ref(db, `equipo_comercial_activo/${id}`), {
+        ventasLiquidadas: nuevasVentas,
+        puntos: nuevasVentas * 10,
+        nivel: nuevoNivel
+      });
+    };
+
+    window.toggleDestacado = async function(id, estadoActual) {
+      await update(ref(db, `equipo_comercial_activo/${id}`), {
+        destacado: !estadoActual
+      });
+    };
+
+    window.rechazarAspirante = async function(id) {
+      if (!confirm("¿Descartar esta postulación?")) return;
+      await remove(ref(db, `buzon_aspirantes_trabajo/${id}`));
+    };
+
+    window.darDeBaja = async function(id) {
+      if (!confirm("¿Dar de baja a este ejecutivo del equipo activo?")) return;
+      await remove(ref(db, `equipo_comercial_activo/${id}`));
+    };
+  </script>
+</body>
+</html>
