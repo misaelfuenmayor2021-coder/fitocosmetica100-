@@ -8269,11 +8269,12 @@ Los frascos e insumos base ya se descontaron. Ahora ve a la pestaña "5. Depósi
 
         Object.entries(logs).reverse().forEach(([key, item]) => {
           tbody.innerHTML += `
-            <tr style="border-bottom:1px solid #e2e8f0;">
-              <td style="padding:8px;"><b>${item.modulo.toUpperCase()}</b><br><small>${item.ruta}</small></td>
-              <td style="padding:8px;">${item.fecha}</td>
-              <td style="padding:8px;">${item.detalle}</td>
-              <td style="padding:8px;">
+                          <tr style="border-bottom:1px solid #e2e8f0;">
+                <td style="padding:8px; color:#1e293b;"><b>${item.modulo.toUpperCase()}</b></td>
+                <td style="padding:8px; color:#1e293b;">${item.fecha}</td>
+                <td style="padding:8px; color:#1e293b;">${item.detalle}</td>
+                <td style="padding:8px; color:#1e293b;">
+
                 ${item.estado.includes("Pendiente") ? `
                   <button type="button" onclick="aprobarRegistroMaster('${key}')" style="background:#15803d; color:#fff; border:none; padding:5px 9px; border-radius:5px; cursor:pointer; font-size:0.78rem;">
                     ✅ Aprobar
@@ -8312,11 +8313,64 @@ Los frascos e insumos base ya se descontaron. Ahora ve a la pestaña "5. Depósi
       alert("✅ Enlace y clave copiados. Pégalos directo en el WhatsApp del colaborador.");
     }
 
-    function aprobarRegistroMaster(key) {
-      firebase.database().ref("sistema_operaciones/bitacora_auditoria/" + key).update({
-        estado: "✅ Aprobado por Gerencia"
+        function aprobarRegistroMaster(key) {
+      const refRegistro = firebase.database().ref("sistema_operaciones/bitacora_auditoria/" + key);
+      refRegistro.once("value").then((snap) => {
+        const registro = snap.val();
+        if (!registro) return;
+
+        // 1. Aprobar el registro en la bitácora
+        refRegistro.update({
+          estado: "✅ Aprobado por Gerencia"
+        });
+
+        // 2. Sincronizar con el inventario si corresponde al módulo de almacén
+        if (registro.modulo && registro.modulo.toLowerCase() === "almacen" && registro.detalle) {
+          const textoDetalle = registro.detalle;
+          
+          // Extraer nombre, cantidad y costo (ajustado a formatos estándar de detalle)
+          const matchNombre = textoDetalle.match(/(?:Producto|Item|Ingreso|Entrada):\s*([^,|]+)/i);
+          const matchCantidad = textoDetalle.match(/(?:Cant(?:idad)?|Unds?):\s*(\d+(?:\.\d+)?)/i);
+          const matchCosto = textoDetalle.match(/(?:Costo|Precio|Monto):\s*\$?\s*(\d+(?:\.\d+)?)/i);
+
+          const nombre = matchNombre ? matchNombre[1].trim() : textoDetalle.split("|")[0].trim();
+          const cantidad = matchCantidad ? parseFloat(matchCantidad[1]) : 0;
+          const costo = matchCosto ? parseFloat(matchCosto[1]) : 0;
+
+          if (nombre && cantidad > 0) {
+            const refInventario = firebase.database().ref("systemState/inventario");
+            refInventario.once("value").then((invSnap) => {
+              const inventario = invSnap.val() || {};
+              let itemKey = null;
+
+              // Buscar si el producto ya existe (ignorando mayúsculas/minúsculas)
+              Object.keys(inventario).forEach((k) => {
+                if (inventario[k].nombre && inventario[k].nombre.toLowerCase() === nombre.toLowerCase()) {
+                  itemKey = k;
+                }
+              });
+
+              if (itemKey) {
+                const stockActual = parseFloat(inventario[itemKey].cantidad || inventario[itemKey].stock || 0);
+                refInventario.child(itemKey).update({
+                  cantidad: stockActual + cantidad,
+                  costo: costo > 0 ? costo : (inventario[itemKey].costo || 0),
+                  ultimaActualizacion: new Date().toLocaleString("es-VE")
+                });
+              } else {
+                refInventario.push({
+                  nombre: nombre,
+                  cantidad: cantidad,
+                  costo: costo,
+                  ultimaActualizacion: new Date().toLocaleString("es-VE")
+                });
+              }
+            });
+          }
+        }
       });
     }
+
   }
 (function() {
   let contadorToques = 0;
